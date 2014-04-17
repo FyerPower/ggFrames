@@ -1,7 +1,7 @@
 -- Global Initalizations
 GGF           = {}
 GGF.addonName = "ggFrames"
-GGF.version   = "0.1.2"
+GGF.version   = "0.1.4"
 
 -- Config
 GGF.init      = {}

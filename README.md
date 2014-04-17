@@ -1,4 +1,4 @@
-### ggFrames (v0.1.2)
+### ggFrames (v0.1.4)
 
 ggFrames is a lightweight addon that replaces the default unit frames provided by Elder Scrolls Online.  ggFrames is currently early in its development and currently only features an updated / easier to read player unit frame.  The player frame sits in the top left of the screen and displays the players health, magicka, stamina, experience, and also mount stamina when mounted.
 
@@ -7,7 +7,7 @@ ggFrames is a lightweight addon that replaces the default unit frames provided b
 #### Installation Instructions
 
 - Download Zip file (to the right)
-- Move contents to `~/Documents/Elder Scrolls Online/live/Addons/`
+- Move contents to `~/Documents/Elder Scrolls Online/live/Addons/ggFrames/`
 - Restart game or run `/reloadui`
 
 #### Features

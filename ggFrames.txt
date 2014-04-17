@@ -1,4 +1,6 @@
 ## Title: ggFrames
+## Version: 0.1.4
+## Author: Michael Lynch
 ## APIVersion: 1
 
 ggFrames.lua
