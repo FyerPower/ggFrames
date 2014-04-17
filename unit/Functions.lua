@@ -40,11 +40,16 @@ function GGF.Unit:LoadInitialData()
   self.vlevel = GetUnitVeteranRank(self.unitTag)
   self.vet    = GetUnitVeteranPoints(self.unitTag)
   self.vetMax = GetUnitVeteranPointsMax(self.unitTag)
-  self.levelProgress = math.floor( ((self.vet or self.exp) / (self.vetMax or self.expMax))*100 )
-
   self.frames.nameLb:SetText(self.name.." ("..(self.level == 50 and "Vet "..self.vlevel or self.level)..")")
   self.frames.classTx:SetTexture(GGF.classTextures[self.class])
-  self.frames.experienceSt:SetWidth( ( self.levelProgress / 100 ) * self.template.Experience.Width )
+  
+  if self.unitTag == "player" then
+    self.levelProgress = math.floor( ((self.vet or self.exp) / (self.vetMax or self.expMax))*100 )
+    self.frames.experienceSt:SetWidth( ( self.levelProgress / 100 ) * self.template.Experience.Width )
+
+    self.isMounted = IsMounted()
+    self.frames.mount:SetHidden( not self.isMounted )
+  end
 end
 
 
@@ -68,7 +73,13 @@ function GGF.Unit:SetPower( powerIndex, powerType,  powerValue, powerMax, powerE
 end
 
 function GGF.Unit:SetMountPower( powerIndex, powerType, powerValue, powerMax, powerEffectiveMax )
+  self.mount = {current = powerValue, max = powerMax, percent = math.floor( ( powerValue / powerEffectiveMax ) * 100 )}
+  self.frames.mountSt:SetWidth( ( self.mount.percent / 100 ) * self.template.Mount.BarArea.Bar.Width )
+end
 
+function GGF.Unit:SetMounted( isMounted )
+  self.isMounted = isMounted
+  self.frames.mount:SetHidden( not self.isMounted )
 end
 
 -- Call From OnLevel Event

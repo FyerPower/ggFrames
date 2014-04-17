@@ -20,7 +20,7 @@ function GGF.UnitManager.CreateUnit(unitTag)
 end
 
 function GGF.UnitManager.RegisterEvents()
-  -- Power Update (AKA: Health / Magicka / Stamina)
+  -- Power Update (AKA: Health / Magicka / Stamina / Horse Stamina)
   EVENT_MANAGER:RegisterForEvent("GGF", EVENT_POWER_UPDATE, GGF.UnitManager.OnPowerUpdate)
   
   -- Death
@@ -31,6 +31,10 @@ function GGF.UnitManager.RegisterEvents()
   EVENT_MANAGER:RegisterForEvent("GGF", EVENT_EXPERIENCE_UPDATE, GGF.UnitManager.OnExpUpdate)
   EVENT_MANAGER:RegisterForEvent("GGF", EVENT_VETERAN_POINTS_UPDATE, GGF.UnitManager.OnExpUpdate)
   -- EVENT_MANAGER:RegisterForEvent("GGF", EVENT_ALLIANCE_POINT_UPDATE, GGF.OnAPUpdate)
+
+  -- Mount
+  EVENT_MANAGER:RegisterForEvent("GGF", EVENT_MOUNTED_STATE_CHANGED, GGF.UnitManager.OnMount )
+
 
   -- Group
   -- EVENT_MANAGER:RegisterForEvent("GGF", EVENT_GROUP_MEMBER_ROLES_CHANGED, GGF.UnitManager.OnGroupRoleChange)  
@@ -61,6 +65,14 @@ end
 function GGF.UnitManager.OnExpUpdate( eventCode, unitTag, currentExp, maxExp, reason )
   if ( unitTag ~= "player" or reason == XP_REASON_FINESSE or GGF.UnitManager.units[unitTag] == nil ) then return end
   GGF.UnitManager.units[unitTag]:SetExp(currentExp, maxExp, (eventCode==EVENT_VETERAN_POINTS_UPDATE))
+end
+
+--
+-- Mount
+--
+function GGF.UnitManager.OnMount( eventCode, isMounted )
+  if GGF.UnitManager.units['player'] == nil then return  end
+  GGF.UnitManager.units['player']:SetMounted(isMounted)
 end
 
 

@@ -11,6 +11,9 @@ function GGF.Window:Create(cName, cParent, cType, cTemplate)
     end
     control:SetDimensions(cTemplate.Width, cTemplate.Height)
     control:SetAnchor(cTemplate.MyAnchor, cParent, cTemplate.ParentAnchor, cTemplate.OffsetX, cTemplate.OffsetY)    
+    if cTemplate.Hidden then
+      control:SetHidden(cTemplate.Hidden)
+    end
     return control
   end
 end
@@ -18,12 +21,17 @@ end
 -- Create Backdrops
 function GGF.Window:CreateBackDrop(cName, cParent, cTemplate)
   local backdrop = GGF.Window:Create(cName, cParent, CT_BACKDROP, cTemplate)
-  local background = GGF.Utils:ConvertRGBA(cTemplate.BackColor, cTemplate.BackAlpha)
-  local edge = GGF.Utils:ConvertRGBA(cTemplate.EdgeColor, cTemplate.EdgeAlpha)
   
-  backdrop:SetCenterColor(background[1], background[2], background[3], background[4])
-  backdrop:SetEdgeColor(edge[1], edge[2], edge[3], edge[4])
-  backdrop:SetEdgeTexture("", 8, 1, cTemplate.EdgeWeight)
+  if cTemplate.BackColor and cTemplate.BackAlpha then
+    local background = GGF.Utils:ConvertRGBA(cTemplate.BackColor, cTemplate.BackAlpha)
+    backdrop:SetCenterColor(background[1], background[2], background[3], background[4])
+  end
+  
+  if cTemplate.EdgeColor and cTemplate.EdgeAlpha and cTemplate.EdgeWeight then
+    local edge = GGF.Utils:ConvertRGBA(cTemplate.EdgeColor, cTemplate.EdgeAlpha)
+    backdrop:SetEdgeColor(edge[1], edge[2], edge[3], edge[4])
+    backdrop:SetEdgeTexture("", 8, 1, cTemplate.EdgeWeight)
+  end
   return backdrop
 end
 

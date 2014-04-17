@@ -37,9 +37,16 @@ function GGF.Unit:Controls()
   self.frames.staminaLeftLb  = GGF.Window:CreateLabel("GGF_"..self.unitTag.."StaminaTextLeft",      self.frames.staminaBd, self.template.Stamina.TextLeft)
   self.frames.staminaRightLb = GGF.Window:CreateLabel("GGF_"..self.unitTag.."StaminaTextRight",     self.frames.staminaBd, self.template.Stamina.TextRight)
 
+  -- Mount
+  self.frames.mount          = GGF.Window:CreateBackDrop("GGF_"..self.unitTag.."Mount", self.frames.main, self.template.Mount)
+  self.frames.mountTx        = GGF.Window:CreateTexture("GGF_"..self.unitTag.."MountTx", self.frames.mount, self.template.Mount.Icon)
+  self.frames.mountBd        = GGF.Window:CreateBackDrop("GGF_"..self.unitTag.."MountBd", self.frames.mount, self.template.Mount.BarArea)
+  self.frames.mountSt        = GGF.Window:CreateStatusBar("GGF_"..self.unitTag.."MountSt", self.frames.mountBd, self.template.Mount.BarArea.Bar)
+
   -- Exp
   self.frames.experienceBd   = GGF.Window:CreateBackDrop("GGF_"..self.unitTag.."Experience", self.frames.main, self.template.Experience)
   self.frames.experienceSt   = GGF.Window:CreateStatusBar("GGF_"..self.unitTag.."ExperienceStatusBar", self.frames.experienceBd, self.template.Experience.Bar)
+
 end
 
 function GGF.GenerateCastBar()
