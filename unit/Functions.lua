@@ -65,15 +65,17 @@ function GGF.Unit:LoadInitialData()
   self.frames.staminaRightLb:SetText( self.stamina.percent .. "%" )
 
   if self.unitTag == "player" then
-    self.levelProgress = math.floor( ((self.vet or self.exp) / (self.vetMax or self.expMax))*100 )
+    if self.vet > 0 then
+      self.levelProgress = math.floor( self.vet / self.vetMax * 100 )
+    else
+      self.levelProgress = math.floor( self.exp / self.expMax * 100 )
+    end
     self.frames.experienceSt:SetWidth( ( self.levelProgress / 100 ) * self.template.Experience.Width )
 
     self.isMounted = IsMounted()
     self.frames.mount:SetHidden( not self.isMounted )
   end
 end
-
-
 
 -- Call From OnPowerUpdate Event
 function GGF.Unit:SetPower( powerIndex, powerType,  powerValue, powerMax, powerEffectiveMax )
@@ -118,7 +120,7 @@ function GGF.Unit:SetExp( current, max, veteran )
     self.exp = current
     self.expMax = max
   end
-  self.levelProgress = math.floor( ((self.vet or self.exp) / (self.vetMax or self.expMax))*100 )
+  self.levelProgress = math.floor( current / max * 100 )
   self.frames.experienceSt:SetWidth( ( self.levelProgress / 100 ) * self.template.ExpBar.Width )
 end
 
