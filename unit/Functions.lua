@@ -26,7 +26,10 @@ function GGF.Unit.Initialize(unitTag)
   self:LoadInitialData()
 
   -- Ensure the default unit frames are hidden
-  ZO_PlayerAttribute:SetHidden( true )
+  -- ZO_PlayerAttribute:SetHidden( true )
+  _G["ZO_PlayerAttributeHealth"]:SetHidden(true)
+  _G["ZO_PlayerAttributeMagicka"]:SetHidden(true)
+  _G["ZO_PlayerAttributeStamina"]:SetHidden(true)
   
   return self
 end
