@@ -43,6 +43,24 @@ function GGF.Unit:LoadInitialData()
   self.frames.nameLb:SetText(self.name.." ("..(self.level == 50 and "Vet "..self.vlevel or self.level)..")")
   self.frames.classTx:SetTexture(GGF.classTextures[self.class])
   
+  local health, maxHealth = GetUnitPower(self.unitTag, POWERTYPE_HEALTH)
+  self.health = {current = health, max = maxHealth, percent = math.floor( ( health / maxHealth ) * 100 )}
+  self.frames.healthSt:SetWidth( ( self.health.percent / 100 ) * self.template.Health.Bar.Width )
+  self.frames.healthLeftLb:SetText( health )
+  self.frames.healthRightLb:SetText( self.health.percent .. "%" )
+  
+  local magicka, maxMagicka = GetUnitPower(self.unitTag, POWERTYPE_MAGICKA)
+  self.magicka = {current = magicka, max = maxMagicka, percent = math.floor( ( magicka / maxMagicka ) * 100 )}
+  self.frames.magickaSt:SetWidth( ( self.magicka.percent / 100 ) * self.template.Magicka.Bar.Width )
+  self.frames.magickaLeftLb:SetText( magicka )
+  self.frames.magickaRightLb:SetText( self.magicka.percent .. "%" )
+  
+  local stamina, maxStamina = GetUnitPower(self.unitTag, POWERTYPE_STAMINA)
+  self.stamina = {current = stamina, max = maxStamina, percent = math.floor( ( stamina / maxStamina ) * 100 )}
+  self.frames.staminaSt:SetWidth( ( self.stamina.percent / 100 ) * self.template.Stamina.Bar.Width )
+  self.frames.staminaLeftLb:SetText( stamina )
+  self.frames.staminaRightLb:SetText( self.stamina.percent .. "%" )
+
   if self.unitTag == "player" then
     self.levelProgress = math.floor( ((self.vet or self.exp) / (self.vetMax or self.expMax))*100 )
     self.frames.experienceSt:SetWidth( ( self.levelProgress / 100 ) * self.template.Experience.Width )
