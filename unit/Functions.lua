@@ -70,7 +70,7 @@ function GGF.Unit:LoadInitialData()
     else
       self.levelProgress = math.floor( self.exp / self.expMax * 100 )
     end
-    self.frames.experienceSt:SetWidth( ( self.levelProgress / 100 ) * self.template.Experience.Width )
+    self.frames.experienceSt:SetWidth( ( self.levelProgress / 100 ) * self.template.Experience.Bar.Width )
 
     self.isMounted = IsMounted()
     self.frames.mount:SetHidden( not self.isMounted )
@@ -121,7 +121,7 @@ function GGF.Unit:SetExp( current, max, veteran )
     self.expMax = max
   end
   self.levelProgress = math.floor( current / max * 100 )
-  self.frames.experienceSt:SetWidth( ( self.levelProgress / 100 ) * self.template.ExpBar.Width )
+  self.frames.experienceSt:SetWidth( ( self.levelProgress / 100 ) * self.template.Experience.Bar.Width )
 end
 
 -- IsUnitDead(unit)

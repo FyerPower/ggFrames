@@ -1,5 +1,5 @@
 ## Title: ggFrames
-## Version: 0.1.6
+## Version: 0.1.7
 ## Author: Michael Lynch
 ## APIVersion: 100003
 
