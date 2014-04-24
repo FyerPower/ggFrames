@@ -94,7 +94,6 @@ function GGF.Unit:SetClass( className )
 end
 
 function GGF.Unit:SetExp( current, max, veteran )
-  d("setting exp "..current.." / "..max)
   if not self.template.Experience then return end
   self.frames.experienceSt:SetWidth( current / max * self.template.Experience.Bar.Width )
 end

@@ -132,7 +132,6 @@ end
 ----------------------------------------
 
 function GGF.UnitManager.OnUnitDeath( eventCode, unitTag, isDead )
-  d(unitTag.." death: "..(isDead and "dead" or "alive"))
   GGF.UnitManager.UnitFunction(unitTag, 'SetDeath', isDead)
 end
 
