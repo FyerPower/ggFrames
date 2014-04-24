@@ -1,4 +1,4 @@
-### ggFrames (v0.1.7)
+### ggFrames (v0.2)
 
 ggFrames is a lightweight addon that replaces the default unit frames provided by Elder Scrolls Online.  ggFrames is currently early in its development and currently only features an updated / easier to read player unit frame.  The player frame sits in the top left of the screen and displays the players health, magicka, stamina, experience, and also mount stamina when mounted.
 
@@ -18,23 +18,30 @@ ggFrames is a lightweight addon that replaces the default unit frames provided b
   - Stamina
   - Experience: Very Slim / Unobtrusive
   - Mount Stamina: Only visible when mounted
+- Group Unit Frames
+  - *Name, Level, Class Icon, Group Leader Icon, Health Bar*
+  - *Player frame will remain on top of group list, so that it will not confuse the player when grouped / ungrouped*
+  - *Group member will fade out when no within support range*
+- Large Group (Raid) Unit Frames
+  - *Name, Group Leader Icon, Health Bar*
+- All Frames Hide whenever in menus (backpack, friends, guild, etc)
+- All Default Frames are Hidden (Players Health, Stamina, Magicka, Horse Stamina, Group Frames, and Raid Frames)
 
-#### Coming Soon
+#### Coming Soon (v0.3)
+
+- Customizable Setting Menu
+- Theming
+
+#### Coming Soon After
 
 - Low Health Alert
 - Player Castbar
 - Buff / Debuffs
-- Customizable Setting Menu
-- Group Unit Frames
-  - *Name, Level, Class Icon, Role Icons (dps/tank/healer), Group Leader Icon, Health Bar*
-  - *Player frame will remain on top of group list, so that it will not confuse the player when grouped / ungrouped*
-  - *Group member will fade out when no within support range*
 - Target Unit Frame
   - *Name, Level, Class Icon, Health Bar*
-  - *Bosses will appear slightly differently and give the user information such as the boss rank*
+  - *Bosses will appear slightly differently and give the user information such as its difficulty rating*
   - *Casting Bars with textual feedback telling you when to block, interupt, etc.*
-- Target of Target Unit Frame
-  - *Name & Health Bar Only*
+- Target of Target Unit Frame (If Possible)
 
 #### Feature Request?
 

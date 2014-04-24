@@ -46,16 +46,13 @@ function GGF.Utils:DeepCopy(orig)
 end
 
 function GGF.Utils:TableMerge(table1, table2)
+  local table = GGF.Utils:ShallowCopy(table1)
   for key, value in pairs(table2) do
-    if type(value) == "table" then
-      if type(table1[key] or false) == "table" then
-        GGF.Utils:TableMerge(table1[key] or {}, table2[key] or {})
-      else
-        table1[key] = value
-      end
+    if type(value) == "table" and type(table[key] or false) == "table" then
+      GGF.Utils:TableMerge(table[key] or {}, table2[key] or {})
     else
-      table1[key] = value
+      table[key] = value
     end
   end
-  return table1
+  return table
 end

@@ -1,16 +1,20 @@
 ## Title: ggFrames
-## Version: 0.1.7
+## Version: 0.2.0
 ## Author: Michael Lynch
 ## APIVersion: 100003
 
 ggFrames.lua
 
+localization/$(language).lua
+
 themes/standard.lua
 
+util/Debug.lua
 util/Functions.lua
 util/Window.lua
 
 unitManager/Functions.lua
+unitManager/Controls.lua
 
 unit/Functions.lua
 unit/Controls.lua

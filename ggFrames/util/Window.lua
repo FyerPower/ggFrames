@@ -14,8 +14,8 @@ function GGF.Window:Create(cName, cParent, cType, cTemplate)
     if cTemplate.Hidden then
       control:SetHidden(cTemplate.Hidden)
     end
-    return control
   end
+  return control
 end
 
 -- Create Backdrops
@@ -26,7 +26,6 @@ function GGF.Window:CreateBackDrop(cName, cParent, cTemplate)
     local background = GGF.Utils:ConvertRGBA(cTemplate.BackColor, cTemplate.BackAlpha)
     backdrop:SetCenterColor(background[1], background[2], background[3], background[4])
   end
-  
   if cTemplate.EdgeColor and cTemplate.EdgeAlpha and cTemplate.EdgeWeight then
     local edge = GGF.Utils:ConvertRGBA(cTemplate.EdgeColor, cTemplate.EdgeAlpha)
     backdrop:SetEdgeColor(edge[1], edge[2], edge[3], edge[4])
@@ -39,7 +38,7 @@ end
 function GGF.Window:CreateLabel(cName, cParent, cTemplate)
   local label = GGF.Window:Create(cName, cParent, CT_LABEL, cTemplate)
   local clFontColor = GGF.Utils:ConvertRGBA(cTemplate.FontColor, cTemplate.FontAlpha)
-  
+
   label:SetFont(cTemplate.Font)
   label:SetScale(cTemplate.Scale)
   label:SetHorizontalAlignment(cTemplate.HorizontalAlign)
@@ -59,17 +58,25 @@ function GGF.Window:CreateStatusBar(cName, cParent, cTemplate)
   
   status:SetTexture(cTemplate.Texture)
   status:SetColor(csBarColor[1], csBarColor[2], csBarColor[3], csBarColor[4])
-  status:SetMinMax(0, 100)
-  status:SetValue(100)
+  -- status:SetMinMax(0, 100)
+  -- status:SetValue(100)
   return status
 end
 
 -- Create Texture
 function GGF.Window:CreateTexture(cName, cParent, cTemplate, textureFile)
   local texture = GGF.Window:Create(cName, cParent, CT_TEXTURE, cTemplate)
-  -- texture:SetDrawLayer(3)
-  
   texture:SetTexture(textureFile or cTemplate.Texture)    
   texture:SetAlpha(cTemplate.Alpha or 1)    
   return texture
+end
+
+
+function GGF.Window:SetLabelText( label, text, resize )
+  label:SetText(text)
+  if resize then label:SetWidth( label:GetTextWidth() ) end
+end
+
+function GGF.Window:SetAdditionalLeftOffset( control, cTemplate, additional )
+  control:SetAnchor(cTemplate.MyAnchor, cParent, cTemplate.ParentAnchor, (cTemplate.OffsetX + additional), cTemplate.OffsetY)    
 end

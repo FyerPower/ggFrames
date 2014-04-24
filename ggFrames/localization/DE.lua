@@ -1,0 +1,3 @@
+GGF.localization = {
+  ["welcome"] = "Welcome",
+}
