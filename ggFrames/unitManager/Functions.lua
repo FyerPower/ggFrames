@@ -68,6 +68,8 @@ function GGF.UnitManager.UpdateGroup()
       end
     end
   end
+  GGF.UnitManager.unit["Player"]:SetLeader(IsUnitGroupLeader("player"))
+  
   -- Unload all unit slots after our last slot (this should NOT be necessary)
   for j = groupSlot, 3 do GGF.UnitManager.unit["Group"..j]:Unload() end
   for k = largeGroupSlot, 24 do GGF.UnitManager.unit["LargeGroup"..k]:Unload() end
@@ -164,7 +166,6 @@ end
 ----------------------------------------
 
 function GGF.UnitManager.OnLeaderUpdate( eventCode, ... )
-  GGF.UnitManager.unit["Player"]:SetLeader(IsUnitGroupLeader("player"))
   GGF.UnitManager.UpdateGroup()
 end
 

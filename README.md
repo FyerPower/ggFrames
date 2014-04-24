@@ -1,4 +1,4 @@
-### ggFrames (v0.2)
+### ggFrames (v0.2.1)
 
 ggFrames is a lightweight addon that replaces the default unit frames provided by Elder Scrolls Online.  ggFrames is currently early in its development and currently only features an updated / easier to read player unit frame.  The player frame sits in the top left of the screen and displays the players health, magicka, stamina, experience, and also mount stamina when mounted.
 
@@ -30,18 +30,26 @@ ggFrames is a lightweight addon that replaces the default unit frames provided b
 #### Coming Soon (v0.3)
 
 - Customizable Setting Menu
+- Moveable Frames
 - Theming
+- Option to Disable Player Experience Bar. [Suggested By: Tonyleila]
 
 #### Coming Soon After
 
-- Low Health Alert
-- Player Castbar
+- Texture Levels (Use Veteran Texture and Create "Lvl" Texture)
+- Low Health Alert (flash when under xx%)
+- Player Castbar (If Possible, Should be though)
 - Buff / Debuffs
 - Target Unit Frame
   - *Name, Level, Class Icon, Health Bar*
   - *Bosses will appear slightly differently and give the user information such as its difficulty rating*
-  - *Casting Bars with textual feedback telling you when to block, interupt, etc.*
+  - *Casting Bars with textual feedback telling you when to block, interupt, etc.* (If Possible)
 - Target of Target Unit Frame (If Possible)
+
+#### Community Suggestions
+
+- Option to Remove class icon and use class colors instead. [Suggested By: Tonyleila]
+- Option to "Attach" Horse Stamina Bar to Unit Frame under Player Experience Bar. [Suggested By: Tonyleila]
 
 #### Feature Request?
 
