@@ -50,3 +50,13 @@ function GGF.Settings:ToggleFrameMovable()
   GGF.UnitManager.frames.largeGroup:SetMovable( GGF.move )
   GGF.UnitManager.frames.largeGroup:SetMouseEnabled( GGF.move )
 end
+
+function GGF.Settings:ResetDefaults()
+  for key, value in pairs(GGF.SavedVarsDefaults) do
+    GGF.SavedVars[key] = value
+  end
+
+  GGF.UnitManager.RefreshControls("Player")
+  GGF.UnitManager.RefreshControls("Group")
+  GGF.UnitManager.RefreshControls("LargeGroup")
+end

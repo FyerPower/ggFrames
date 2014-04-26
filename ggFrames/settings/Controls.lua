@@ -4,14 +4,15 @@ function GGF.Settings:Controls()
 
   local LAM = LibStub("LibAddonMenu-1.0")
   local panelID = LAM:CreateControlPanel( "ggFrameSettingMenu", "ggFrames")
+  header = LAM:AddHeader(panelID, "ggFrameSettingMenuHeader", "Version |cAA0000"..GGF.version.."|r by |c00AA00@gamegenius86|r")
 
-  LAM:AddHeader(panelID, "ggFrameSettingMenuHeader", "Version |cAA0000"..GGF.version.."|r by |c00AA00gamegenius86|r")
+  header:SetHandler("OnShow", function() ZO_OptionsWindowResetToDefaultButton:SetAlpha(0); end)
+  header:SetHandler("OnHide", function() ZO_OptionsWindowResetToDefaultButton:SetAlpha(1); end)
+
   LAM:AddCheckbox(   panelID, "ggFramesSettingFrameLock", GGF.locale['Frame_Lock'], nil, function()  return not self:IsFrameMovable() end, function() self:ToggleFrameMovable() end )
   
   LAM:AddHeader(panelID, 'ggFrameSettingPlayer', 'Frame: Player' )
   LAM:AddSlider(     panelID, 'ggFramesSettingPlayerWidth',            GGF.locale['Player_Width'], nil, 200, 400, 5,              function() return self:GetValue('Player_Width') end,             function( val ) self:SetValue('Player_Width',val) end )
-  -- LAM:AddSlider(     panelID, 'ggFramesSettingPlayerContainer_OffsetX', GGF.locale['PlayerContainer_OffsetX'], nil, 0, 1900, 2,   function() return self:GetValue('PlayerContainer_OffsetX') end,  function( val ) self:SetValue('PlayerContainer_OffsetX',val) end )
-  -- LAM:AddSlider(     panelID, 'ggFramesSettingPlayerContainer_OffsetY', GGF.locale['PlayerContainer_OffsetY'], nil, 0, 1000, 2,   function() return self:GetValue('PlayerContainer_OffsetY') end,  function( val ) self:SetValue('PlayerContainer_OffsetY',val) end )
   LAM:AddDropdown(   panelID, "ggFramesSettingPlayerFont",             GGF.locale['Player_Font'], nil, fontOptions,               function() return self:GetValue('Player_Font') end,              function( val ) self:SetValue('Player_Font',val) end )
   LAM:AddSlider(     panelID, 'ggFramesSettingPlayerFontSize',         GGF.locale['Player_FontSize'], nil, 10, 30, 1,             function() return self:GetValue('Player_FontSize') end,          function( val ) self:SetValue('Player_FontSize',val) end )
   LAM:AddColorPicker(panelID, "ggFramesSettingPlayerFontColor",        GGF.locale['Player_FontColor'], nil,                       function() return self:GetColor('Player_FontColor') end,         function( r,g,b,a ) self:SetColor('Player_FontColor',r,g,b,a) end )
@@ -70,5 +71,9 @@ function GGF.Settings:Controls()
   LAM:AddHeader(panelID, 'ggFrameSettingLargeGroupHealth', 'Raid Frame: Member Health' )
   LAM:AddColorPicker(panelID, "ggFramesSettingLargeGroupHealthColor",      GGF.locale['LargeGroup_Health_BarColor'], nil,                 function() return self:GetColor('LargeGroup_Health_BarColor') end,   function( r,g,b,a ) self:SetColor('LargeGroup_Health_BarColor',r,g,b,a) end )
   LAM:AddDropdown(   panelID, "ggFramesSettingLargeGroupHealthTexture",    GGF.locale['LargeGroup_Health_Texture'], nil, textureOptions,  function() return self:GetValue('LargeGroup_Health_Texture') end,    function( val ) self:SetValue('LargeGroup_Health_Texture',val) end )
+  
+  LAM:AddHeader(panelID, 'ggFrameSettingResetSection', 'Reset To Defaults' )
+  LAM:AddDescription(panelID, 'ggFramesSettingResetDescription', 'Caution: By resetting to the defaults you will lose all custom configuration you\'ve setup.  Please make sure this is what you want to do before clicking the button below.')  
+  LAM:AddButton(     panelID, "ggFramesSettingResetButton", "Reset Defaults", nil, function() self:ResetDefaults() end)
   
 end

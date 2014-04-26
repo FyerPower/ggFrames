@@ -1,3 +1,6 @@
+v0.3.1:
+- Added Reset Default Functionality
+
 v0.3:
 - Customizable Setting Menu
 - Moveable Frames

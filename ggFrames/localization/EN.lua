@@ -1,8 +1,10 @@
 GGF.locale = {
+  ["PlayerContainer_OffsetX"]     = 'Frame Horizontal Position',
+  ["PlayerContainer_OffsetY"]     = 'Frame Vertical Position',
   ["GroupContainer_OffsetX"]      = 'Frame Horizontal Position',
   ["GroupContainer_OffsetY"]      = 'Frame Vertical Position',
-  ["LargeGroupContainer_OffsetX"] = '',
-  ["LargeGroupContainer_OffsetY"] = '',
+  ["LargeGroupContainer_OffsetX"] = 'Frame Horizontal Position',
+  ["LargeGroupContainer_OffsetY"] = 'Frame Vertical Position',
   
   ['Player_Width']                = 'Frame Width',
   ['Player_Font']                 = 'Name Font',
