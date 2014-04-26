@@ -1,3 +1,8 @@
+v0.3:
+- Customizable Setting Menu
+- Moveable Frames
+- Option to Disable Player Experience Bar. [Suggested By: Tonyleila]
+
 v0.2.1:
 - Fix Removing leader from player frame whenever group is disbanded
 

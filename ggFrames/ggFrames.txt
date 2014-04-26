@@ -1,13 +1,23 @@
 ## Title: ggFrames
-## Version: 0.2.1
+## Version: 0.3.0
 ## Author: Michael Lynch
 ## APIVersion: 100003
+## SavedVariables: GGFSavedVariables
+
+lib/LibStub.lua
+lib/LibAddonMenu-1.0.lua
+lib/LibMediaProvider-1.0.lua
 
 ggFrames.lua
+ggSavedVarsDefaults.lua
 
-localization/$(language).lua
+localization/EN.lua
 
-themes/standard.lua
+settings/Functions.lua
+settings/Controls.lua
+
+theme/themes/standard.lua
+theme/Functions.lua
 
 util/Debug.lua
 util/Functions.lua
@@ -18,4 +28,3 @@ unitManager/Controls.lua
 
 unit/Functions.lua
 unit/Controls.lua
-

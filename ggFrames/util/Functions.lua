@@ -31,22 +31,22 @@ function GGF.Utils:ShallowCopy(orig)
 end
 
 function GGF.Utils:DeepCopy(orig)
-  local orig_type = type(orig)
-  local copy
-  if orig_type == 'table' then
-      copy = {}
-      for orig_key, orig_value in next, orig, nil do
-          copy[deepcopy(orig_key)] = deepcopy(orig_value)
-      end
-      setmetatable(copy, deepcopy(getmetatable(orig)))
-  else -- number, string, boolean, etc
-      copy = orig
-  end
-  return copy
+    local orig_type = type(orig)
+    local copy
+    if orig_type == 'table' then
+        copy = {}
+        for orig_key, orig_value in next, orig, nil do
+            copy[GGF.Utils:DeepCopy(orig_key)] = GGF.Utils:DeepCopy(orig_value)
+        end
+        setmetatable(copy, GGF.Utils:DeepCopy(getmetatable(orig)))
+    else -- number, string, boolean, etc
+        copy = orig
+    end
+    return copy
 end
 
 function GGF.Utils:TableMerge(table1, table2)
-  local table = GGF.Utils:ShallowCopy(table1)
+  local table = GGF.Utils:DeepCopy(table1)
   for key, value in pairs(table2) do
     if type(value) == "table" and type(table[key] or false) == "table" then
       GGF.Utils:TableMerge(table[key] or {}, table2[key] or {})

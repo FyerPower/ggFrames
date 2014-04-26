@@ -5,8 +5,8 @@ function GGF.Unit:New(unitName, baseTemplate, parent)
   local self = ZO_Object.New( self )
   self.unitName = unitName
   self.parent = parent
-  self.template = GGF.Utils:TableMerge(GGF.Template[baseTemplate or "Base"], GGF.Template[unitName])   -- Load Template (For Rendering)
-  self:Controls()                                                                                      -- Create Frames / Controls
+  self.frames = {}
+  self:Controls()                            -- Create Frames / Controls
   return self
 end
 
@@ -127,7 +127,7 @@ function GGF.Unit:UpdateStatus()
   self.frames.healthBd:SetHidden( isDeadOrOffline )
   if self.frames.magickaBd then self.frames.magickaBd:SetHidden( isDeadOrOffline ) end
   if self.frames.staminaBd then self.frames.staminaBd:SetHidden( isDeadOrOffline ) end
-  if self.frames.experienceBd then self.frames.experienceBd:SetHidden( isDeadOrOffline ) end
+  if self.frames.experienceBd and self.template.Experience ~= false then self.frames.experienceBd:SetHidden( isDeadOrOffline ) end
 end
 
 function GGF.Unit:SetRange( isWithinRange )

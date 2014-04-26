@@ -1,8 +1,12 @@
-### ggFrames (v0.2.1)
+### ggFrames (v0.3.0)
 
-ggFrames is a lightweight addon that replaces the default unit frames provided by Elder Scrolls Online.  ggFrames is currently early in its development and currently only features an updated / easier to read player unit frame.  The player frame sits in the top left of the screen and displays the players health, magicka, stamina, experience, and also mount stamina when mounted.
+ggFrames is a lightweight addon that replaces the default unit frames provided by Elder Scrolls Online.
 
-![ggFrame Preview](https://dl.dropboxusercontent.com/u/37456777/ggFrame.jpg "ggFrame Preview")
+**ggFrames currently replaces:**
+
+  - Player Unit Frame
+  - Group Unit Frames
+  - Raid Unit Frames
 
 #### Installation Instructions
 
@@ -26,15 +30,11 @@ ggFrames is a lightweight addon that replaces the default unit frames provided b
   - *Name, Group Leader Icon, Health Bar*
 - All Frames Hide whenever in menus (backpack, friends, guild, etc)
 - All Default Frames are Hidden (Players Health, Stamina, Magicka, Horse Stamina, Group Frames, and Raid Frames)
-
-#### Coming Soon (v0.3)
-
 - Customizable Setting Menu
 - Moveable Frames
-- Theming
 - Option to Disable Player Experience Bar. [Suggested By: Tonyleila]
 
-#### Coming Soon After
+#### Coming Soon
 
 - Texture Levels (Use Veteran Texture and Create "Lvl" Texture)
 - Low Health Alert (flash when under xx%)
@@ -50,6 +50,8 @@ ggFrames is a lightweight addon that replaces the default unit frames provided b
 
 - Option to Remove class icon and use class colors instead. [Suggested By: Tonyleila]
 - Option to "Attach" Horse Stamina Bar to Unit Frame under Player Experience Bar. [Suggested By: Tonyleila]
+- Right Click your Frame: "Leave Group" [Willan]
+- Right Click Party Members: "Kick Member" (if you're laeder), "Add / Remove Friend", "Invite To Guild(s)"? [Willan]
 
 #### Feature Request?
 

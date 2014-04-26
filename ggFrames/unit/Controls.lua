@@ -7,7 +7,7 @@ GGF.classTextures = {
 
 -- Create Player Frames
 function GGF.Unit:Controls()
-  self.frames = {}
+  self.template = GGF.Theme.Load(self.unitName)   -- Load Template (For Rendering)
   
   -- Draw Main Control
   self.frames.main = GGF.Window:CreateBackDrop("GGF_"..self.unitName.."Frame", self.parent, self.template)
@@ -60,6 +60,10 @@ function GGF.Unit:Controls()
   if self.template.Experience ~= false then
     self.frames.experienceBd   = GGF.Window:CreateBackDrop("GGF_"..self.unitName.."Experience", self.frames.main, self.template.Experience)
     self.frames.experienceSt   = GGF.Window:CreateStatusBar("GGF_"..self.unitName.."ExperienceStatusBar", self.frames.experienceBd, self.template.Experience.Bar)
+    self.frames.experienceBd:SetHidden(false)
+  elseif self.frames.experienceBd ~= nil then
+    GGF.Debug:New("Hiding Experience Bar for "..self.unitName, self.frames.experienceBd)
+    self.frames.experienceBd:SetHidden(true)
   end
 
 end

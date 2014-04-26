@@ -87,6 +87,27 @@ function GGF.UnitManager.ToggleVisibility(isHidden)
   GGF.UnitManager.frames.largeGroup:SetHidden(isHidden or not GGF.UnitManager.isLargeGroup)
 end
 
+function GGF.UnitManager.RefreshControls(section)
+  if( section == "Player" ) then
+    GGF.Theme.LoadPlayer()
+    GGF.UnitManager.unit["Player"]:Controls()
+    GGF.UnitManager.unit["Player"]:Reload()
+    GGF.UnitManager.frames.player:SetHidden(false)
+  elseif( section == "Group" ) then
+    GGF.Theme.LoadGroup()
+    for i = 1, 3 do
+      GGF.UnitManager.unit["Group"..i]:Controls()
+    end
+    GGF.UnitManager.UpdateGroup()
+  elseif( section == "LargeGroup" ) then
+    GGF.Theme.LoadLargeGroup()
+    for i = 1, 24 do
+      GGF.UnitManager.unit["LargeGroup"..i]:Controls()
+    end
+    GGF.UnitManager.UpdateGroup()
+  end
+end
+
 --
 -- Events
 --
