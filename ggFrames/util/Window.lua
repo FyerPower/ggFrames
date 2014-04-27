@@ -63,8 +63,13 @@ end
 
 
 function GGF.Window:SetLabelText( label, text, resize )
-  label:SetText(text)
-  if resize then label:SetWidth( label:GetTextWidth() ) end
+  if resize then 
+    label:SetWidth(150)
+    label:SetText(text)
+    label:SetWidth( label:GetTextWidth() ) 
+  else
+    label:SetText(text)
+  end
 end
 
 function GGF.Window:SetAdditionalLeftOffset( control, cTemplate, additional )

@@ -1,4 +1,4 @@
-### ggFrames (v0.3.2)
+### ggFrames (v0.4.0)
 
 ggFrames is a lightweight addon that replaces the default unit frames provided by Elder Scrolls Online.
 
@@ -7,6 +7,7 @@ ggFrames is a lightweight addon that replaces the default unit frames provided b
   - Player Unit Frame
   - Group Unit Frames
   - Raid Unit Frames
+  - Target Unit Frame
 
 #### Installation Instructions
 
@@ -28,32 +29,42 @@ ggFrames is a lightweight addon that replaces the default unit frames provided b
   - *Group member will fade out when no within support range*
 - Large Group (Raid) Unit Frames
   - *Name, Group Leader Icon, Health Bar*
-- All Frames Hide whenever in menus (backpack, friends, guild, etc)
-- All Default Frames are Hidden (Players Health, Stamina, Magicka, Horse Stamina, Group Frames, and Raid Frames)
-- Customizable Setting Menu
-- Moveable Frames
+- Target Unit Frame
+  - *Name, Level, Class Icon, Health Bar, and Caption*
+  - *Reaction Colors* (Friendly, Hostile, Interactable, Default)
+- All Frames Hide whenever in Menus (Backpack, Friends, Guild, etc)
+- All Default Frames are Hidden
+- Over 70 Customizable Settings
+- Moveable Frames: Mouse Enabled or You enter X & Y Coordinates
 - Option to Disable Player Experience Bar. [Suggested By: Tonyleila]
 
 #### Coming Soon
 
-- Texture Levels (Use Veteran Texture and Create "Lvl" Texture)
-- Low Health Alert (flash when under xx%)
-- Player Castbar (If Possible, Should be though)
-- Buff / Debuffs
+- Hide Bars when talking to NPCs
+- Moving Frames: Enter X & Y Coords
+- Level Textures (Use Veteran Texture and Create "Lvl" Texture)
 - Target Unit Frame
-  - *Name, Level, Class Icon, Health Bar*
   - *Bosses will appear slightly differently and give the user information such as its difficulty rating*
   - *Casting Bars with textual feedback telling you when to block, interupt, etc.* (If Possible)
-- Target of Target Unit Frame (If Possible)
+- Shield Indicators
+- Player Castbar
+- Low Health Alert (flash when under xx%)
+- Buff / Debuffs
+- Target of Target Unit Frame(?)
+- Reorder the Bars within Player Frame
 
 #### Community Suggestions
 
-- Option to Unstack Players Health / Magicka / Stamina and instead display side by side [Suggest By: pinstripesc]
-- Option to Hide Players Name, Level, Class [Suggest By: pinstripesc]
-- Option to Remove class icon and use class colors instead. [Suggested By: Tonyleila]
+- /ggf -> Toggle Lock / Unlock.  Perhaps add an alert so they know its locked / unlocked
 - Option to "Attach" Horse Stamina Bar to Unit Frame under Player Experience Bar. [Suggested By: Tonyleila]
+- Option to Remove class icon and use class colors instead. [Suggested By: Tonyleila]
+- Option to Hide Players Name, Level, Class [Suggest By: pinstripesc]
+- Option to Hide Player [Suggested By: Fing3rz]
+- Option to Change Master Transparency per frame [Suggested By: Fing3rz]
 - Right Click your Frame: "Leave Group" [Willan]
 - Right Click Party Members: "Kick Member" (if you're laeder), "Add / Remove Friend", "Invite To Guild(s)"? [Willan]
+
+- Option to Unstack Players Health / Magicka / Stamina and instead display side by side [Suggest By: pinstripesc]
 
 #### Feature Request?
 

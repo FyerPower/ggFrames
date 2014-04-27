@@ -5,7 +5,9 @@ GGF.locale = {
   ["GroupContainer_OffsetY"]      = 'Frame Vertical Position',
   ["LargeGroupContainer_OffsetX"] = 'Frame Horizontal Position',
   ["LargeGroupContainer_OffsetY"] = 'Frame Vertical Position',
-  
+  ["TargetContainer_OffsetX"]     = 'Frame Horizontal Position',
+  ["TargetContainer_OffsetY"]     = 'Frame Vertical Position',
+   
   ['Player_Width']                = 'Frame Width',
   ['Player_Font']                 = 'Name Font',
   ['Player_FontSize']             = 'Name Font Size',
@@ -28,7 +30,6 @@ GGF.locale = {
   ["Player_Stamina_Font"]         = 'Stamina Bar Font',
   ["Player_Stamina_FontSize"]     = 'Stamina Bar Font Size',
   ["Player_Stamina_FontColor"]    = 'Stamina Bar Font Color',
-  
   ["Player_Experience_Display"]   = 'Experience Bar Display',
   ["Player_Experience_Height"]    = 'Experience Bar Height',
   ["Player_Experience_BarColor"]  = 'Experience Bar Color',
@@ -37,7 +38,6 @@ GGF.locale = {
   ["Player_Experience_Font"]         = 'Experience Bar Font',
   ["Player_Experience_FontSize"]     = 'Experience Bar Font Size',
   ["Player_Experience_FontColor"]    = 'Experience Bar Font Color',
-
   ["Player_Mount_Height"]         = 'Mount Bar Height',
   ["Player_Mount_BarColor"]       = 'Mount Bar Color',
   ["Player_Mount_Texture"]        = 'Mount Bar Texture',
@@ -63,6 +63,22 @@ GGF.locale = {
   ["LargeGroup_Health_Font"]      = 'Health Bar Font',
   ["LargeGroup_Health_FontSize"]  = 'Health Bar Font Size',
   ["LargeGroup_Health_FontColor"] = 'Health Bar Font Color',
+  
+  -- Target
+  ["Target_Width"]                = 'Frame Width',
+  ["Target_Font"]                 = 'Font',
+  ["Target_FontSize"]             = 'Font Size',
+  ["Target_FontColor"]            = 'Default Font Color',
+  ["Target_FontColor_Friendly"]   = 'Friendly Font Color',
+  ["Target_FontColor_Hostile"]    = 'Hostile Font Color',
+  ["Target_FontColor_Interact"]   = 'Interactable Font Color',
+  
+  ["Target_Health_Height"]        = 'Health Bar Height',
+  ["Target_Health_BarColor"]      = 'Health Bar Color',
+  ["Target_Health_Texture"]       = 'Health Bar Texture',
+  ["Target_Health_Font"]          = 'Health Bar Font',
+  ["Target_Health_FontSize"]      = 'Health Bar Font Size',
+  ["Target_Health_FontColor"]     = 'Health Bar Font Color',
 
   ['Frame_Lock'] = "Lock All Frames"
 }

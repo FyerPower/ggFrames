@@ -1,3 +1,9 @@
+v0.4.0
+- Added Target Unit Frame
+- Target Frames: Name, Level, Class Icon, Health Bar, and Caption
+- Target Frames: Reaction Colors (Friendly, Hostile, Interactable, Default)
+- Fix Setting Reset Defaults
+
 v0.3.2:
 - Added Option to display experience numbers (current/max) to experience bar
 

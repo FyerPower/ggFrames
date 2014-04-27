@@ -3,6 +3,7 @@ GGF.UnitManager.unit = {}
 GGF.UnitManager.unitRouter = {}
 
 function GGF.UnitManager.Initialize()
+  GGF.UnitManager.frames = {}
   GGF.UnitManager.Controls()
   GGF.UnitManager.frames.player:SetHidden(false)
 
@@ -10,6 +11,8 @@ function GGF.UnitManager.Initialize()
   GGF.UnitManager.CreateUnit('Player', 'player', nil, GGF.UnitManager.frames.player)
   for i = 1, 3 do GGF.UnitManager.CreateUnit('Group'..i, nil, nil, GGF.UnitManager.frames.group) end
   for i = 1, 24 do GGF.UnitManager.CreateUnit('LargeGroup'..i, nil, "LargeGroupBase", GGF.UnitManager.frames.largeGroup) end
+  GGF.UnitManager.CreateUnit('Target', 'reticleover', nil, GGF.UnitManager.frames.target)
+  GGF.UnitManager.unit["Target"]:Unload()
 
   -- Initialize Group
   GGF.UnitManager.UpdateGroup()
@@ -22,6 +25,7 @@ function GGF.UnitManager.Initialize()
   ZO_PlayerAttributeMagicka:SetHidden(true)
   ZO_PlayerAttributeStamina:SetHidden(true)
   ZO_PlayerAttributeMountStamina:SetHidden(true)
+  ZO_TargetUnitFramereticleover:SetHidden(true)
   ZO_UnitFramesGroups:SetHidden(true)
 end
 
@@ -44,7 +48,7 @@ function GGF.UnitManager.SetUnit(unitName, unitTag)
 end
 
 function GGF.UnitManager.UpdateGroup()
-  local unitRouter = {["player"] = {"Player"}}
+  local unitRouter = {["player"] = {"Player"}, ["reticleover"] = {"Target"}}
   local groupSlot = 1
   local largeGroupSlot = 1
   for i = 1, 24 do
@@ -88,27 +92,32 @@ function GGF.UnitManager.ToggleVisibility(isHidden)
 end
 
 function GGF.UnitManager.RefreshControls(section)
-  GGF.Debug:New("Refresh Controls for", section)
-  
-  if( section == "Player" ) then
+  if( section == nil or section == "Player" ) then
     GGF.Theme.LoadPlayer()
-    GGF.Debug:New("New Theme", GGF.Theme.themes['Player'])
     GGF.UnitManager.unit["Player"]:Controls()
     GGF.UnitManager.unit["Player"]:Reload()
     GGF.UnitManager.frames.player:SetHidden(false)
-  elseif( section == "Group" ) then
+  end
+  if( section == nil or section == "Group" ) then
     GGF.Theme.LoadGroup()
     for i = 1, 3 do
       GGF.UnitManager.unit["Group"..i]:Controls()
     end
     GGF.UnitManager.UpdateGroup()
-  elseif( section == "LargeGroup" ) then
+  end
+  if( section == nil or section == "LargeGroup" ) then
     GGF.Theme.LoadLargeGroup()
     for i = 1, 24 do
       GGF.UnitManager.unit["LargeGroup"..i]:Controls()
     end
     GGF.UnitManager.UpdateGroup()
   end
+  if( section == nil or section == "Target" ) then
+    GGF.Theme.LoadTarget()
+    GGF.UnitManager.unit["Target"]:Controls()
+    GGF.UnitManager.unit["Target"]:Reload()
+  end
+  GGF.UnitManager.Controls()
 end
 
 --
@@ -127,6 +136,7 @@ function GGF.UnitManager.RegisterEvents()
   EVENT_MANAGER:RegisterForEvent("GGF", EVENT_VETERAN_RANK_UPDATE, GGF.UnitManager.OnUnitVetLevel)
   EVENT_MANAGER:RegisterForEvent("GGF", EVENT_EXPERIENCE_UPDATE, GGF.UnitManager.OnExpUpdate)
   EVENT_MANAGER:RegisterForEvent("GGF", EVENT_VETERAN_POINTS_UPDATE, GGF.UnitManager.OnExpUpdate)
+  -- EVENT_ALLIANCE_POINT_UPDATE
 
   -- Mount
   EVENT_MANAGER:RegisterForEvent("GGF", EVENT_MOUNTED_STATE_CHANGED, GGF.UnitManager.OnMount )
@@ -138,6 +148,26 @@ function GGF.UnitManager.RegisterEvents()
   EVENT_MANAGER:RegisterForEvent("GGF", EVENT_UNIT_CREATED,                  GGF.UnitManager.OnUnitUpdate)
   EVENT_MANAGER:RegisterForEvent("GGF", EVENT_UNIT_DESTROYED,                GGF.UnitManager.OnUnitUpdate)
   EVENT_MANAGER:RegisterForEvent("GGF", EVENT_GROUP_DISBANDED,               GGF.UnitManager.OnUnitUpdate)
+
+  -- Target
+  EVENT_MANAGER:RegisterForEvent("GGF", EVENT_TARGET_CHANGED,                GGF.UnitManager.OnTargetChange)
+  EVENT_MANAGER:RegisterForEvent("GGF", EVENT_RETICLE_TARGET_CHANGED,        GGF.UnitManager.OnReticleTargetChange)
+
+  -- Testing
+  -- EVENT_MANAGER:RegisterForEvent("GGF", EVENT_PLAYER_ALIVE,                  GGF.UnitManager.OnPlayerAlive)
+  -- EVENT_MANAGER:RegisterForEvent("GGF", EVENT_UNIT_FRAME_UPDATE,             GGF.UnitManager.OnUnitFrameUpdate)
+
+  -- ZO: EVENT_BOSSES_CHANGED
+  -- ZO: EVENT_DISPOSITION_UPDATE
+  -- ZO: EVENT_RANK_POINT_UPDATE
+  -- Visual: EVENT_UNIT_ATTRIBUTE_VISUAL_ADDED 
+  -- Visual: EVENT_UNIT_ATTRIBUTE_VISUAL_REMOVED 
+  -- Visual: EVENT_UNIT_ATTRIBUTE_VISUAL_UPDATED 
+  -- Siege: EVENT_BEGIN_SIEGE_CONTROL
+  -- Siege: EVENT_END_SIEGE_CONTROL
+  -- Combat: EVENT_PLAYER_COMBAT_STATE 
+  -- Zone: EVENT_ZONE_UPDATE 
+  -- Zone: EVENT_ZONE_CHANGED 
 end
 
 ----------------------------------------
@@ -207,22 +237,57 @@ function GGF.UnitManager.OnUnitUpdate( eventCode, unitTag )
   end
 end
 
+----------------------------------------
+-- Events: Target
+----------------------------------------
 
--- EVENT_MANAGER:RegisterForEvent("GGF", EVENT_ALLIANCE_POINT_UPDATE, GGF.OnAPUpdate)
--- EVENT_MANAGER:RegisterForEvent("GGF", EVENT_GROUP_MEMBER_ROLES_CHANGED,    GGF.UnitManager.OnGroupRoleChange)  
--- EVENT_MANAGER:RegisterForEvent("GGF", EVENT_GROUP_MEMBER_JOINED,           GGF.UnitManager.OnGroupMemberJoined)
--- EVENT_MANAGER:RegisterForEvent("GGF", EVENT_GROUP_INVITE_RESPONSE,         GGF.UnitManager.OnGroupInviteResponse)
--- EVENT_MANAGER:RegisterForEvent("GGF", EVENT_GROUP_MEMBER_LEFT,             GGF.UnitManager.OnGroupMemberLeft)
--- EVENT_MANAGER:RegisterForEvent("GGF", EVENT_GROUP_TYPE_CHANGE,             GGF.UnitManager.OnGroupTypeChange)
--- EVENT_MANAGER:RegisterForEvent("GGF", EVENT_GROUP_DISBANDED,               GGF.UnitManager.OnGroupDisbanded)
--- EVENT_MANAGER:RegisterForEvent("GGF", EVENT_PLAYER_ACTIVATED,              GGF.UnitManager.OnPlayerActivated)
--- control:RegisterForEvent(EVENT_ZONE_UPDATE, OnZoneUpdate)
--- control:RegisterForEvent(EVENT_LEADER_UPDATE, RefreshData)
--- function GGF.UnitManager.OnGroupRoleChange( eventCode, unitTag, isDps, isHeal, isTank ) end
--- function GGF.UnitManager.OnGroupMemberJoined( eventCode, memberName ) end
--- function GGF.UnitManager.OnGroupMemberLeft( eventCode, memberName, reason, wasLocalPlayer ) end
--- function GGF.UnitManager.OnGroupTypeChange( eventCode, isLargeGroup ) end
--- function GGF.UnitManager.OnGroupInviteResponse( eventCode, characterName, response ) end
--- function GGF.UnitManager.OnUnitCreated( eventCode, unitTag ) end
--- function GGF.UnitManager.OnUnitDestroyed( eventCode, unitTag ) end
--- function GGF.UnitManager.OnGroupDisbanded() end
+function GGF.UnitManager.OnTargetChange( eventCode, unitTag )
+  if unitTag ~= "player" then return end
+  GGF.UnitManager.OnReticleTargetChange(eventCode)
+end
+
+function GGF.UnitManager.OnReticleTargetChange( eventCode )
+  if DoesUnitExist("reticleover") then
+    GGF.UnitManager.unit["Target"]:Reload()
+  else
+    GGF.UnitManager.unit["Target"]:Unload()
+  end
+  ZO_TargetUnitFramereticleover:SetHidden(true)
+end
+
+----------------------------------------
+-- Events: Testing
+----------------------------------------
+
+function GGF.UnitManager.OnPlayerAlive( ... )
+  GGF.Debug:New("On Player Alive", {...})
+end
+
+function GGF.UnitManager.OnUnitFrameUpdate( eventCode, unitTag )
+  d("On Unit Frame Update: "..unitTag)
+end
+
+
+
+
+
+
+-- GetUnitReaction(unitTag)
+  -- UNIT_REACTION_FRIENDLY -- green
+  -- UNIT_REACTION_HOSTILE  -- red
+  -- UNIT_REACTION_INTERACT -- yellow
+  -- UNIT_REACTION_DEAD 
+  -- UNIT_REACTION_DEFAULT
+  -- UNIT_REACTION_NEUTRAL
+  -- UNIT_REACTION_NPC_ALLY
+  -- UNIT_REACTION_PLAYER_ALLY
+
+-- IsUnitPlayer(unitTag)
+-- IsUnitAttackable(unitTag) -> boolean
+
+-- CombatUnitType
+  -- COMBAT_UNIT_TYPE_GROUP
+  -- COMBAT_UNIT_TYPE_NONE
+  -- COMBAT_UNIT_TYPE_OTHER
+  -- COMBAT_UNIT_TYPE_PLAYER
+  -- COMBAT_UNIT_TYPE_PLAYER_PET

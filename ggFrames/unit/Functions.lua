@@ -14,16 +14,19 @@ end
 function GGF.Unit:Load(unitTag)
   self.unitTag = unitTag
   
-  -- Name
-  self.name = GetUnitName(self.unitTag)
-  GGF.Window:SetLabelText( self.frames.nameLb, self.name, (string.sub(self.unitName,0,10) ~= "LargeGroup") )
-  
+  self:SetName( GetUnitName(self.unitTag) )
   self:SetConnected( IsUnitOnline(self.unitTag) )
   self:SetDeath( IsUnitDead(self.unitTag) )
   self:SetLevel( GetUnitLevel(self.unitTag), GetUnitVeteranRank(self.unitTag) )             -- Level / Experience
-  self:SetClass( GetUnitClass(self.unitTag) )                                               -- Class Texture
   self:SetRange( IsUnitInGroupSupportRange(self.unitTag) )                                  -- Is Within Support Range
-  self:SetLeader( IsUnitGroupLeader(self.unitTag) )                                         -- Is Group Leader
+  self:SetCaption( GetUnitCaption(self.unitTag) )
+  
+  if IsUnitPlayer(self.unitTag) then
+    self:SetClass( GetUnitClass(self.unitTag) )                                             -- Class Texture
+    self:SetLeader( IsUnitGroupLeader(self.unitTag) )                                       -- Is Group Leader (Non-Players are never Group Leaders)
+  else 
+    self:SetClass( nil )
+  end
 
   self:SetPower( nil, POWERTYPE_HEALTH, GetUnitPower(self.unitTag, POWERTYPE_HEALTH) )      -- Set Health
   if self.unitTag == "player" then
@@ -80,17 +83,50 @@ function GGF.Unit:SetMounted( isMounted )
   self.frames.mount:SetHidden( not self.isMounted )
 end
 
+function GGF.Unit:SetName( name )
+  self.name = name
+  GGF.Window:SetLabelText( self.frames.nameLb, self.name, (string.sub(self.unitName,0,10) ~= "LargeGroup") )
+
+  self.reactionType = GetUnitReaction( self.unitTag )
+  if( self.unitName == "Target" and (self.reactionType == UNIT_REACTION_FRIENDLY) )then
+    self.frames.nameLb:SetColor(GGF.SavedVars['Target_FontColor_Friendly'][1], GGF.SavedVars['Target_FontColor_Friendly'][2], GGF.SavedVars['Target_FontColor_Friendly'][3], GGF.SavedVars['Target_FontColor_Friendly'][4])
+    if self.template.Caption then self.frames.captionLb:SetColor(GGF.SavedVars['Target_FontColor_Friendly'][1], GGF.SavedVars['Target_FontColor_Friendly'][2], GGF.SavedVars['Target_FontColor_Friendly'][3], GGF.SavedVars['Target_FontColor_Friendly'][4]) end
+  elseif self.unitName == "Target" and self.reactionType == UNIT_REACTION_HOSTILE then
+    self.frames.nameLb:SetColor(GGF.SavedVars['Target_FontColor_Hostile'][1], GGF.SavedVars['Target_FontColor_Hostile'][2], GGF.SavedVars['Target_FontColor_Hostile'][3], GGF.SavedVars['Target_FontColor_Hostile'][4])
+    if self.template.Caption then self.frames.captionLb:SetColor(GGF.SavedVars['Target_FontColor_Hostile'][1], GGF.SavedVars['Target_FontColor_Hostile'][2], GGF.SavedVars['Target_FontColor_Hostile'][3], GGF.SavedVars['Target_FontColor_Hostile'][4]) end
+  elseif self.unitName == "Target" and self.reactionType == UNIT_REACTION_INTERACT then
+    self.frames.nameLb:SetColor(GGF.SavedVars['Target_FontColor_Interact'][1], GGF.SavedVars['Target_FontColor_Interact'][2], GGF.SavedVars['Target_FontColor_Interact'][3], GGF.SavedVars['Target_FontColor_Interact'][4])
+    if self.template.Caption then self.frames.captionLb:SetColor(GGF.SavedVars['Target_FontColor_Interact'][1], GGF.SavedVars['Target_FontColor_Interact'][2], GGF.SavedVars['Target_FontColor_Interact'][3], GGF.SavedVars['Target_FontColor_Interact'][4]) end
+  else
+    self.frames.nameLb:SetColor(GGF.SavedVars['Target_FontColor'][1], GGF.SavedVars['Target_FontColor'][2], GGF.SavedVars['Target_FontColor'][3], GGF.SavedVars['Target_FontColor'][4])
+    if self.template.Caption then self.frames.captionLb:SetColor(GGF.SavedVars['Target_FontColor'][1], GGF.SavedVars['Target_FontColor'][2], GGF.SavedVars['Target_FontColor'][3], GGF.SavedVars['Target_FontColor'][4]) end
+  end
+end
+
 function GGF.Unit:SetLevel( level, rank )
   if not self.isOnline or not self.template.Level then return end
   self.level = level
   self.vlevel = rank
-  self.frames.levelLb:SetText( "("..(self.level == 50 and "Vet "..self.vlevel or self.level)..")" )
+  self.frames.levelLb:SetText( "("..(self.vlevel > 0 and "Vet "..self.vlevel or self.level)..")" )
+  self.frames.levelLb:SetHidden( self.reactionType == UNIT_REACTION_FRIENDLY )
+end
+
+-- For now, only display caption for friend npcs (aka merchants and stuff)
+function GGF.Unit:SetCaption( caption )
+  if not self.template.Caption then return end
+  self.caption = self.reactionType == UNIT_REACTION_FRIENDLY and caption or ""
+  self.frames.captionLb:SetText( self.caption )
 end
 
 function GGF.Unit:SetClass( className )
   if not self.template.Class then return end
   self.class = className
-  self.frames.classTx:SetTexture( GGF.classTextures[className] )
+  if className then
+    self.frames.classTx:SetTexture( GGF.classTextures[className] )
+    self.frames.classTx:SetHidden(false)
+  else
+    self.frames.classTx:SetHidden(true)
+  end
 end
 
 function GGF.Unit:SetExp( current, max, veteran )
@@ -137,3 +173,21 @@ end
 function GGF.Unit:SetRange( isWithinRange )
   self.frames.main:SetAlpha( isWithinRange and 1 or 0.5 )
 end
+
+
+-- GetUnitReaction(unitTag)
+  -- UNIT_REACTION_PLAYER_ALLY
+  -- UNIT_REACTION_FRIENDLY -- green
+  -- UNIT_REACTION_HOSTILE  -- red
+  -- UNIT_REACTION_INTERACT -- yellow
+  -- UNIT_REACTION_DEAD 
+  -- UNIT_REACTION_DEFAULT
+  -- UNIT_REACTION_NEUTRAL
+  -- UNIT_REACTION_NPC_ALLY (Pet)
+
+-- GetUnitDifficulty
+-- MONSTER_DIFFICULTY_NORMAL
+-- MONSTER_DIFFICULTY_EASY
+-- MONSTER_DIFFICULTY_HARD
+-- MONSTER_DIFFICULTY_DEADLY
+-- MONSTER_DIFFICULTY_NONE

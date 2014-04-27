@@ -1,13 +1,6 @@
 -- /esoui/art/campaign/overview_scoringbg_ebonheart_left.dds
 
 GGF.Template = {
-  ["PlayerContainer"] = {
-  },
-  ["GroupContainer"] = {
-  },
-  ["LargeGroupContainer"] = {
-  },
-
   ["Unit"] = {
     ["BackColor"] = {0,0,0,0},
     ["EdgeColor"] = {0,0,0,0},
@@ -31,6 +24,12 @@ GGF.Template = {
       ["Height"] = 20,      
       ["Hidden"] = true,
       ["Texture"] = "/esoui/art/lfg/lfg_leader_icon.dds"
+    },
+    ["Caption"] = {
+      ["Width"] = 100,
+      ["MyAnchor"] = TOPRIGHT,
+      ["ParentAnchor"] = TOPRIGHT,  
+      ["HorizontalAlign"] = TEXT_ALIGN_RIGHT
     },
     ["Death"] = {
       ["OffsetY"] = 20,
@@ -248,7 +247,8 @@ GGF.Template = {
     ["Magicka"] = false,
     ["Stamina"] = false,
     ["Experience"] = false,
-    ["Mount"] = false
+    ["Mount"] = false,
+    ["Caption"] = false
   },
 
 
