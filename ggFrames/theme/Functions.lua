@@ -151,6 +151,16 @@ function GGF.Theme.LoadPlayer()
     GGF.Theme.themes['Player']['Experience']['Bar']['BarColor']     = GGF.SavedVars['Player_Experience_BarColor']
     GGF.Theme.themes['Player']['Experience']['Bar']['Texture']      = GGF.Theme.LMP:Fetch('statusbar',GGF.SavedVars['Player_Experience_Texture'])
     currentHeight = currentHeight + GGF.Theme.themes['Player']['Stamina']['Height'] - 1
+    if GGF.SavedVars['Player_Experience_Text_Display'] then
+      GGF.Theme.themes['Player']['Experience']['Label'] = {}
+      GGF.Theme.themes['Player']['Experience']['Label']['Height']     = GGF.SavedVars['Player_Experience_Height'] - 2
+      GGF.Theme.themes['Player']['Experience']['Label']['Width']     = GGF.SavedVars['Player_Width'] - 2
+      GGF.Theme.themes['Player']['Experience']['Label']['Font']      = GGF.Theme.LMP:Fetch('font',GGF.SavedVars['Player_Experience_Font']).."|"..tostring(GGF.SavedVars['Player_Experience_FontSize'])
+      GGF.Theme.themes['Player']['Experience']['Label']['FontColor'] = GGF.SavedVars['Player_Experience_FontColor']
+      GGF.Theme.themes['Player']['Experience']['Label']['HorizontalAlign'] = TEXT_ALIGN_CENTER
+    else
+      GGF.Theme.themes['Player']['Experience']['Label'] = false
+    end
   else
     GGF.Theme.themes['Player']['Experience'] = false
   end

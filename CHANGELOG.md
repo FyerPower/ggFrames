@@ -1,3 +1,6 @@
+v0.3.2:
+- Added Option to display experience numbers (current/max) to experience bar
+
 v0.3.1:
 - Added Reset Default Functionality
 

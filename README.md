@@ -1,4 +1,4 @@
-### ggFrames (v0.3.0)
+### ggFrames (v0.3.2)
 
 ggFrames is a lightweight addon that replaces the default unit frames provided by Elder Scrolls Online.
 
@@ -48,6 +48,8 @@ ggFrames is a lightweight addon that replaces the default unit frames provided b
 
 #### Community Suggestions
 
+- Option to Unstack Players Health / Magicka / Stamina and instead display side by side [Suggest By: pinstripesc]
+- Option to Hide Players Name, Level, Class [Suggest By: pinstripesc]
 - Option to Remove class icon and use class colors instead. [Suggested By: Tonyleila]
 - Option to "Attach" Horse Stamina Bar to Unit Frame under Player Experience Bar. [Suggested By: Tonyleila]
 - Right Click your Frame: "Leave Group" [Willan]

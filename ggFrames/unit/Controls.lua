@@ -60,9 +60,15 @@ function GGF.Unit:Controls()
   if self.template.Experience ~= false then
     self.frames.experienceBd   = GGF.Window:CreateBackDrop("GGF_"..self.unitName.."Experience", self.frames.main, self.template.Experience)
     self.frames.experienceSt   = GGF.Window:CreateStatusBar("GGF_"..self.unitName.."ExperienceStatusBar", self.frames.experienceBd, self.template.Experience.Bar)
+    if self.template.Experience.Label ~= false then
+      self.frames.experienceLb   = GGF.Window:CreateLabel("GGF_"..self.unitName.."ExperienceLabel", self.frames.experienceBd, self.template.Experience.Label)
+      self.frames.experienceLb:SetHidden(false)
+      GGF.Debug:New("Created Exp Label", self.frames.experienceLb)
+    elseif self.frames.experienceLb ~= nil then
+      self.frames.experienceLb:SetHidden(true)
+    end
     self.frames.experienceBd:SetHidden(false)
   elseif self.frames.experienceBd ~= nil then
-    GGF.Debug:New("Hiding Experience Bar for "..self.unitName, self.frames.experienceBd)
     self.frames.experienceBd:SetHidden(true)
   end
 

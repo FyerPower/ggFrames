@@ -23,10 +23,17 @@ GGF.SavedVarsDefaults = {
   ["Player_Stamina_Font"] = "Bebas Neue",
   ["Player_Stamina_FontSize"] = 16, 
   ["Player_Stamina_FontColor"] = {1,1,1,1},
+  
   ["Player_Experience_Display"] = true,
   ["Player_Experience_Height"] = 8,
   ["Player_Experience_BarColor"] = {.7,.7,.7,1},
   ["Player_Experience_Texture"] = "Round",
+  
+  ["Player_Experience_Text_Display"] = false,
+  ["Player_Experience_Font"] = "Bebas Neue",
+  ["Player_Experience_FontSize"] = 14, 
+  ["Player_Experience_FontColor"] = {1,1,1,1},
+  
   ["Player_Mount_Height"] = 8,
   ["Player_Mount_BarColor"] = {.933333333,.933333333,0,1},
   ["Player_Mount_Texture"] = "Round",

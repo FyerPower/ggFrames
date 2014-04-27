@@ -12,6 +12,7 @@ function GGF.Settings:GetValue(field)
 end
 
 function GGF.Settings:SetValue(field, val)
+  GGF.Debug:New("Set Value of "..field, val)
   GGF.SavedVars[field] = val
   local s, _ = string.find(field,"_")
   local section = string.sub(field, 0, s-1)

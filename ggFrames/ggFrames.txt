@@ -1,5 +1,5 @@
 ## Title: ggFrames
-## Version: 0.3.1
+## Version: 0.3.2
 ## Author: Michael Lynch
 ## APIVersion: 100003
 ## SavedVariables: GGFSavedVariables

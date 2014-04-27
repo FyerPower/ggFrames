@@ -95,7 +95,11 @@ end
 
 function GGF.Unit:SetExp( current, max, veteran )
   if not self.template.Experience then return end
-  self.frames.experienceSt:SetWidth( current / max * self.template.Experience.Bar.Width )
+  local exp = current / max
+  if self.template.Experience.Label ~= false then
+    self.frames.experienceLb:SetText( string.format("%d / %d", current, max) )
+  end
+  self.frames.experienceSt:SetWidth( exp * self.template.Experience.Bar.Width )
 end
 
 function GGF.Unit:SetLeader( isLeader )

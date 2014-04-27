@@ -88,8 +88,11 @@ function GGF.UnitManager.ToggleVisibility(isHidden)
 end
 
 function GGF.UnitManager.RefreshControls(section)
+  GGF.Debug:New("Refresh Controls for", section)
+  
   if( section == "Player" ) then
     GGF.Theme.LoadPlayer()
+    GGF.Debug:New("New Theme", GGF.Theme.themes['Player'])
     GGF.UnitManager.unit["Player"]:Controls()
     GGF.UnitManager.unit["Player"]:Reload()
     GGF.UnitManager.frames.player:SetHidden(false)

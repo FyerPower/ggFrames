@@ -28,10 +28,16 @@ GGF.locale = {
   ["Player_Stamina_Font"]         = 'Stamina Bar Font',
   ["Player_Stamina_FontSize"]     = 'Stamina Bar Font Size',
   ["Player_Stamina_FontColor"]    = 'Stamina Bar Font Color',
+  
   ["Player_Experience_Display"]   = 'Experience Bar Display',
   ["Player_Experience_Height"]    = 'Experience Bar Height',
   ["Player_Experience_BarColor"]  = 'Experience Bar Color',
   ["Player_Experience_Texture"]   = 'Experience Bar Texture',
+  ["Player_Experience_Text_Display"] = 'Experience Bar Text Display',
+  ["Player_Experience_Font"]         = 'Experience Bar Font',
+  ["Player_Experience_FontSize"]     = 'Experience Bar Font Size',
+  ["Player_Experience_FontColor"]    = 'Experience Bar Font Color',
+
   ["Player_Mount_Height"]         = 'Mount Bar Height',
   ["Player_Mount_BarColor"]       = 'Mount Bar Color',
   ["Player_Mount_Texture"]        = 'Mount Bar Texture',
