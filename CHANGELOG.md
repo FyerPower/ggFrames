@@ -1,3 +1,6 @@
+v0.4.1
+- Fix for clearing anchors
+
 v0.4.0
 - Added Target Unit Frame
 - Target Frames: Name, Level, Class Icon, Health Bar, and Caption

@@ -14,6 +14,7 @@ function GGF.Window:Create(cName, cParent, cType, cTemplate)
     end
   end
   control:SetDimensions(cTemplate.Width, cTemplate.Height)
+  control:ClearAnchors()
   control:SetAnchor((cTemplate.MyAnchor or TOPLEFT), cParent, (cTemplate.ParentAnchor or TOPLEFT), (cTemplate.OffsetX or 0), (cTemplate.OffsetY or 0))    
   return control
 end
@@ -73,5 +74,6 @@ function GGF.Window:SetLabelText( label, text, resize )
 end
 
 function GGF.Window:SetAdditionalLeftOffset( control, cTemplate, additional )
+  control:ClearAnchors()
   control:SetAnchor((cTemplate.MyAnchor or TOPLEFT), cParent, (cTemplate.ParentAnchor or TOPLEFT), ((cTemplate.OffsetX or 0) + additional), (cTemplate.OffsetY or 0))
 end

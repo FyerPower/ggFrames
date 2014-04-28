@@ -1,4 +1,4 @@
-### ggFrames (v0.4.0)
+### ggFrames (v0.4.1)
 
 ggFrames is a lightweight addon that replaces the default unit frames provided by Elder Scrolls Online.
 
