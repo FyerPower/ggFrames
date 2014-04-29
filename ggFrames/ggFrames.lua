@@ -1,7 +1,7 @@
 -- Global Initalizations
 GGF           = {}
 GGF.addonName = "ggFrames"
-GGF.version   = "0.4.1"
+GGF.version   = "0.4.2"
 
 -- Config
 GGF.init      = {}
@@ -21,6 +21,8 @@ function GGF.Initialize( eventCode, addOnName )
   -- Build Settings Menu
   GGF.Settings:New()
 
+  GGF.RegisterSlashCommands()
+
   -- Register Global Events
   GGF.RegisterEvents()
 
@@ -32,12 +34,21 @@ function GGF.Initialize( eventCode, addOnName )
 end
 
 function GGF.ToggleVisibility( eventCode , isReticleHidden )
-  hideInterface = (isReticleHidden == true and (ZO_KeybindStripControl:IsHidden() == false or ZO_GameMenu_InGame:IsHidden() == false))
-  GGF.UnitManager.ToggleVisibility(hideInterface)
+  if (isReticleHidden == true and (ZO_KeybindStripControl:IsHidden() == false or ZO_GameMenu_InGame:IsHidden() == false)) then
+    GGF.UnitManager.ToggleVisibility(true)
+  -- elseif ZO_InteractWindow:IsHidden() == false then 
+  --   GGF.UnitManager.ToggleVisibility(true)
+  else
+    GGF.UnitManager.ToggleVisibility(false)
+  end
 end 
 
 function GGF.RegisterEvents()
   EVENT_MANAGER:RegisterForEvent("GGF", EVENT_RETICLE_HIDDEN_UPDATE , GGF.ToggleVisibility )
+end
+
+function GGF.RegisterSlashCommands()
+  SLASH_COMMANDS["/ggf"] = function() GGF.Settings:ToggleFrameMovable(true) end
 end
 
 -- Hook initialization

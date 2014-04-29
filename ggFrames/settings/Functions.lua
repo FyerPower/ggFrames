@@ -33,7 +33,7 @@ end
 function GGF.Settings:IsFrameMovable()
   return GGF.move
 end
-function GGF.Settings:ToggleFrameMovable()
+function GGF.Settings:ToggleFrameMovable(alert)
   GGF.move = not GGF.move
 
   if not GGF.move then
@@ -45,15 +45,10 @@ function GGF.Settings:ToggleFrameMovable()
     GGF.SavedVars['LargeGroupContainer_OffsetY'] = GGF.UnitManager.frames.largeGroup:GetTop()
     GGF.SavedVars['TargetContainer_OffsetX'] = GGF.UnitManager.frames.target:GetLeft()
     GGF.SavedVars['TargetContainer_OffsetY'] = GGF.UnitManager.frames.target:GetTop()
+    GGF.UnitManager.RefreshControls()
   end 
-  GGF.UnitManager.frames.player:SetMovable( GGF.move )
-  GGF.UnitManager.frames.player:SetMouseEnabled( GGF.move )
-  GGF.UnitManager.frames.group:SetMovable( GGF.move )
-  GGF.UnitManager.frames.group:SetMouseEnabled( GGF.move )
-  GGF.UnitManager.frames.largeGroup:SetMovable( GGF.move )
-  GGF.UnitManager.frames.largeGroup:SetMouseEnabled( GGF.move )
-  GGF.UnitManager.frames.target:SetMovable( GGF.move )
-  GGF.UnitManager.frames.target:SetMouseEnabled( GGF.move )
+
+  GGF.UnitManager.SetMovable()
 end
 
 function GGF.Settings:ResetDefaults()

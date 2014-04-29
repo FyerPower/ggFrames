@@ -6,7 +6,7 @@ function GGF.Unit:New(unitName, baseTemplate, parent)
   self.unitName = unitName
   self.parent = parent
   self.frames = {}
-  self:Controls()                            -- Create Frames / Controls
+  self:Controls()
   return self
 end
 
@@ -67,8 +67,7 @@ function GGF.Unit:SetPower( powerIndex, powerType,  powerValue, powerMax, powerE
 
   self[field.friendly] = {current = powerValue, max = powerMax, percent = math.floor( ( powerValue / powerEffectiveMax ) * 100 )}
   self.frames[field.friendly.."St"]:SetWidth( ( self[field.friendly].percent / 100 ) * self.template[field.label].Bar.Width )
-  if self.template[field.label].TextLeft then self.frames[field.friendly.."LeftLb"]:SetText( powerValue ) end
-  if self.template[field.label].RightLeft then self.frames[field.friendly.."RightLb"]:SetText( self[field.friendly].percent .. "%" ) end
+  if self.frames[field.friendly.."Lb"] then self.frames[field.friendly.."Lb"]:SetText( powerValue ) end
 end
 
 function GGF.Unit:SetMountPower( powerIndex, powerType, powerValue, powerMax, powerEffectiveMax )
@@ -173,17 +172,6 @@ end
 function GGF.Unit:SetRange( isWithinRange )
   self.frames.main:SetAlpha( isWithinRange and 1 or 0.5 )
 end
-
-
--- GetUnitReaction(unitTag)
-  -- UNIT_REACTION_PLAYER_ALLY
-  -- UNIT_REACTION_FRIENDLY -- green
-  -- UNIT_REACTION_HOSTILE  -- red
-  -- UNIT_REACTION_INTERACT -- yellow
-  -- UNIT_REACTION_DEAD 
-  -- UNIT_REACTION_DEFAULT
-  -- UNIT_REACTION_NEUTRAL
-  -- UNIT_REACTION_NPC_ALLY (Pet)
 
 -- GetUnitDifficulty
 -- MONSTER_DIFFICULTY_NORMAL

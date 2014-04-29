@@ -71,18 +71,11 @@ GGF.Template = {
         ["OffsetX"] = 1,
         ["OffsetY"] = 1,
       },
-      ["TextLeft"] = {
+      ["Label"] = {
         ["Width"] = 100,
         ["MyAnchor"] = LEFT,
         ["ParentAnchor"] = LEFT,
         ["OffsetX"] = 5,
-      },
-      ["TextRight"] = {
-        ["Width"] = 100,
-        ["MyAnchor"] = RIGHT,
-        ["ParentAnchor"] = RIGHT,
-        ["OffsetX"] = -5,
-        ["HorizontalAlign"] = TEXT_ALIGN_RIGHT,
       }
     },
     ["Magicka"] = {
@@ -93,18 +86,11 @@ GGF.Template = {
         ["OffsetX"] = 1,
         ["OffsetY"] = 1,
       },
-      ["TextLeft"] = {
+      ["Label"] = {
         ["Width"] = 100,
         ["MyAnchor"] = LEFT,
         ["ParentAnchor"] = LEFT,
         ["OffsetX"] = 5,
-      },
-      ["TextRight"] = {
-        ["Width"] = 100,
-        ["MyAnchor"] = RIGHT,
-        ["ParentAnchor"] = RIGHT,
-        ["OffsetX"] = -5,
-        ["HorizontalAlign"] = TEXT_ALIGN_RIGHT,
       }
     },
     ["Stamina"] = {
@@ -115,18 +101,11 @@ GGF.Template = {
         ["OffsetX"] = 1,
         ["OffsetY"] = 1,
       },
-      ["TextLeft"] = {
+      ["Label"] = {
         ["Width"] = 100,
         ["MyAnchor"] = LEFT,
         ["ParentAnchor"] = LEFT,
         ["OffsetX"] = 5,
-      },
-      ["TextRight"] = {
-        ["Width"] = 100,
-        ["MyAnchor"] = RIGHT,
-        ["ParentAnchor"] = RIGHT,
-        ["OffsetX"] = -5,
-        ["HorizontalAlign"] = TEXT_ALIGN_RIGHT,
       }
     },
     ["Experience"] = {
@@ -167,14 +146,10 @@ GGF.Template = {
       }
     }
   },
-  
-  
-  
-  
 
--- ------------------------------------------------------------ --
---                       LARGE GROUP                            --
--- ------------------------------------------------------------ --
+  -- ------------------------------------------------------------ --
+  --                       LARGE GROUP                            --
+  -- ------------------------------------------------------------ --
   
   ["RaidUnit"] = {
     ["Width"] = 100,
@@ -241,58 +216,12 @@ GGF.Template = {
         ["OffsetX"] = 1,
         ["OffsetY"] = 1,
       },
-      ["TextLeft"] = false,
-      ["TextRight"] = false
+      ["Label"] = false
     },
     ["Magicka"] = false,
     ["Stamina"] = false,
     ["Experience"] = false,
     ["Mount"] = false,
     ["Caption"] = false
-  },
-
-
-
-
-
-
-
-
-
-
-
--- ------------------------------------------------------------ --
---                          TARGET                              --
--- ------------------------------------------------------------ --
-  
-  ["Target"] = {
-    ["OffsetX"] = 800,
-    ["Leader"] = false,
-    ["Tank"] = false,
-    ["Heal"] = false,
-    ["Dps"] = false,
-    ["Name"] = {
-      ["Width"] = 200,
-      ["OffsetX"] = 0
-    }
-  },
-  
--- ------------------------------------------------------------ --
---                     TARGET OF TARGET                         --
--- ------------------------------------------------------------ --
-  
-  ["TargetOfTarget"] = {
-    ["OffsetX"] = 1130,
-    ["OffsetY"] = 60,
-    ["Magicka"] = false,
-    ["Stamina"] = false,
-    ["Leader"] = false,
-    ["Tank"] = false,
-    ["Heal"] = false,
-    ["Dps"] = false,
-    ["Name"] = {
-      ["Width"] = 200,
-      ["OffsetX"] = 0
-    }
   }
 }

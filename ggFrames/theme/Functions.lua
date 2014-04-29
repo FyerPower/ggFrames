@@ -92,12 +92,9 @@ function GGF.Theme.LoadPlayer()
   GGF.Theme.themes['Player']['Health']['Bar']['Height']           = GGF.SavedVars['Player_Health_Height'] - 2
   GGF.Theme.themes['Player']['Health']['Bar']['BarColor']         = GGF.SavedVars['Player_Health_BarColor']
   GGF.Theme.themes['Player']['Health']['Bar']['Texture']          = GGF.Theme.LMP:Fetch('statusbar',GGF.SavedVars['Player_Health_Texture'])
-  GGF.Theme.themes['Player']['Health']['TextLeft']['Height']      = GGF.SavedVars['Player_Health_Height'] - 2
-  GGF.Theme.themes['Player']['Health']['TextLeft']['Font']        = GGF.Theme.LMP:Fetch('font',GGF.SavedVars['Player_Health_Font']).."|"..tostring(GGF.SavedVars['Player_Health_FontSize'])
-  GGF.Theme.themes['Player']['Health']['TextLeft']['FontColor']   = GGF.SavedVars['Player_Health_FontColor']
-  GGF.Theme.themes['Player']['Health']['TextRight']['Height']     = GGF.SavedVars['Player_Health_Height'] - 2
-  GGF.Theme.themes['Player']['Health']['TextRight']['Font']       = GGF.Theme.LMP:Fetch('font',GGF.SavedVars['Player_Health_Font']).."|"..tostring(GGF.SavedVars['Player_Health_FontSize'])
-  GGF.Theme.themes['Player']['Health']['TextRight']['FontColor']  = GGF.SavedVars['Player_Health_FontColor']
+  GGF.Theme.themes['Player']['Health']['Label']['Height']         = GGF.SavedVars['Player_Health_Height'] - 2
+  GGF.Theme.themes['Player']['Health']['Label']['Font']           = GGF.Theme.LMP:Fetch('font',GGF.SavedVars['Player_Health_Font']).."|"..tostring(GGF.SavedVars['Player_Health_FontSize'])
+  GGF.Theme.themes['Player']['Health']['Label']['FontColor']      = GGF.SavedVars['Player_Health_FontColor']
   currentHeight = currentHeight + GGF.Theme.themes['Player']['Health']['Height'] - 1
   
   GGF.Theme.themes['Player']['Magicka']['OffsetY']                = currentHeight
@@ -107,12 +104,9 @@ function GGF.Theme.LoadPlayer()
   GGF.Theme.themes['Player']['Magicka']['Bar']['Height']          = GGF.SavedVars['Player_Magicka_Height'] - 2
   GGF.Theme.themes['Player']['Magicka']['Bar']['BarColor']        = GGF.SavedVars['Player_Magicka_BarColor']
   GGF.Theme.themes['Player']['Magicka']['Bar']['Texture']         = GGF.Theme.LMP:Fetch('statusbar',GGF.SavedVars['Player_Magicka_Texture'])
-  GGF.Theme.themes['Player']['Magicka']['TextLeft']['Height']     = GGF.SavedVars['Player_Magicka_Height'] - 2
-  GGF.Theme.themes['Player']['Magicka']['TextLeft']['Font']       = GGF.Theme.LMP:Fetch('font',GGF.SavedVars['Player_Magicka_Font']).."|"..tostring(GGF.SavedVars['Player_Magicka_FontSize'])
-  GGF.Theme.themes['Player']['Magicka']['TextLeft']['FontColor']  = GGF.SavedVars['Player_Magicka_FontColor']
-  GGF.Theme.themes['Player']['Magicka']['TextRight']['Height']    = GGF.SavedVars['Player_Magicka_Height'] - 2
-  GGF.Theme.themes['Player']['Magicka']['TextRight']['Font']      = GGF.Theme.LMP:Fetch('font',GGF.SavedVars['Player_Magicka_Font']).."|"..tostring(GGF.SavedVars['Player_Magicka_FontSize'])
-  GGF.Theme.themes['Player']['Magicka']['TextRight']['FontColor'] = GGF.SavedVars['Player_Magicka_FontColor']
+  GGF.Theme.themes['Player']['Magicka']['Label']['Height']        = GGF.SavedVars['Player_Magicka_Height'] - 2
+  GGF.Theme.themes['Player']['Magicka']['Label']['Font']          = GGF.Theme.LMP:Fetch('font',GGF.SavedVars['Player_Magicka_Font']).."|"..tostring(GGF.SavedVars['Player_Magicka_FontSize'])
+  GGF.Theme.themes['Player']['Magicka']['Label']['FontColor']     = GGF.SavedVars['Player_Magicka_FontColor']
   currentHeight = currentHeight + GGF.Theme.themes['Player']['Magicka']['Height'] - 1
   
   GGF.Theme.themes['Player']['Stamina']['OffsetY']                = currentHeight
@@ -122,12 +116,9 @@ function GGF.Theme.LoadPlayer()
   GGF.Theme.themes['Player']['Stamina']['Bar']['Height']          = GGF.SavedVars['Player_Stamina_Height'] - 2
   GGF.Theme.themes['Player']['Stamina']['Bar']['BarColor']        = GGF.SavedVars['Player_Stamina_BarColor']
   GGF.Theme.themes['Player']['Stamina']['Bar']['Texture']         = GGF.Theme.LMP:Fetch('statusbar',GGF.SavedVars['Player_Stamina_Texture'])
-  GGF.Theme.themes['Player']['Stamina']['TextLeft']['Height']     = GGF.SavedVars['Player_Stamina_Height'] - 2
-  GGF.Theme.themes['Player']['Stamina']['TextLeft']['Font']       = GGF.Theme.LMP:Fetch('font',GGF.SavedVars['Player_Stamina_Font']).."|"..tostring(GGF.SavedVars['Player_Stamina_FontSize'])
-  GGF.Theme.themes['Player']['Stamina']['TextLeft']['FontColor']  = GGF.SavedVars['Player_Stamina_FontColor']
-  GGF.Theme.themes['Player']['Stamina']['TextRight']['Height']    = GGF.SavedVars['Player_Stamina_Height'] - 2
-  GGF.Theme.themes['Player']['Stamina']['TextRight']['Font']      = GGF.Theme.LMP:Fetch('font',GGF.SavedVars['Player_Stamina_Font']).."|"..tostring(GGF.SavedVars['Player_Stamina_FontSize'])
-  GGF.Theme.themes['Player']['Stamina']['TextRight']['FontColor'] = GGF.SavedVars['Player_Stamina_FontColor']
+  GGF.Theme.themes['Player']['Stamina']['Label']['Height']        = GGF.SavedVars['Player_Stamina_Height'] - 2
+  GGF.Theme.themes['Player']['Stamina']['Label']['Font']          = GGF.Theme.LMP:Fetch('font',GGF.SavedVars['Player_Stamina_Font']).."|"..tostring(GGF.SavedVars['Player_Stamina_FontSize'])
+  GGF.Theme.themes['Player']['Stamina']['Label']['FontColor']     = GGF.SavedVars['Player_Stamina_FontColor']
   currentHeight = currentHeight + GGF.Theme.themes['Player']['Stamina']['Height'] - 1
 
   if GGF.SavedVars['Player_Experience_Display'] then
@@ -141,7 +132,7 @@ function GGF.Theme.LoadPlayer()
     currentHeight = currentHeight + GGF.Theme.themes['Player']['Stamina']['Height'] - 1
     if GGF.SavedVars['Player_Experience_Text_Display'] then
       GGF.Theme.themes['Player']['Experience']['Label'] = {}
-      GGF.Theme.themes['Player']['Experience']['Label']['Height']     = GGF.SavedVars['Player_Experience_Height'] - 2
+      GGF.Theme.themes['Player']['Experience']['Label']['Height']    = GGF.SavedVars['Player_Experience_Height'] - 2
       GGF.Theme.themes['Player']['Experience']['Label']['Width']     = GGF.SavedVars['Player_Width'] - 2
       GGF.Theme.themes['Player']['Experience']['Label']['Font']      = GGF.Theme.LMP:Fetch('font',GGF.SavedVars['Player_Experience_Font']).."|"..tostring(GGF.SavedVars['Player_Experience_FontSize'])
       GGF.Theme.themes['Player']['Experience']['Label']['FontColor'] = GGF.SavedVars['Player_Experience_FontColor']
@@ -163,11 +154,23 @@ function GGF.Theme.LoadPlayer()
   GGF.Theme.themes['Player']['Caption'] = false
   
   -- Player Container
-  GGF.Theme.themes['PlayerContainer']                               = {}
-  GGF.Theme.themes['PlayerContainer']['OffsetX']                    = GGF.SavedVars['PlayerContainer_OffsetX']
-  GGF.Theme.themes['PlayerContainer']['OffsetY']                    = GGF.SavedVars['PlayerContainer_OffsetY']
-  GGF.Theme.themes['PlayerContainer']['Width']                      = GGF.SavedVars['Player_Width']
-  GGF.Theme.themes['PlayerContainer']['Height']                     = currentHeight
+  GGF.Theme.themes['PlayerContainer'] = {
+    ['OffsetX'] = GGF.SavedVars['PlayerContainer_OffsetX'],
+    ['OffsetY'] = GGF.SavedVars['PlayerContainer_OffsetY'],
+    ['Width']   = GGF.SavedVars['Player_Width'],
+    ['Height']  = currentHeight,
+    ['Label']   = {
+      ["BackColor"] = {0,0,0,.6},
+      ["EdgeColor"] = {0,0,0,1},
+      ["EdgeWeight"] = 1,
+      ['Width']     = GGF.SavedVars['Player_Width'],
+      ['Height']    = currentHeight,
+      ['Font']      = 'ggFrames\\theme\\themes\\fonts\\BebasNeue.otf|20',
+      ['FontColor'] = {1,1,1,1},
+      ["VerticalAlign"] = TEXT_ALIGN_CENTER,
+      ["HorizontalAlign"] = TEXT_ALIGN_CENTER
+    }
+  }
 end
 
 function GGF.Theme.LoadGroup()
@@ -198,12 +201,9 @@ function GGF.Theme.LoadGroup()
   GGF.Theme.themes['Group']['Health']['Bar']['Height']          = GGF.SavedVars['Group_Health_Height'] - 2
   GGF.Theme.themes['Group']['Health']['Bar']['BarColor']        = GGF.SavedVars['Group_Health_BarColor']
   GGF.Theme.themes['Group']['Health']['Bar']['Texture']         = GGF.Theme.LMP:Fetch('statusbar',GGF.SavedVars['Group_Health_Texture'])
-  GGF.Theme.themes['Group']['Health']['TextLeft']['Height']     = GGF.SavedVars['Group_Health_Height'] - 2
-  GGF.Theme.themes['Group']['Health']['TextLeft']['Font']       = GGF.Theme.LMP:Fetch('font',GGF.SavedVars['Group_Health_Font']).."|"..tostring(GGF.SavedVars['Group_Health_FontSize'])
-  GGF.Theme.themes['Group']['Health']['TextLeft']['FontColor']  = GGF.SavedVars['Group_Health_FontColor']
-  GGF.Theme.themes['Group']['Health']['TextRight']['Height']    = GGF.SavedVars['Group_Health_Height'] - 2
-  GGF.Theme.themes['Group']['Health']['TextRight']['Font']      = GGF.Theme.LMP:Fetch('font',GGF.SavedVars['Group_Health_Font']).."|"..tostring(GGF.SavedVars['Group_Health_FontSize'])
-  GGF.Theme.themes['Group']['Health']['TextRight']['FontColor'] = GGF.SavedVars['Group_Health_FontColor']
+  GGF.Theme.themes['Group']['Health']['Label']['Height']     = GGF.SavedVars['Group_Health_Height'] - 2
+  GGF.Theme.themes['Group']['Health']['Label']['Font']       = GGF.Theme.LMP:Fetch('font',GGF.SavedVars['Group_Health_Font']).."|"..tostring(GGF.SavedVars['Group_Health_FontSize'])
+  GGF.Theme.themes['Group']['Health']['Label']['FontColor']  = GGF.SavedVars['Group_Health_FontColor']
 
   GGF.Theme.themes['Group']['Magicka'] = false
   GGF.Theme.themes['Group']['Stamina'] = false
@@ -211,17 +211,33 @@ function GGF.Theme.LoadGroup()
   GGF.Theme.themes['Group']['Mount'] = false
   GGF.Theme.themes['Group']['Caption'] = false
   
-  -- Group Container
-  GGF.Theme.themes['GroupContainer']                               = {}
-  GGF.Theme.themes['GroupContainer']['OffsetX']                    = GGF.SavedVars['GroupContainer_OffsetX']
-  GGF.Theme.themes['GroupContainer']['OffsetY']                    = GGF.SavedVars['GroupContainer_OffsetY']
-  GGF.Theme.themes['GroupContainer']['Width']                      = GGF.SavedVars['Group_Width']
-
   for i = 1, 3 do
     GGF.Theme.themes['Group'..i] = GGF.Utils:DeepCopy(GGF.Theme.themes['Group'])
     GGF.Theme.themes['Group'..i]['OffsetY'] = (GGF.Theme.themes['Group']['Health']['Height'] + GGF.Theme.themes['Group']['Name']['Height'] + 14) * (i-1)
   end
-  GGF.Theme.themes['GroupContainer']['Height'] = (GGF.Theme.themes['Group']['Health']['OffsetY'] + GGF.Theme.themes['Group']['Name']['Height'] + 20) * 3
+
+  local height = (GGF.Theme.themes['Group']['Health']['OffsetY'] + GGF.Theme.themes['Group']['Name']['Height'] + 20) * 3
+
+  GGF.Theme.themes['GroupContainer'] = {
+    ['OffsetX'] = GGF.SavedVars['GroupContainer_OffsetX'],
+    ['OffsetY'] = GGF.SavedVars['GroupContainer_OffsetY'],                                                                                                                                    
+    ['Width']   = GGF.SavedVars['Group_Width'],                                                                                                                                                                     
+    ['Height']  = height,
+    ['Label']   = {
+      ["BackColor"] = {0,0,0,.6},
+      ["EdgeColor"] = {0,0,0,1},
+      ["EdgeWeight"] = 1,
+      ['Width']     = GGF.SavedVars['Group_Width'],
+      ['Height']    = height,
+      ['Font']      = 'ggFrames\\theme\\themes\\fonts\\BebasNeue.otf|20',
+      ['FontColor'] = {1,1,1,1},
+      ["VerticalAlign"] = TEXT_ALIGN_CENTER,
+      ["HorizontalAlign"] = TEXT_ALIGN_CENTER
+    }
+  }
+
+
+
 end
 
 
@@ -254,18 +270,32 @@ function GGF.Theme.LoadLargeGroup()
   GGF.Theme.themes['LargeGroup']['Experience']                    = false
   GGF.Theme.themes['LargeGroup']['Mount']                         = false
   
-  -- Group Container
-  GGF.Theme.themes['LargeGroupContainer']                         = {}
-  GGF.Theme.themes['LargeGroupContainer']['OffsetX']              = GGF.SavedVars['LargeGroupContainer_OffsetX']
-  GGF.Theme.themes['LargeGroupContainer']['OffsetY']              = GGF.SavedVars['LargeGroupContainer_OffsetY']
-
   for i = 1, 24 do 
     GGF.Theme.themes['LargeGroup'..i] = GGF.Utils:DeepCopy(GGF.Theme.themes['LargeGroup'])
     GGF.Theme.themes['LargeGroup'..i]['OffsetX'] = GGF.Theme.themes['LargeGroup']['Width'] * math.floor((i-1)/4)
     GGF.Theme.themes['LargeGroup'..i]['OffsetY'] = GGF.Theme.themes['LargeGroup']['Height'] * ((i-1)%4)
   end
-  GGF.Theme.themes['LargeGroupContainer']['Width'] = GGF.Theme.themes['LargeGroup']['Width'] * 6
-  GGF.Theme.themes['LargeGroupContainer']['Height'] = GGF.Theme.themes['LargeGroup']['Height'] * 4
+
+  local width = GGF.Theme.themes['LargeGroup']['Width'] * 6
+  local height = GGF.Theme.themes['LargeGroup']['Height'] * 4
+
+  GGF.Theme.themes['LargeGroupContainer']= {
+    ['OffsetX'] = GGF.SavedVars['LargeGroupContainer_OffsetX'],
+    ['OffsetY'] = GGF.SavedVars['LargeGroupContainer_OffsetY'],
+    ['Width']   = width,
+    ['Height']  = height,
+    ['Label']   = {
+      ["BackColor"] = {0,0,0,.6},
+      ["EdgeColor"] = {0,0,0,1},
+      ["EdgeWeight"] = 1,
+      ['Width']     = width,
+      ['Height']    = height,
+      ['Font']      = 'ggFrames\\theme\\themes\\fonts\\BebasNeue.otf|20',
+      ['FontColor'] = {1,1,1,1},
+      ["VerticalAlign"] = TEXT_ALIGN_CENTER,
+      ["HorizontalAlign"] = TEXT_ALIGN_CENTER
+    }
+  }
 end
 
 function GGF.Theme.LoadTarget() 
@@ -296,12 +326,9 @@ function GGF.Theme.LoadTarget()
   GGF.Theme.themes['Target']['Health']['Bar']['Height']          = GGF.SavedVars['Target_Health_Height'] - 2
   GGF.Theme.themes['Target']['Health']['Bar']['BarColor']        = GGF.SavedVars['Target_Health_BarColor']
   GGF.Theme.themes['Target']['Health']['Bar']['Texture']         = GGF.Theme.LMP:Fetch('statusbar',GGF.SavedVars['Target_Health_Texture'])
-  GGF.Theme.themes['Target']['Health']['TextLeft']['Height']     = GGF.SavedVars['Target_Health_Height'] - 2
-  GGF.Theme.themes['Target']['Health']['TextLeft']['Font']       = GGF.Theme.LMP:Fetch('font',GGF.SavedVars['Target_Health_Font']).."|"..tostring(GGF.SavedVars['Target_Health_FontSize'])
-  GGF.Theme.themes['Target']['Health']['TextLeft']['FontColor']  = GGF.SavedVars['Target_Health_FontColor']
-  GGF.Theme.themes['Target']['Health']['TextRight']['Height']    = GGF.SavedVars['Target_Health_Height'] - 2
-  GGF.Theme.themes['Target']['Health']['TextRight']['Font']      = GGF.Theme.LMP:Fetch('font',GGF.SavedVars['Target_Health_Font']).."|"..tostring(GGF.SavedVars['Target_Health_FontSize'])
-  GGF.Theme.themes['Target']['Health']['TextRight']['FontColor'] = GGF.SavedVars['Target_Health_FontColor']
+  GGF.Theme.themes['Target']['Health']['Label']['Height']        = GGF.SavedVars['Target_Health_Height'] - 2
+  GGF.Theme.themes['Target']['Health']['Label']['Font']          = GGF.Theme.LMP:Fetch('font',GGF.SavedVars['Target_Health_Font']).."|"..tostring(GGF.SavedVars['Target_Health_FontSize'])
+  GGF.Theme.themes['Target']['Health']['Label']['FontColor']     = GGF.SavedVars['Target_Health_FontColor']
 
   GGF.Theme.themes['Target']['Caption']['Height']                   = GGF.SavedVars['Target_FontSize'] + 4
   GGF.Theme.themes['Target']['Caption']['Font']                     = GGF.Theme.LMP:Fetch('font',GGF.SavedVars['Target_Font']).."|"..tostring(GGF.SavedVars['Target_FontSize'])
@@ -313,10 +340,23 @@ function GGF.Theme.LoadTarget()
   GGF.Theme.themes['Target']['Mount'] = false
   
   -- Target Container
-  GGF.Theme.themes['TargetContainer']            = {}
-  GGF.Theme.themes['TargetContainer']['OffsetX'] = GGF.SavedVars['TargetContainer_OffsetX']
-  GGF.Theme.themes['TargetContainer']['OffsetY'] = GGF.SavedVars['TargetContainer_OffsetY']
-  GGF.Theme.themes['TargetContainer']['Width']   = GGF.SavedVars['Target_Width']
-  GGF.Theme.themes['TargetContainer']['Height']  = (GGF.Theme.themes['Target']['Health']['OffsetY'] + GGF.Theme.themes['Target']['Name']['Height'] + 20)
+  local height = (GGF.Theme.themes['Target']['Health']['Height'] + GGF.Theme.themes['Target']['Name']['Height'] + 10)
+  GGF.Theme.themes['TargetContainer'] = {
+    ['OffsetX'] = GGF.SavedVars['TargetContainer_OffsetX'],
+    ['OffsetY'] = GGF.SavedVars['TargetContainer_OffsetY'],
+    ['Width']   = GGF.SavedVars['Target_Width'],
+    ['Height']  = height,
+    ['Label']   = {
+      ["BackColor"] = {0,0,0,.6},
+      ["EdgeColor"] = {0,0,0,1},
+      ["EdgeWeight"] = 1,
+      ['Width']     = GGF.SavedVars['Target_Width'],
+      ['Height']    = height,
+      ['Font']      = 'ggFrames\\theme\\themes\\fonts\\BebasNeue.otf|20',
+      ['FontColor'] = {1,1,1,1},
+      ["VerticalAlign"] = TEXT_ALIGN_CENTER,
+      ["HorizontalAlign"] = TEXT_ALIGN_CENTER
+    }
+  }
 end
 

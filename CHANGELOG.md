@@ -1,3 +1,8 @@
+v0.4.2
+- Fix Frame Moving Usability Issues
+- Hide Bars when talking to NPCs
+- /ggf -> Toggle Lock / Unlock. [Suggested By: SkyfireTESO]
+
 v0.4.1
 - Fix for clearing anchors
 

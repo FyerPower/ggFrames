@@ -35,7 +35,7 @@ function GGF.UnitManager.CreateUnit(unitName, unitTag, baseTemplate, parent)
 end
 
 function GGF.UnitManager.UnitFunction(unitTag, func, ... )
-  if GGF.UnitManager.unitRouter[unitTag] == nil then return end
+  if GGF.UnitManager.unitRouter[unitTag] == nil or GGF.move then return end
   for key, unitName in pairs(GGF.UnitManager.unitRouter[unitTag]) do
     GGF.UnitManager.unit[unitName][func](GGF.UnitManager.unit[unitName], ...)
   end
@@ -48,6 +48,7 @@ function GGF.UnitManager.SetUnit(unitName, unitTag)
 end
 
 function GGF.UnitManager.UpdateGroup()
+  if GGF.move then return end
   local unitRouter = {["player"] = {"Player"}, ["reticleover"] = {"Target"}}
   local groupSlot = 1
   local largeGroupSlot = 1
@@ -86,6 +87,7 @@ function GGF.UnitManager.UpdateGroup()
 end
 
 function GGF.UnitManager.ToggleVisibility(isHidden)
+  if GGF.move then return end
   GGF.UnitManager.frames.player:SetHidden(isHidden)
   GGF.UnitManager.frames.group:SetHidden(isHidden or GGF.UnitManager.isLargeGroup)
   GGF.UnitManager.frames.largeGroup:SetHidden(isHidden or not GGF.UnitManager.isLargeGroup)
@@ -155,7 +157,6 @@ function GGF.UnitManager.RegisterEvents()
 
   -- Testing
   -- EVENT_MANAGER:RegisterForEvent("GGF", EVENT_PLAYER_ALIVE,                  GGF.UnitManager.OnPlayerAlive)
-  -- EVENT_MANAGER:RegisterForEvent("GGF", EVENT_UNIT_FRAME_UPDATE,             GGF.UnitManager.OnUnitFrameUpdate)
 
   -- ZO: EVENT_BOSSES_CHANGED
   -- ZO: EVENT_DISPOSITION_UPDATE
@@ -248,9 +249,11 @@ end
 
 function GGF.UnitManager.OnReticleTargetChange( eventCode )
   if DoesUnitExist("reticleover") then
-    GGF.UnitManager.unit["Target"]:Reload()
+    GGF.UnitManager.UnitFunction('reticleover', 'Reload')
+    -- GGF.UnitManager.unit["Target"]:Reload()
   else
-    GGF.UnitManager.unit["Target"]:Unload()
+    GGF.UnitManager.UnitFunction('reticleover', 'Unload')
+    -- GGF.UnitManager.unit["Target"]:Unload()
   end
   ZO_TargetUnitFramereticleover:SetHidden(true)
 end
@@ -261,10 +264,6 @@ end
 
 function GGF.UnitManager.OnPlayerAlive( ... )
   GGF.Debug:New("On Player Alive", {...})
-end
-
-function GGF.UnitManager.OnUnitFrameUpdate( eventCode, unitTag )
-  d("On Unit Frame Update: "..unitTag)
 end
 
 

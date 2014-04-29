@@ -30,31 +30,28 @@ function GGF.Unit:Controls()
   -- Health
   self.frames.healthBd      = GGF.Window:CreateBackDrop("GGF_"..self.unitName.."Health", self.frames.main, self.template.Health)
   self.frames.healthSt      = GGF.Window:CreateStatusBar("GGF_"..self.unitName.."HealthStatusBar", self.frames.healthBd, self.template.Health.Bar)
-  if self.template.Health.TextLeft ~= false then self.frames.healthLeftLb  = GGF.Window:CreateLabel("GGF_"..self.unitName.."HealthTextLeft",  self.frames.healthBd, self.template.Health.TextLeft) end
-  if self.template.Health.TextRight ~= false then self.frames.healthRightLb = GGF.Window:CreateLabel("GGF_"..self.unitName.."HealthTextRight", self.frames.healthBd, self.template.Health.TextRight) end
+  if self.template.Health.Label ~= false then self.frames.healthLb  = GGF.Window:CreateLabel("GGF_"..self.unitName.."HealthLabel",  self.frames.healthBd, self.template.Health.Label) end
 
   -- Magicka
   if self.template.Magicka ~= false then
-    self.frames.magickaBd      = GGF.Window:CreateBackDrop("GGF_"..self.unitName.."Magicka", self.frames.main, self.template.Magicka)
-    self.frames.magickaSt      = GGF.Window:CreateStatusBar("GGF_"..self.unitName.."MagickaStatusBar", self.frames.magickaBd, self.template.Magicka.Bar)
-    self.frames.magickaLeftLb  = GGF.Window:CreateLabel("GGF_"..self.unitName.."MagickaTextLeft",      self.frames.magickaBd, self.template.Magicka.TextLeft)
-    self.frames.magickaRightLb = GGF.Window:CreateLabel("GGF_"..self.unitName.."MagickaTextRight",     self.frames.magickaBd, self.template.Magicka.TextRight)
+    self.frames.magickaBd  = GGF.Window:CreateBackDrop("GGF_"..self.unitName.."Magicka", self.frames.main, self.template.Magicka)
+    self.frames.magickaSt  = GGF.Window:CreateStatusBar("GGF_"..self.unitName.."MagickaStatusBar", self.frames.magickaBd, self.template.Magicka.Bar)
+    self.frames.magickaLb  = GGF.Window:CreateLabel("GGF_"..self.unitName.."MagickaLabel",      self.frames.magickaBd, self.template.Magicka.Label)
   end
 
   -- Stamina
   if self.template.Stamina ~= false then
-    self.frames.staminaBd      = GGF.Window:CreateBackDrop("GGF_"..self.unitName.."Stamina", self.frames.main, self.template.Stamina)
-    self.frames.staminaSt      = GGF.Window:CreateStatusBar("GGF_"..self.unitName.."StaminaStatusBar", self.frames.staminaBd, self.template.Stamina.Bar)
-    self.frames.staminaLeftLb  = GGF.Window:CreateLabel("GGF_"..self.unitName.."StaminaTextLeft",      self.frames.staminaBd, self.template.Stamina.TextLeft)
-    self.frames.staminaRightLb = GGF.Window:CreateLabel("GGF_"..self.unitName.."StaminaTextRight",     self.frames.staminaBd, self.template.Stamina.TextRight)
+    self.frames.staminaBd  = GGF.Window:CreateBackDrop("GGF_"..self.unitName.."Stamina", self.frames.main, self.template.Stamina)
+    self.frames.staminaSt  = GGF.Window:CreateStatusBar("GGF_"..self.unitName.."StaminaStatusBar", self.frames.staminaBd, self.template.Stamina.Bar)
+    self.frames.staminaLb  = GGF.Window:CreateLabel("GGF_"..self.unitName.."StaminaLabel",      self.frames.staminaBd, self.template.Stamina.Label)
   end
 
   -- Mount
   if self.template.Mount ~= false then
-    self.frames.mount          = GGF.Window:CreateBackDrop("GGF_"..self.unitName.."Mount", self.frames.main, self.template.Mount)
-    self.frames.mountTx        = GGF.Window:CreateTexture("GGF_"..self.unitName.."MountTx", self.frames.mount, self.template.Mount.Icon)
-    self.frames.mountBd        = GGF.Window:CreateBackDrop("GGF_"..self.unitName.."MountBd", self.frames.mount, self.template.Mount.BarArea)
-    self.frames.mountSt        = GGF.Window:CreateStatusBar("GGF_"..self.unitName.."MountSt", self.frames.mountBd, self.template.Mount.BarArea.Bar)
+    self.frames.mount      = GGF.Window:CreateBackDrop("GGF_"..self.unitName.."Mount", self.frames.main, self.template.Mount)
+    self.frames.mountBd    = GGF.Window:CreateBackDrop("GGF_"..self.unitName.."MountBd", self.frames.mount, self.template.Mount.BarArea)
+    self.frames.mountSt    = GGF.Window:CreateStatusBar("GGF_"..self.unitName.."MountSt", self.frames.mountBd, self.template.Mount.BarArea.Bar)
+    self.frames.mountTx    = GGF.Window:CreateTexture("GGF_"..self.unitName.."MountTx", self.frames.mount, self.template.Mount.Icon)
   end
 
   -- Exp
