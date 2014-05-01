@@ -13,11 +13,11 @@ function GGF.Unit:Controls()
   self.frames.main = GGF.Window:CreateBackDrop("GGF_"..self.unitName.."Frame", self.parent, self.template)
 
   -- Draw Name and Class (Level)
-  self.frames.nameLb  = GGF.Window:CreateLabel("GGF_"..self.unitName.."NameLB",  self.frames.main, self.template.Name)
-  if self.template.Level ~= false then self.frames.levelLb = GGF.Window:CreateLabel("GGF_"..self.unitName.."LevelLb",  self.frames.nameLb, self.template.Level) end
-  if self.template.Class ~= false then self.frames.classTx = GGF.Window:CreateTexture("GGF_"..self.unitName.."ClassTx", self.frames.main, self.template.Class) end
-  if self.template.Leader ~= false then self.frames.leaderTx = GGF.Window:CreateTexture("GGF_"..self.unitName.."LeadTx", self.frames.main, self.template.Leader) end
-  if self.template.Caption ~= false then self.frames.captionLb = GGF.Window:CreateLabel("GGF_"..self.unitName.."CaptionLb", self.frames.main, self.template.Caption) end
+  if self.template.Name ~= false    then self.frames.nameLb  = GGF.Window:CreateLabel("GGF_"..self.unitName.."NameLB", self.frames.main, self.template.Name);         self.frames.nameLb:SetHidden(false)    elseif self.frames.nameLb ~= nil then self.frames.nameLb:SetHidden(true) end
+  if self.template.Level ~= false   then self.frames.levelLb = GGF.Window:CreateLabel("GGF_"..self.unitName.."LevelLb", self.frames.nameLb, self.template.Level);     self.frames.levelLb:SetHidden(false)   elseif self.frames.levelLb ~= nil then self.frames.levelLb:SetHidden(true) end
+  if self.template.Class ~= false   then self.frames.classTx = GGF.Window:CreateTexture("GGF_"..self.unitName.."ClassTx", self.frames.main, self.template.Class);     self.frames.classTx:SetHidden(false)   elseif self.frames.classTx ~= nil then self.frames.classTx:SetHidden(true) end
+  if self.template.Leader ~= false  then self.frames.leaderTx = GGF.Window:CreateTexture("GGF_"..self.unitName.."LeadTx", self.frames.main, self.template.Leader);                                           elseif self.frames.leaderTx ~= nil then self.frames.leaderTx:SetHidden(true) end
+  if self.template.Caption ~= false then self.frames.captionLb = GGF.Window:CreateLabel("GGF_"..self.unitName.."CaptionLb", self.frames.main, self.template.Caption); self.frames.captionLb:SetHidden(false) elseif self.frames.captionLb ~= nil then self.frames.captionLb:SetHidden(true) end
 
   -- Misc Labels
   self.frames.death     = GGF.Window:CreateBackDrop("GGF_"..self.unitName.."Death", self.frames.main, self.template.Death)
@@ -30,20 +30,23 @@ function GGF.Unit:Controls()
   -- Health
   self.frames.healthBd      = GGF.Window:CreateBackDrop("GGF_"..self.unitName.."Health", self.frames.main, self.template.Health)
   self.frames.healthSt      = GGF.Window:CreateStatusBar("GGF_"..self.unitName.."HealthStatusBar", self.frames.healthBd, self.template.Health.Bar)
-  if self.template.Health.Label ~= false then self.frames.healthLb  = GGF.Window:CreateLabel("GGF_"..self.unitName.."HealthLabel",  self.frames.healthBd, self.template.Health.Label) end
+  if self.template.Health.LabelOne ~= false then self.frames.healthLbOne  = GGF.Window:CreateLabel("GGF_"..self.unitName.."HealthLabelOne",  self.frames.healthBd, self.template.Health.LabelOne) end
+  if self.template.Health.LabelTwo ~= false then self.frames.healthLbTwo  = GGF.Window:CreateLabel("GGF_"..self.unitName.."HealthLabelTwo",  self.frames.healthBd, self.template.Health.LabelTwo) end
 
   -- Magicka
   if self.template.Magicka ~= false then
     self.frames.magickaBd  = GGF.Window:CreateBackDrop("GGF_"..self.unitName.."Magicka", self.frames.main, self.template.Magicka)
     self.frames.magickaSt  = GGF.Window:CreateStatusBar("GGF_"..self.unitName.."MagickaStatusBar", self.frames.magickaBd, self.template.Magicka.Bar)
-    self.frames.magickaLb  = GGF.Window:CreateLabel("GGF_"..self.unitName.."MagickaLabel",      self.frames.magickaBd, self.template.Magicka.Label)
+    if self.template.Magicka.LabelOne ~= false then self.frames.magickaLbOne  = GGF.Window:CreateLabel("GGF_"..self.unitName.."MagickaLabelOne",  self.frames.magickaBd, self.template.Magicka.LabelOne) end
+    if self.template.Magicka.LabelTwo ~= false then self.frames.magickaLbTwo  = GGF.Window:CreateLabel("GGF_"..self.unitName.."MagickaLabelTwo",  self.frames.magickaBd, self.template.Magicka.LabelTwo) end
   end
 
   -- Stamina
   if self.template.Stamina ~= false then
     self.frames.staminaBd  = GGF.Window:CreateBackDrop("GGF_"..self.unitName.."Stamina", self.frames.main, self.template.Stamina)
     self.frames.staminaSt  = GGF.Window:CreateStatusBar("GGF_"..self.unitName.."StaminaStatusBar", self.frames.staminaBd, self.template.Stamina.Bar)
-    self.frames.staminaLb  = GGF.Window:CreateLabel("GGF_"..self.unitName.."StaminaLabel",      self.frames.staminaBd, self.template.Stamina.Label)
+    if self.template.Stamina.LabelOne ~= false then self.frames.staminaLbOne  = GGF.Window:CreateLabel("GGF_"..self.unitName.."StaminaLabelOne",  self.frames.staminaBd, self.template.Stamina.LabelOne) end
+    if self.template.Stamina.LabelTwo ~= false then self.frames.staminaLbTwo  = GGF.Window:CreateLabel("GGF_"..self.unitName.."StaminaLabelTwo",  self.frames.staminaBd, self.template.Stamina.LabelTwo) end
   end
 
   -- Mount

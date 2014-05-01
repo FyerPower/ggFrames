@@ -155,20 +155,11 @@ function GGF.UnitManager.RegisterEvents()
   EVENT_MANAGER:RegisterForEvent("GGF", EVENT_TARGET_CHANGED,                GGF.UnitManager.OnTargetChange)
   EVENT_MANAGER:RegisterForEvent("GGF", EVENT_RETICLE_TARGET_CHANGED,        GGF.UnitManager.OnReticleTargetChange)
 
+  -- Misc
+  EVENT_MANAGER:RegisterForEvent("GGF", EVENT_PLAYER_COMBAT_STATE,           GGF.UnitManager.OnCombatStateChange)
+  
   -- Testing
-  -- EVENT_MANAGER:RegisterForEvent("GGF", EVENT_PLAYER_ALIVE,                  GGF.UnitManager.OnPlayerAlive)
-
-  -- ZO: EVENT_BOSSES_CHANGED
-  -- ZO: EVENT_DISPOSITION_UPDATE
-  -- ZO: EVENT_RANK_POINT_UPDATE
-  -- Visual: EVENT_UNIT_ATTRIBUTE_VISUAL_ADDED 
-  -- Visual: EVENT_UNIT_ATTRIBUTE_VISUAL_REMOVED 
-  -- Visual: EVENT_UNIT_ATTRIBUTE_VISUAL_UPDATED 
-  -- Siege: EVENT_BEGIN_SIEGE_CONTROL
-  -- Siege: EVENT_END_SIEGE_CONTROL
-  -- Combat: EVENT_PLAYER_COMBAT_STATE 
-  -- Zone: EVENT_ZONE_UPDATE 
-  -- Zone: EVENT_ZONE_CHANGED 
+  EVENT_MANAGER:RegisterForEvent("GGF", EVENT_PLAYER_ALIVE,                  GGF.UnitManager.OnPlayerAlive)
 end
 
 ----------------------------------------
@@ -258,6 +249,18 @@ function GGF.UnitManager.OnReticleTargetChange( eventCode )
   ZO_TargetUnitFramereticleover:SetHidden(true)
 end
 
+
+----------------------------------------
+-- Events: Misc
+----------------------------------------
+
+function GGF.UnitManager.OnCombatStateChange( eventCode, isInCombat )
+  GGF.UnitManager.frames.player:SetAlpha( isInCombat and 1 or GGF.SavedVars['Combat_Alpha']/100 )
+  GGF.UnitManager.frames.group:SetAlpha( isInCombat and 1 or GGF.SavedVars['Combat_Alpha']/100 )
+  GGF.UnitManager.frames.largeGroup:SetAlpha( isInCombat and 1 or GGF.SavedVars['Combat_Alpha']/100 )
+  -- GGF.UnitManager.frames.target:SetAlpha( isInCombat and 1 or GGF.SavedVars['Combat_Alpha']/100 )
+end
+
 ----------------------------------------
 -- Events: Testing
 ----------------------------------------
@@ -269,6 +272,23 @@ end
 
 
 
+
+
+
+
+
+-- Events:
+  -- ZO: EVENT_BOSSES_CHANGED
+  -- ZO: EVENT_DISPOSITION_UPDATE
+  -- ZO: EVENT_RANK_POINT_UPDATE
+  -- Visual: EVENT_UNIT_ATTRIBUTE_VISUAL_ADDED 
+  -- Visual: EVENT_UNIT_ATTRIBUTE_VISUAL_REMOVED 
+  -- Visual: EVENT_UNIT_ATTRIBUTE_VISUAL_UPDATED 
+  -- Siege: EVENT_BEGIN_SIEGE_CONTROL
+  -- Siege: EVENT_END_SIEGE_CONTROL
+  -- Combat: EVENT_PLAYER_COMBAT_STATE 
+  -- Zone: EVENT_ZONE_UPDATE 
+-- Zone: EVENT_ZONE_CHANGED 
 
 
 -- GetUnitReaction(unitTag)

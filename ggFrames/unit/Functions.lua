@@ -19,7 +19,7 @@ function GGF.Unit:Load(unitTag)
   self:SetDeath( IsUnitDead(self.unitTag) )
   self:SetLevel( GetUnitLevel(self.unitTag), GetUnitVeteranRank(self.unitTag) )             -- Level / Experience
   self:SetRange( IsUnitInGroupSupportRange(self.unitTag) )                                  -- Is Within Support Range
-  self:SetCaption( GetUnitCaption(self.unitTag) )
+  self:SetCaption()
   
   if IsUnitPlayer(self.unitTag) then
     self:SetClass( GetUnitClass(self.unitTag) )                                             -- Class Texture
@@ -65,14 +65,15 @@ function GGF.Unit:SetPower( powerIndex, powerType,  powerValue, powerMax, powerE
   if powerType == POWERTYPE_HEALTH and powerValue > 0 then self:SetDeath( false ) end -- should fix when the event_unit_dead doesn't fire after a player revives
   if not self.template[field.label] then return end
 
-  self[field.friendly] = {current = powerValue, max = powerMax, percent = math.floor( ( powerValue / powerEffectiveMax ) * 100 )}
+  self[field.friendly] = {current = powerValue, max = powerEffectiveMax, percent = ( ( powerValue / powerEffectiveMax ) * 100 )}
   self.frames[field.friendly.."St"]:SetWidth( ( self[field.friendly].percent / 100 ) * self.template[field.label].Bar.Width )
-  if self.frames[field.friendly.."Lb"] then self.frames[field.friendly.."Lb"]:SetText( powerValue ) end
+  if self.frames[field.friendly.."LbOne"] then self.frames[field.friendly.."LbOne"]:SetText( FormatStatusBarLabel(GGF.SavedVars['Bar_Format'], self[field.friendly].current, self[field.friendly].max, self[field.friendly].percent) ) end
+  if self.frames[field.friendly.."LbTwo"] then self.frames[field.friendly.."LbTwo"]:SetText( FormatStatusBarLabel(GGF.SavedVars['Bar_Format_Two'], self[field.friendly].current, self[field.friendly].max, self[field.friendly].percent) ) end
 end
 
 function GGF.Unit:SetMountPower( powerIndex, powerType, powerValue, powerMax, powerEffectiveMax )
   if not self.template.Mount then return end
-  self.mount = {current = powerValue, max = powerMax, percent = math.floor( ( powerValue / powerEffectiveMax ) * 100 )}
+  self.mount = {current = powerValue, max = powerEffectiveMax, percent = ( ( powerValue / powerEffectiveMax ) * 100 )}
   self.frames.mountSt:SetWidth( ( self.mount.percent / 100 ) * self.template.Mount.BarArea.Bar.Width )
 end
 
@@ -83,22 +84,20 @@ function GGF.Unit:SetMounted( isMounted )
 end
 
 function GGF.Unit:SetName( name )
+  if not self.template.Name then return end
+
   self.name = name
   GGF.Window:SetLabelText( self.frames.nameLb, self.name, (string.sub(self.unitName,0,10) ~= "LargeGroup") )
 
   self.reactionType = GetUnitReaction( self.unitTag )
-  if( self.unitName == "Target" and (self.reactionType == UNIT_REACTION_FRIENDLY) )then
+  if( self.unitName == "Target" and (self.reactionType == UNIT_REACTION_FRIENDLY or self.reactionType == UNIT_REACTION_NPC_ALLY) )then
     self.frames.nameLb:SetColor(GGF.SavedVars['Target_FontColor_Friendly'][1], GGF.SavedVars['Target_FontColor_Friendly'][2], GGF.SavedVars['Target_FontColor_Friendly'][3], GGF.SavedVars['Target_FontColor_Friendly'][4])
-    if self.template.Caption then self.frames.captionLb:SetColor(GGF.SavedVars['Target_FontColor_Friendly'][1], GGF.SavedVars['Target_FontColor_Friendly'][2], GGF.SavedVars['Target_FontColor_Friendly'][3], GGF.SavedVars['Target_FontColor_Friendly'][4]) end
   elseif self.unitName == "Target" and self.reactionType == UNIT_REACTION_HOSTILE then
     self.frames.nameLb:SetColor(GGF.SavedVars['Target_FontColor_Hostile'][1], GGF.SavedVars['Target_FontColor_Hostile'][2], GGF.SavedVars['Target_FontColor_Hostile'][3], GGF.SavedVars['Target_FontColor_Hostile'][4])
-    if self.template.Caption then self.frames.captionLb:SetColor(GGF.SavedVars['Target_FontColor_Hostile'][1], GGF.SavedVars['Target_FontColor_Hostile'][2], GGF.SavedVars['Target_FontColor_Hostile'][3], GGF.SavedVars['Target_FontColor_Hostile'][4]) end
   elseif self.unitName == "Target" and self.reactionType == UNIT_REACTION_INTERACT then
     self.frames.nameLb:SetColor(GGF.SavedVars['Target_FontColor_Interact'][1], GGF.SavedVars['Target_FontColor_Interact'][2], GGF.SavedVars['Target_FontColor_Interact'][3], GGF.SavedVars['Target_FontColor_Interact'][4])
-    if self.template.Caption then self.frames.captionLb:SetColor(GGF.SavedVars['Target_FontColor_Interact'][1], GGF.SavedVars['Target_FontColor_Interact'][2], GGF.SavedVars['Target_FontColor_Interact'][3], GGF.SavedVars['Target_FontColor_Interact'][4]) end
   else
     self.frames.nameLb:SetColor(GGF.SavedVars['Target_FontColor'][1], GGF.SavedVars['Target_FontColor'][2], GGF.SavedVars['Target_FontColor'][3], GGF.SavedVars['Target_FontColor'][4])
-    if self.template.Caption then self.frames.captionLb:SetColor(GGF.SavedVars['Target_FontColor'][1], GGF.SavedVars['Target_FontColor'][2], GGF.SavedVars['Target_FontColor'][3], GGF.SavedVars['Target_FontColor'][4]) end
   end
 end
 
@@ -107,13 +106,13 @@ function GGF.Unit:SetLevel( level, rank )
   self.level = level
   self.vlevel = rank
   self.frames.levelLb:SetText( "("..(self.vlevel > 0 and "Vet "..self.vlevel or self.level)..")" )
-  self.frames.levelLb:SetHidden( self.reactionType == UNIT_REACTION_FRIENDLY )
+  self.frames.levelLb:SetHidden( self.reactionType == UNIT_REACTION_FRIENDLY or self.reactionType == UNIT_REACTION_NPC_ALLY )
 end
 
 -- For now, only display caption for friend npcs (aka merchants and stuff)
-function GGF.Unit:SetCaption( caption )
+function GGF.Unit:SetCaption()
   if not self.template.Caption then return end
-  self.caption = self.reactionType == UNIT_REACTION_FRIENDLY and caption or ""
+  self.caption = GetUnitCaption(self.unitTag) or GetUnitTitle(self.unitTag)
   self.frames.captionLb:SetText( self.caption )
 end
 
@@ -141,7 +140,7 @@ function GGF.Unit:SetLeader( isLeader )
   if not self.template.Leader then return end
   self.isLeader = isLeader
   self.frames.leaderTx:SetHidden( not isLeader )
-  if string.sub(self.unitName,0,10) ~= "LargeGroup" then
+  if self.template.Name ~= false and string.sub(self.unitName,0,10) ~= "LargeGroup" then
     GGF.Window:SetAdditionalLeftOffset( self.frames.nameLb, self.template.Name, isLeader and 20 or 0 )
   end
 end
@@ -179,3 +178,11 @@ end
 -- MONSTER_DIFFICULTY_HARD
 -- MONSTER_DIFFICULTY_DEADLY
 -- MONSTER_DIFFICULTY_NONE
+
+
+
+-- helper
+function FormatStatusBarLabel( format, curr, max, perc )
+  return string.gsub(string.gsub(string.gsub(string.gsub(format, "Percentage", tostring(math.floor(perc)) ), "Max", tostring(max)), "Current", tostring(curr)), "Nothing", "")
+  -- tostring(perc)
+end

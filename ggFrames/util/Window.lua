@@ -13,6 +13,7 @@ function GGF.Window:Create(cName, cParent, cType, cTemplate)
       control:SetHidden(cTemplate.Hidden)
     end
   end
+  control:SetAlpha(cTemplate.Alpha or 1)    
   control:SetDimensions(cTemplate.Width, cTemplate.Height)
   control:ClearAnchors()
   control:SetAnchor((cTemplate.MyAnchor or TOPLEFT), cParent, (cTemplate.ParentAnchor or TOPLEFT), (cTemplate.OffsetX or 0), (cTemplate.OffsetY or 0))    
@@ -58,7 +59,6 @@ end
 function GGF.Window:CreateTexture(cName, cParent, cTemplate)
   local texture = GGF.Window:Create(cName, cParent, CT_TEXTURE, cTemplate)
   texture:SetTexture(cTemplate.Texture)
-  texture:SetAlpha(cTemplate.Alpha or 1)    
   return texture
 end
 

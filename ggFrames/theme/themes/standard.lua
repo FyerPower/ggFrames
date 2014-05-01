@@ -27,9 +27,9 @@ GGF.Template = {
     },
     ["Caption"] = {
       ["Width"] = 100,
-      ["MyAnchor"] = TOPRIGHT,
-      ["ParentAnchor"] = TOPRIGHT,  
-      ["HorizontalAlign"] = TEXT_ALIGN_RIGHT
+      ["MyAnchor"] = BOTTOM,
+      ["ParentAnchor"] = BOTTOM,  
+      ["HorizontalAlign"] = TEXT_ALIGN_CENTER
     },
     ["Death"] = {
       ["OffsetY"] = 20,
@@ -71,8 +71,12 @@ GGF.Template = {
         ["OffsetX"] = 1,
         ["OffsetY"] = 1,
       },
-      ["Label"] = {
-        ["Width"] = 100,
+      ["LabelOne"] = {
+        ["MyAnchor"] = LEFT,
+        ["ParentAnchor"] = LEFT,
+        ["OffsetX"] = 5,
+      },
+      ["LabelTwo"] = {
         ["MyAnchor"] = LEFT,
         ["ParentAnchor"] = LEFT,
         ["OffsetX"] = 5,
@@ -86,8 +90,12 @@ GGF.Template = {
         ["OffsetX"] = 1,
         ["OffsetY"] = 1,
       },
-      ["Label"] = {
-        ["Width"] = 100,
+      ["LabelOne"] = {
+        ["MyAnchor"] = LEFT,
+        ["ParentAnchor"] = LEFT,
+        ["OffsetX"] = 5,
+      },
+      ["LabelTwo"] = {
         ["MyAnchor"] = LEFT,
         ["ParentAnchor"] = LEFT,
         ["OffsetX"] = 5,
@@ -101,8 +109,12 @@ GGF.Template = {
         ["OffsetX"] = 1,
         ["OffsetY"] = 1,
       },
-      ["Label"] = {
-        ["Width"] = 100,
+      ["LabelOne"] = {
+        ["MyAnchor"] = LEFT,
+        ["ParentAnchor"] = LEFT,
+        ["OffsetX"] = 5,
+      },
+      ["LabelTwo"] = {
         ["MyAnchor"] = LEFT,
         ["ParentAnchor"] = LEFT,
         ["OffsetX"] = 5,
@@ -174,10 +186,12 @@ GGF.Template = {
       ["EdgeWeight"] = 1,
       ["Hidden"] = true,
       ["Label"] = {
-        ["Width"] = 98,
+        ["Width"] = 94,
         ["Height"] = 16,
         ["OffsetX"] = 2,
-        ["OffsetY"] = 20,
+        ["OffsetY"] = -2,
+        ["MyAnchor"] = BOTTOMLEFT,
+        ["ParentAnchor"] = BOTTOMLEFT,  
         ["VerticalAlign"] = TEXT_ALIGN_CENTER
       }
     },
@@ -189,10 +203,12 @@ GGF.Template = {
       ["EdgeWeight"] = 1,
       ["Hidden"] = true,
       ["Label"] = {
-        ["Width"] = 98,
+        ["Width"] = 94,
         ["Height"] = 16,
         ["OffsetX"] = 2,
-        ["OffsetY"] = 20,
+        ["OffsetY"] = -2,
+        ["MyAnchor"] = BOTTOMLEFT,
+        ["ParentAnchor"] = BOTTOMLEFT,  
         ["VerticalAlign"] = TEXT_ALIGN_CENTER
       }
     },
@@ -216,7 +232,8 @@ GGF.Template = {
         ["OffsetX"] = 1,
         ["OffsetY"] = 1,
       },
-      ["Label"] = false
+      ["LabelOne"] = false,
+      ["LabelTwo"] = false
     },
     ["Magicka"] = false,
     ["Stamina"] = false,

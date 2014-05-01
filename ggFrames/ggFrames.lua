@@ -1,7 +1,7 @@
 -- Global Initalizations
 GGF           = {}
 GGF.addonName = "ggFrames"
-GGF.version   = "0.4.2"
+GGF.version   = "0.4.4"
 
 -- Config
 GGF.init      = {}
@@ -14,13 +14,14 @@ function GGF.Initialize( eventCode, addOnName )
   -- Load Saved Vars
   GGF.SavedVars = ZO_SavedVars:NewAccountWide( "GGFSavedVariables" , 1 , nil , GGF.SavedVarsDefaults , nil )
   GGF.Theme.Initialize()
+  
+  -- Build Settings Menu
+  GGF.Settings:New()
 
   -- Initalize UnitManager
   GGF.UnitManager.Initialize()
 
-  -- Build Settings Menu
-  GGF.Settings:New()
-
+  -- Setup Slash Commands
   GGF.RegisterSlashCommands()
 
   -- Register Global Events

@@ -1,6 +1,19 @@
+v0.4.4
+- Option to Hide Players Info (Name, Level, Class) [Suggest By: pinstripesc]
+- Combative Alpha [Suggested by Many]
+- Bug Fix: Raid Frame Name / Status Positions
+- Target Title & Captions
+- Player Name Length: Issues with smaller frames
+- All NPC Allys now appear "friendly" and Captions show appropriately
+
+v0.4.3
+- Add support for addition labels of various types to statusbars
+- Add ability to position label for status bar
+- Add Font Styles (outline, shadow, etc)
+- Consolidated Textures / Fonts in Settings
+
 v0.4.2
 - Fix Frame Moving Usability Issues
-- Hide Bars when talking to NPCs
 - /ggf -> Toggle Lock / Unlock. [Suggested By: SkyfireTESO]
 
 v0.4.1
