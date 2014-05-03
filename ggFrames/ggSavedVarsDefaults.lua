@@ -16,6 +16,7 @@ GGF.SavedVarsDefaults = {
   ["Player_Width"] = 300,
   ["Player_FontSize"] = 18,
   ["Player_FontColor"] = {1,1,1,1},
+  ["Player_Padding"] = -1,
   
   ["Player_Health_Height"] = 36,
   ["Player_Health_BarColor"] = {0.831372549,0.149019608,0.149019608,1},
@@ -65,6 +66,8 @@ GGF.SavedVarsDefaults = {
   ["LargeGroup_FontColor"] = {1,1,1,1},
  
   ["LargeGroup_Health_BarColor"] = {0.831372549,0.149019608,0.149019608,1},
+
+  ['Raid_Format'] = "One Row of Six Groups",
 
   -- Target
   ["TargetContainer_OffsetX"] = 810,

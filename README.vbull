@@ -1,0 +1,113 @@
+ggFrames is a lightweight fully customizable add-on that replaces the default unit frames provided by Elder Scrolls Online.  ggFrames currently supports: [B]Player, Group, Raid, and Target Frames[/B].
+
+[SIZE="3"][B]Features[/B][/SIZE]
+
+[LIST]
+[*][B]Player Unit Frame[/B]
+  [LIST]
+  [*]Info: Name, Level, Class, Group Leader Icon
+  [*]Bars: Health, Magicka, Stamina, Experience, Detached Mount
+  [*]Features:
+    [LIST]
+    [*]Optionally Hide Experience Bar
+    [*]Optionally Hide Player Information
+    [/LIST]
+  [/LIST]
+[*][B]Group Unit Frames[/B]
+  [LIST]
+  [*]Info: Name, Level, Class, Group Leader Icon
+  [*]Bars: Health
+  [*]Features:
+    [LIST]
+    [*]Members fade out when no within support range
+    [/LIST]
+  [/LIST]
+[*][B]Large Group Unit Frames[/B]
+  [LIST]
+  [*]Info: Name, Group Leader Icon
+  [*]Bars: Health
+  [*]Features: 
+    [LIST]
+    [*]Two Different Layouts (1x6 and 2x3)
+    [/LIST]
+  [/LIST]
+[*][B]Target Unit Frame[/B]
+  [LIST]
+  [*]Info: Name, Level, Class Icon, Caption / Title, Alliance Rank & Level
+  [*]Bars: Health
+  [*]Features: 
+    [LIST]
+    [*]Unit Name Reaction Colors (Friendly, Hostile, Interactable, Default)
+    [*]Monster Difficulty (Display Stars to show difficulty: Easy = 0, Normal = 1, Hard = 2, Deadly = 3)
+    [/LIST]
+  [/LIST]
+[*][B]Global Frame Settings:[/B]
+  [LIST]
+  [*]Localization (French & German)
+  [*]All Bars:
+    [LIST]
+    [*]Over 15 Additonal Fonts (And use fonts shared by other addons)
+    [*]6 Font Styles (normal, outline, shadow, etc)
+    [*]Two Customizable Numerical Representation of Values on Bars
+      [LIST]
+      [*]Values: "nothing", "current", "max", "percent", "current / max", and "current / max (percentage)"
+      [*]Locations: Left, Right, and Center
+      [/LIST]
+    [/LIST]
+  [*]Over 70 Customizable Settings
+  [*]Movable Frames (Type '/ggf' or unlock/lock from menu)
+  [*]All Frames have a standard opacity value (setting) by default and transition to full 
+  [*]All Frames Hide whenever in Menus (Backpack, Friends, Guild, etc)
+  [*]All Default Frames are Hidden
+  [/LIST]
+[/LIST]
+
+[SIZE="3"][B]Coming Soon / Planned Updates[/B][/SIZE]
+
+[LIST]
+[*][COLOR="Red"][Bug][/COLOR] Hide Bars when talking to NPCs
+[*][COLOR="Red"][Bug][/COLOR] Sometime the horse stamina displays toggle state is backwards (Cannot reproduce issue, if you find this bug please report)
+[*][COLOR="Green"][Enhancement][/COLOR] Optionally Hide Player Frame
+[*][COLOR="Green"][Enhancement][/COLOR] Level Textures (Use Veteran Texture and Create "Lvl" Texture)
+[*][COLOR="Green"][Enhancement][/COLOR] Target Casting Bar with textual feedback telling you when to block, interupt, etc
+[*][COLOR="Green"][Enhancement][/COLOR] Shield Indicators
+[*][COLOR="Green"][Enhancement][/COLOR] Player Castbar
+[*][COLOR="Green"][Enhancement][/COLOR] Low Health Alert (flash when under xx%)
+[*][COLOR="Green"][Enhancement][/COLOR] Buff / Debuffs
+[*][COLOR="Green"][Enhancement][/COLOR] Target of Target Unit Frame(?)
+[/LIST]
+
+[SIZE="3"][B]Community Suggestions[/B][/SIZE]
+
+[LIST]
+[*]Option to "Attach" Horse Stamina Bar to Unit Frame under Player Experience Bar. [Suggested By: Tonyleila]
+[*]Option to Remove class icon and use class colors instead. [Suggested By: Tonyleila]
+[*]Option to Hide Player [Suggested By: Fing3rz]
+[*]Option to Change Master Transparency per frame [Suggested By: Fing3rz]
+[*]Change opacity/color of the background of the bars. [Suggest By: curvne]
+[*]Indicate Stats have increased regen rate, Like it made in default ui [Suggested By: SilverWF]
+[*]Right Click your Frame: "Leave Group" [Willan]
+[*]Right Click Party Members: "Kick Member" (if you're laeder), "Add / Remove Friend", "Invite To Guild(s)"? [Willan]
+[*]Option to Unstack Players Health / Magicka / Stamina and instead display side by side [Suggest By: pinstripesc]
+[*]Reorder the Bars within Player Frame
+[/LIST]
+
+[SIZE="3"][B]Comment![/B][/SIZE]
+
+I love feedback! [URL="http://www.esoui.com/downloads/fileinfo.php?id=268#comments"]Tell Me via Addon Comments![/URL]
+
+[SIZE="3"][B]Feature Request?[/B][/SIZE]
+
+Have a feature you want but dont see it listed above?  [URL="http://www.esoui.com/portal.php?id=72&a=listfeatures"]Add a Feature Request[/URL]
+
+[SIZE="3"][B]Found a Bug?[/B][/SIZE]
+
+[URL="http://www.esoui.com/portal.php?id=72&a=listbugs"]Report It![/URL]
+
+[SIZE="3"][B]Donate![/B][/SIZE]
+
+Donations are [B]NOT[/B] required, just appreciated.  They help pay for all the RedBulls and other caffeine beverages that I drink while staying up till 3-4am developing.  
+
+[URL="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=2DK5XAPXSVAQS"]
+[IMG]https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif[/IMG]
+[/URL]

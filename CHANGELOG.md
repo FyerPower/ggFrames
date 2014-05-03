@@ -1,3 +1,11 @@
+v0.5.0
+- Localization
+- Optional padding between bars [Suggested By: shudaoxin]
+- Optionally Set X & Y Coordinates for Frames (Instead of Drag and Drop)
+- Optionally Configure Raid Frame Layout (1x6 & 2x3)
+- Add Alliance Rank / Level (Title isn't necessary)
+- Enemy Difficulty Added on Target Frame and is visualized by the number of stars that appear in the top right corner (Normal, Hard, Deadly)
+
 v0.4.4
 - Option to Hide Players Info (Name, Level, Class) [Suggest By: pinstripesc]
 - Combative Alpha [Suggested by Many]

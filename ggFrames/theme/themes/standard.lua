@@ -16,7 +16,7 @@ GGF.Template = {
     },
     ["Class"] = {
       ["MyAnchor"] = TOPRIGHT,
-      ["ParentAnchor"] = TOPRIGHT,      
+      ["ParentAnchor"] = TOPRIGHT,
       ["Texture"] = "/esoui/art/charactercreate/charactercreate_classicon_up.dds"
     },
     ["Leader"] = {
@@ -27,9 +27,28 @@ GGF.Template = {
     },
     ["Caption"] = {
       ["Width"] = 100,
-      ["MyAnchor"] = BOTTOM,
-      ["ParentAnchor"] = BOTTOM,  
-      ["HorizontalAlign"] = TEXT_ALIGN_CENTER
+      ["MyAnchor"] = BOTTOMLEFT,
+      ["ParentAnchor"] = BOTTOMLEFT,  
+      ["HorizontalAlign"] = TEXT_ALIGN_LEFT
+    },
+    ["RankLb"] = {
+      ["Width"] = 40,
+      ["MyAnchor"] = BOTTOMRIGHT,
+      ["ParentAnchor"] = BOTTOMRIGHT,  
+      ["HorizontalAlign"] = TEXT_ALIGN_RIGHT
+    },
+    ["RankTx"] = {
+      ["Width"] = 20,
+      ["Height"] = 20,
+      ["MyAnchor"] = TOPRIGHT,
+      ["ParentAnchor"] = TOPLEFT  
+    },
+    ["Difficulty"] = {
+      ["Width"] = 52,
+      ["Height"] = 14,
+      ['OffsetY'] = 4,
+      ["MyAnchor"] = TOPRIGHT,
+      ["ParentAnchor"] = TOPRIGHT
     },
     ["Death"] = {
       ["OffsetY"] = 20,
@@ -239,6 +258,9 @@ GGF.Template = {
     ["Stamina"] = false,
     ["Experience"] = false,
     ["Mount"] = false,
-    ["Caption"] = false
+    ["Caption"] = false,
+    ["RankLb"] = false,
+    ["RankTx"] = false,
+    ["Difficulty"] = false
   }
 }

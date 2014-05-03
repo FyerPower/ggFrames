@@ -19,7 +19,12 @@ function GGF.Unit:Load(unitTag)
   self:SetDeath( IsUnitDead(self.unitTag) )
   self:SetLevel( GetUnitLevel(self.unitTag), GetUnitVeteranRank(self.unitTag) )             -- Level / Experience
   self:SetRange( IsUnitInGroupSupportRange(self.unitTag) )                                  -- Is Within Support Range
-  self:SetCaption()
+  
+  if self.unitName == "Target" then
+    self:SetCaption( GetUnitCaption(self.unitTag) or GetUnitTitle(self.unitTag) )
+    self:SetAllianceRank( GetUnitAvARank(self.unitTag) )
+    self:SetDifficulty( GetUnitDifficulty(self.unitTag) )
+  end
   
   if IsUnitPlayer(self.unitTag) then
     self:SetClass( GetUnitClass(self.unitTag) )                                             -- Class Texture
@@ -29,7 +34,7 @@ function GGF.Unit:Load(unitTag)
   end
 
   self:SetPower( nil, POWERTYPE_HEALTH, GetUnitPower(self.unitTag, POWERTYPE_HEALTH) )      -- Set Health
-  if self.unitTag == "player" then
+  if self.unitName == "Player" then
     self:SetPower( nil, POWERTYPE_MAGICKA, GetUnitPower(self.unitTag, POWERTYPE_MAGICKA) )  -- Set Magicka
     self:SetPower( nil, POWERTYPE_STAMINA, GetUnitPower(self.unitTag, POWERTYPE_STAMINA) )  -- Set Stamina
     
@@ -109,11 +114,44 @@ function GGF.Unit:SetLevel( level, rank )
   self.frames.levelLb:SetHidden( self.reactionType == UNIT_REACTION_FRIENDLY or self.reactionType == UNIT_REACTION_NPC_ALLY )
 end
 
--- For now, only display caption for friend npcs (aka merchants and stuff)
-function GGF.Unit:SetCaption()
+function GGF.Unit:SetCaption( caption )
   if not self.template.Caption then return end
-  self.caption = GetUnitCaption(self.unitTag) or GetUnitTitle(self.unitTag)
+  self.caption = caption
   self.frames.captionLb:SetText( self.caption )
+end
+
+function GGF.Unit:SetAllianceRank( rank )
+  if not self.template.RankLb or not self.template.RankTx then return end
+  self.rank = rank
+  if self.rank > 0 then
+    GGF.Window:SetLabelText( self.frames.rankLb, self.rank, true )
+    self.frames.rankTx:SetTexture( GetAvARankIcon(self.rank) )
+    self.frames.rankLb:SetHidden( false )
+    self.frames.rankTx:SetHidden( false )
+  else
+    self.frames.rankLb:SetHidden( true )
+    self.frames.rankTx:SetHidden( true )
+  end
+end
+
+function GGF.Unit:SetDifficulty( difficulty )
+  if not self.template.Difficulty then return end
+  self.difficulty = difficulty
+  -- if self.difficulty == MONSTER_DIFFICULTY_EASY then
+  --   self.frames.difficultyTx:SetTexture('ggFrames\\theme\\themes\\textures\\MonsterDiff1.dds')
+  --   self.frames.difficultyTx:SetHidden(false)
+  if self.difficulty == MONSTER_DIFFICULTY_NORMAL then
+    self.frames.difficultyTx:SetTexture('ggFrames\\theme\\themes\\textures\\MonsterDiff1.dds')
+    self.frames.difficultyTx:SetHidden(false)
+  elseif self.difficulty == MONSTER_DIFFICULTY_HARD then
+    self.frames.difficultyTx:SetTexture('ggFrames\\theme\\themes\\textures\\MonsterDiff2.dds')
+    self.frames.difficultyTx:SetHidden(false)
+  elseif self.difficulty == MONSTER_DIFFICULTY_DEADLY then
+    self.frames.difficultyTx:SetTexture('ggFrames\\theme\\themes\\textures\\MonsterDiff3.dds')
+    self.frames.difficultyTx:SetHidden(false)
+  else
+    self.frames.difficultyTx:SetHidden(true)
+  end
 end
 
 function GGF.Unit:SetClass( className )

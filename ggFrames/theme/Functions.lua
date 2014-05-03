@@ -117,7 +117,7 @@ function GGF.Theme.LoadPlayer()
   GGF.Theme.themes['Player']['Health']['LabelTwo']['FontColor']      = GGF.SavedVars['Player_Health_FontColor']
   GGF.Theme.themes['Player']['Health']['LabelOne']['HorizontalAlign'] = GGF.TextPositions[GGF.SavedVars['Bar_Format_Location']]
   GGF.Theme.themes['Player']['Health']['LabelTwo']['HorizontalAlign'] = GGF.TextPositions[GGF.SavedVars['Bar_Format_Location_Two']]
-  currentHeight = currentHeight + GGF.Theme.themes['Player']['Health']['Height'] - 1
+  currentHeight = currentHeight + GGF.Theme.themes['Player']['Health']['Height'] + GGF.SavedVars['Player_Padding']
   
   GGF.Theme.themes['Player']['Magicka']['OffsetY']                = currentHeight
   GGF.Theme.themes['Player']['Magicka']['Width']                  = GGF.SavedVars['Player_Width']
@@ -136,7 +136,7 @@ function GGF.Theme.LoadPlayer()
   GGF.Theme.themes['Player']['Magicka']['LabelTwo']['FontColor']     = GGF.SavedVars['Player_Magicka_FontColor']
   GGF.Theme.themes['Player']['Magicka']['LabelOne']['HorizontalAlign'] = GGF.TextPositions[GGF.SavedVars['Bar_Format_Location']]
   GGF.Theme.themes['Player']['Magicka']['LabelTwo']['HorizontalAlign'] = GGF.TextPositions[GGF.SavedVars['Bar_Format_Location_Two']]
-  currentHeight = currentHeight + GGF.Theme.themes['Player']['Magicka']['Height'] - 1
+  currentHeight = currentHeight + GGF.Theme.themes['Player']['Magicka']['Height'] + GGF.SavedVars['Player_Padding']
   
   GGF.Theme.themes['Player']['Stamina']['OffsetY']                = currentHeight
   GGF.Theme.themes['Player']['Stamina']['Width']                  = GGF.SavedVars['Player_Width']
@@ -155,7 +155,7 @@ function GGF.Theme.LoadPlayer()
   GGF.Theme.themes['Player']['Stamina']['LabelTwo']['FontColor']     = GGF.SavedVars['Player_Stamina_FontColor']
   GGF.Theme.themes['Player']['Stamina']['LabelOne']['HorizontalAlign'] = GGF.TextPositions[GGF.SavedVars['Bar_Format_Location']]
   GGF.Theme.themes['Player']['Stamina']['LabelTwo']['HorizontalAlign'] = GGF.TextPositions[GGF.SavedVars['Bar_Format_Location_Two']]
-  currentHeight = currentHeight + GGF.Theme.themes['Player']['Stamina']['Height'] - 1
+  currentHeight = currentHeight + GGF.Theme.themes['Player']['Stamina']['Height'] + GGF.SavedVars['Player_Padding']
 
   if GGF.SavedVars['Player_Experience_Display'] then
     GGF.Theme.themes['Player']['Experience']['OffsetY']             = currentHeight
@@ -165,7 +165,7 @@ function GGF.Theme.LoadPlayer()
     GGF.Theme.themes['Player']['Experience']['Bar']['Height']       = GGF.SavedVars['Player_Experience_Height'] - 2
     GGF.Theme.themes['Player']['Experience']['Bar']['BarColor']     = GGF.SavedVars['Player_Experience_BarColor']
     GGF.Theme.themes['Player']['Experience']['Bar']['Texture']      = GGF.Theme.LMP:Fetch('statusbar',GGF.SavedVars['Bar_Texture'])
-    currentHeight = currentHeight + GGF.Theme.themes['Player']['Stamina']['Height'] - 1
+    currentHeight = currentHeight + GGF.Theme.themes['Player']['Stamina']['Height'] + GGF.SavedVars['Player_Padding']
     if GGF.SavedVars['Player_Experience_Text_Display'] then
       GGF.Theme.themes['Player']['Experience']['Label'] = {}
       GGF.Theme.themes['Player']['Experience']['Label']['Height']    = GGF.SavedVars['Player_Experience_Height'] - 2
@@ -180,14 +180,17 @@ function GGF.Theme.LoadPlayer()
     GGF.Theme.themes['Player']['Experience'] = false
   end
   
-  GGF.Theme.themes['Player']['Mount']['OffsetY']                    = currentHeight + 4
+  GGF.Theme.themes['Player']['Mount']['OffsetY']                    = currentHeight + 2
   GGF.Theme.themes['Player']['Mount']['BarArea']['Height']          = GGF.SavedVars['Player_Mount_Height']
   GGF.Theme.themes['Player']['Mount']['BarArea']['Bar']['Height']   = GGF.SavedVars['Player_Mount_Height'] - 2
   GGF.Theme.themes['Player']['Mount']['BarArea']['Bar']['BarColor'] = GGF.SavedVars['Player_Mount_BarColor']
   GGF.Theme.themes['Player']['Mount']['BarArea']['Bar']['Texture']  = GGF.Theme.LMP:Fetch('statusbar',GGF.SavedVars['Bar_Texture'])
-  currentHeight = currentHeight + 29
+  currentHeight = currentHeight + 27
   
   GGF.Theme.themes['Player']['Caption'] = false
+  GGF.Theme.themes['Player']['RankLb'] = false
+  GGF.Theme.themes['Player']['RankTx'] = false
+  GGF.Theme.themes['Player']['Difficulty'] = false
   
   -- Player Container
   GGF.Theme.themes['PlayerContainer'] = {
@@ -255,6 +258,9 @@ function GGF.Theme.LoadGroup()
   GGF.Theme.themes['Group']['Experience'] = false
   GGF.Theme.themes['Group']['Mount'] = false
   GGF.Theme.themes['Group']['Caption'] = false
+  GGF.Theme.themes['Group']['RankLb'] = false
+  GGF.Theme.themes['Group']['RankTx'] = false
+  GGF.Theme.themes['Group']['Difficulty'] = false
   
   for i = 1, 3 do
     GGF.Theme.themes['Group'..i] = GGF.Utils:DeepCopy(GGF.Theme.themes['Group'])
@@ -320,10 +326,11 @@ function GGF.Theme.LoadLargeGroup()
   GGF.Theme.themes['LargeGroup']['Experience']                    = false
   GGF.Theme.themes['LargeGroup']['Mount']                         = false
   
+  local groupSize = GGF.SavedVars['Raid_Format'] == "One Row of Six Groups" and 4 or 8
   for i = 1, 24 do 
     GGF.Theme.themes['LargeGroup'..i] = GGF.Utils:DeepCopy(GGF.Theme.themes['LargeGroup'])
-    GGF.Theme.themes['LargeGroup'..i]['OffsetX'] = GGF.Theme.themes['LargeGroup']['Width'] * math.floor((i-1)/4)
-    GGF.Theme.themes['LargeGroup'..i]['OffsetY'] = GGF.Theme.themes['LargeGroup']['Height'] * ((i-1)%4)
+    GGF.Theme.themes['LargeGroup'..i]['OffsetX'] = GGF.Theme.themes['LargeGroup']['Width'] * math.floor((i-1)/groupSize)
+    GGF.Theme.themes['LargeGroup'..i]['OffsetY'] = GGF.Theme.themes['LargeGroup']['Height'] * ((i-1)%groupSize)
   end
 
   local width = GGF.Theme.themes['LargeGroup']['Width'] * 6
@@ -388,11 +395,15 @@ function GGF.Theme.LoadTarget()
   GGF.Theme.themes['Target']['Health']['LabelOne']['HorizontalAlign'] = GGF.TextPositions[GGF.SavedVars['Bar_Format_Location']]
   GGF.Theme.themes['Target']['Health']['LabelTwo']['HorizontalAlign'] = GGF.TextPositions[GGF.SavedVars['Bar_Format_Location_Two']]
 
-  GGF.Theme.themes['Target']['Caption']['Width']                    = GGF.SavedVars['Target_Width']
+  GGF.Theme.themes['Target']['Caption']['Width']                    = GGF.SavedVars['Target_Width'] - 60
   GGF.Theme.themes['Target']['Caption']['Height']                   = GGF.SavedVars['Target_FontSize'] + 4
   GGF.Theme.themes['Target']['Caption']['Font']                     = GGF.Theme.LMP:Fetch('font',GGF.SavedVars['Font']).."|"..tostring(GGF.SavedVars['Target_FontSize']).."|"..GGF.SavedVars['Font_Style']
   GGF.Theme.themes['Target']['Caption']['FontColor']                = GGF.SavedVars['Target_FontColor']
-
+  
+  GGF.Theme.themes['Target']['RankLb']['Height']                   = GGF.SavedVars['Target_FontSize'] + 4
+  GGF.Theme.themes['Target']['RankLb']['Font']                     = GGF.Theme.LMP:Fetch('font',GGF.SavedVars['Font']).."|"..tostring(GGF.SavedVars['Target_FontSize']).."|"..GGF.SavedVars['Font_Style']
+  GGF.Theme.themes['Target']['RankLb']['FontColor']                = GGF.SavedVars['Target_FontColor']
+  
   GGF.Theme.themes['Target']['Magicka'] = false
   GGF.Theme.themes['Target']['Stamina'] = false
   GGF.Theme.themes['Target']['Experience'] = false

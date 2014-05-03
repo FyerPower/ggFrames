@@ -1,5 +1,5 @@
 ## Title: ggFrames
-## Version: 0.4.4
+## Version: 0.5.0
 ## Author: Michael Lynch
 ## APIVersion: 100003
 ## SavedVariables: GGFSavedVariables
@@ -11,7 +11,7 @@ lib/LibMediaProvider-1.0.lua
 ggFrames.lua
 ggSavedVarsDefaults.lua
 
-localization/EN.lua
+localization/$(language).lua
 
 settings/Functions.lua
 settings/Controls.lua

@@ -12,20 +12,65 @@ function GGF.Unit:Controls()
   -- Draw Main Control
   self.frames.main = GGF.Window:CreateBackDrop("GGF_"..self.unitName.."Frame", self.parent, self.template)
 
-  -- Draw Name and Class (Level)
-  if self.template.Name ~= false    then self.frames.nameLb  = GGF.Window:CreateLabel("GGF_"..self.unitName.."NameLB", self.frames.main, self.template.Name);         self.frames.nameLb:SetHidden(false)    elseif self.frames.nameLb ~= nil then self.frames.nameLb:SetHidden(true) end
-  if self.template.Level ~= false   then self.frames.levelLb = GGF.Window:CreateLabel("GGF_"..self.unitName.."LevelLb", self.frames.nameLb, self.template.Level);     self.frames.levelLb:SetHidden(false)   elseif self.frames.levelLb ~= nil then self.frames.levelLb:SetHidden(true) end
-  if self.template.Class ~= false   then self.frames.classTx = GGF.Window:CreateTexture("GGF_"..self.unitName.."ClassTx", self.frames.main, self.template.Class);     self.frames.classTx:SetHidden(false)   elseif self.frames.classTx ~= nil then self.frames.classTx:SetHidden(true) end
-  if self.template.Leader ~= false  then self.frames.leaderTx = GGF.Window:CreateTexture("GGF_"..self.unitName.."LeadTx", self.frames.main, self.template.Leader);                                           elseif self.frames.leaderTx ~= nil then self.frames.leaderTx:SetHidden(true) end
-  if self.template.Caption ~= false then self.frames.captionLb = GGF.Window:CreateLabel("GGF_"..self.unitName.."CaptionLb", self.frames.main, self.template.Caption); self.frames.captionLb:SetHidden(false) elseif self.frames.captionLb ~= nil then self.frames.captionLb:SetHidden(true) end
+  -- Draw Name
+  if self.template.Name ~= false then 
+    self.frames.nameLb  = GGF.Window:CreateLabel("GGF_"..self.unitName.."NameLB", self.frames.main, self.template.Name);
+    self.frames.nameLb:SetHidden(false)
+  elseif self.frames.nameLb ~= nil then 
+    self.frames.nameLb:SetHidden(true) 
+  end
+  
+  if self.template.Level ~= false then 
+    self.frames.levelLb = GGF.Window:CreateLabel("GGF_"..self.unitName.."LevelLb", self.frames.nameLb, self.template.Level);
+    self.frames.levelLb:SetHidden(false)
+  elseif self.frames.levelLb ~= nil then 
+    self.frames.levelLb:SetHidden(true) 
+  end
+  
+  if self.template.Class ~= false then 
+    self.frames.classTx = GGF.Window:CreateTexture("GGF_"..self.unitName.."ClassTx", self.frames.main, self.template.Class);
+    self.frames.classTx:SetHidden(false)
+  elseif self.frames.classTx ~= nil then 
+    self.frames.classTx:SetHidden(true) 
+  end
+  
+  if self.template.Leader ~= false then 
+    self.frames.leaderTx = GGF.Window:CreateTexture("GGF_"..self.unitName.."LeadTx", self.frames.main, self.template.Leader);
+  elseif self.frames.leaderTx ~= nil then 
+    self.frames.leaderTx:SetHidden(true) 
+  end
+
+  if self.template.Caption ~= false then 
+    self.frames.captionLb = GGF.Window:CreateLabel("GGF_"..self.unitName.."CaptionLb", self.frames.main, self.template.Caption); 
+    self.frames.captionLb:SetHidden(false) 
+  elseif self.frames.captionLb ~= nil then 
+    self.frames.captionLb:SetHidden(true) 
+  end
+  
+  if self.template.RankLb ~= false and self.template.RankTx ~= false then 
+    self.frames.rankLb = GGF.Window:CreateLabel("GGF_"..self.unitName.."RankLb", self.frames.main, self.template.RankLb); 
+    self.frames.rankTx = GGF.Window:CreateTexture("GGF_"..self.unitName.."RankTx", self.frames.rankLb, self.template.RankTx); 
+    self.frames.rankLb:SetHidden(false) 
+    self.frames.rankTx:SetHidden(false) 
+  else
+    if self.frames.rankLb ~= nil then self.frames.rankLb:SetHidden(true) end
+    if self.frames.rankTx ~= nil then self.frames.rankTx:SetHidden(true) end
+  end
+
+  if self.template.Difficulty ~= false then 
+    self.frames.difficultyTx = GGF.Window:CreateTexture("GGF_"..self.unitName.."DifficultyTx", self.frames.main, self.template.Difficulty); 
+    self.frames.difficultyTx:SetHidden(false) 
+  elseif self.frames.difficultyTx ~= nil then 
+    self.frames.difficultyTx:SetHidden(true) 
+  end
 
   -- Misc Labels
   self.frames.death     = GGF.Window:CreateBackDrop("GGF_"..self.unitName.."Death", self.frames.main, self.template.Death)
   self.frames.deathLb   = GGF.Window:CreateLabel("GGF_"..self.unitName.."DeathText", self.frames.death, self.template.Death.Label)
-  self.frames.deathLb:SetText("Dead")
+  self.frames.deathLb:SetText( GGF.locale['Dead'] )
   self.frames.offline   = GGF.Window:CreateBackDrop("GGF_"..self.unitName.."Offline", self.frames.main, self.template.Offline)
   self.frames.offlineLb = GGF.Window:CreateLabel("GGF_"..self.unitName.."OfflineText", self.frames.offline, self.template.Offline.Label)
-  self.frames.offlineLb:SetText("Offline")
+  self.frames.offlineLb:SetText( GGF.locale['Offline'] )
 
   -- Health
   self.frames.healthBd      = GGF.Window:CreateBackDrop("GGF_"..self.unitName.."Health", self.frames.main, self.template.Health)
@@ -76,10 +121,3 @@ function GGF.Unit:Controls()
   -- self.frames.main:SetMouseEnabled(true)
   -- self.frames.main:SetHandler("OnMouseUp", function(self, btn, upInside) d("Clicking on unit frames will be coming soon") end)
 end
-
-function GGF.Unit:SetPosition()
-end
-
-
--- function GGF.GenerateCastBar()
--- end
