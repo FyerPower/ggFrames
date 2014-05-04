@@ -326,7 +326,7 @@ function GGF.Theme.LoadLargeGroup()
   GGF.Theme.themes['LargeGroup']['Experience']                    = false
   GGF.Theme.themes['LargeGroup']['Mount']                         = false
   
-  local groupSize = GGF.SavedVars['Raid_Format'] == "One Row of Six Groups" and 4 or 8
+  local groupSize = GGF.SavedVars['Raid_Format'] == GGF.locale['Setting_Raid_Layout_Opt'][1] and 4 or 8
   for i = 1, 24 do 
     GGF.Theme.themes['LargeGroup'..i] = GGF.Utils:DeepCopy(GGF.Theme.themes['LargeGroup'])
     GGF.Theme.themes['LargeGroup'..i]['OffsetX'] = GGF.Theme.themes['LargeGroup']['Width'] * math.floor((i-1)/groupSize)
@@ -408,6 +408,7 @@ function GGF.Theme.LoadTarget()
   GGF.Theme.themes['Target']['Stamina'] = false
   GGF.Theme.themes['Target']['Experience'] = false
   GGF.Theme.themes['Target']['Mount'] = false
+  GGF.Theme.themes['Target']['Leader'] = false
   
   -- Target Container
   local height = (GGF.Theme.themes['Target']['Health']['Height'] + GGF.Theme.themes['Target']['Name']['Height'] + GGF.Theme.themes['Target']['Name']['Height'] + 2)

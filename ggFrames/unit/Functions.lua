@@ -31,6 +31,7 @@ function GGF.Unit:Load(unitTag)
     self:SetLeader( IsUnitGroupLeader(self.unitTag) )                                       -- Is Group Leader (Non-Players are never Group Leaders)
   else 
     self:SetClass( nil )
+    self:SetLeader( false )
   end
 
   self:SetPower( nil, POWERTYPE_HEALTH, GetUnitPower(self.unitTag, POWERTYPE_HEALTH) )      -- Set Health

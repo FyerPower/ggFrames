@@ -1,6 +1,7 @@
 ## Title: ggFrames
-## Version: 0.5.0
-## Author: Michael Lynch
+## Version: 0.5.1
+## Author: Michael Lynch (@gamegenius86)
+## Description: Fully Customizable Unit Frames
 ## APIVersion: 100003
 ## SavedVariables: GGFSavedVariables
 

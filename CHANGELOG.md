@@ -1,3 +1,8 @@
+v0.5.1
+- Fix wording within German Localization
+- Added Localization to Raid Layout Types (EN, FR, DE)
+- Fix bug where target could have leader icon
+
 v0.5.0
 - Localization
 - Optional padding between bars [Suggested By: shudaoxin]

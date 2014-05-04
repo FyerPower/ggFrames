@@ -4,7 +4,7 @@ function GGF.Settings:Controls()
   local styleOptions = {"normal", "outline", "shadow", "soft-shadow-thick", "soft-shadow-thin", "thick-outline"}
   local formatOptions = {"Nothing", "Current", "Max", "Percentage%", "Current / Max", "Current / Max (Percentage%)", "Current (Percentage%)"}
   local formatLocations = {"Left", "Center", "Right"}
-  local raidFormatTypes = {"One Row of Six Groups","Two Rows of Three Groups"}
+  local raidFormatTypes = GGF.locale['Setting_Raid_Layout_Opt']
 
   local LAM = LibStub("LibAddonMenu-1.0")
   local panelID = LAM:CreateControlPanel( "ggFrameSettingMenu", "ggFrames")

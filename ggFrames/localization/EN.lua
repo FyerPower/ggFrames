@@ -62,6 +62,7 @@ GGF.locale['Setting_Player_Mount']      = 'Player Frame: Mount'
 GGF.locale['Setting_Group']             = 'Group Frame'
 GGF.locale['Setting_Raid']              = 'Raid Frame'
 GGF.locale['Setting_Raid_Layout']       = 'Raid Group Layout'
+GGF.locale['Setting_Raid_Layout_Opt']  = {'One Row of Six Groups', 'Two Rows of Three Groups'}
 GGF.locale['Setting_Target']            = 'Target Frame'
 GGF.locale['Setting_Defaults']          = 'Reset To Defaults'
 GGF.locale['Setting_Reset_Warning']     = 'Caution: By resetting to the defaults you will lose all custom configuration you\'ve setup.  Please make sure this is what you want to do before clicking the button below.'

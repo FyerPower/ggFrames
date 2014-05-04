@@ -62,6 +62,7 @@ GGF.locale['Setting_Player_Mount']      = "Cadre du jouer: Monture"
 GGF.locale['Setting_Group']             = "Cadre de groupe"
 GGF.locale['Setting_Raid']              = "Cadre de raid" -- I would leave it to raid
 GGF.locale['Setting_Raid_Layout']       = "L'affichage du cadre de raid"
+GGF.locale['Setting_Raid_Layout_Opt']  = {'Une rangée de six groupes', 'Deux rangées de trois groupes'}
 GGF.locale['Setting_Target']            = "Cadre de la cible"
 GGF.locale['Setting_Defaults']          = "Remettre les configurations par défaut"
 GGF.locale['Setting_Reset_Warning']     = "Attention: En remettant les configurations par défaut, vous allez perdre toutes configurations manuelle. Assurez-vous que c'est bel et bien ce que vous voulez avant de presser le bouton du bas."
