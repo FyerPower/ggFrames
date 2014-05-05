@@ -80,5 +80,6 @@ end
 
 function GGF.Window:SetOffsetY( control, newOffsetY )
   local isValidAnchor, point, relativeTo, relativePoint, offsetX, offsetY = control:GetAnchor()
+  control:ClearAnchors()
   control:SetAnchor(point, relativeTo, relativePoint, offsetX, newOffsetY)
 end

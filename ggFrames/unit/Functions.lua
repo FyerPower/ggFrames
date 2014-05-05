@@ -89,7 +89,7 @@ function GGF.Unit:SetMounted( isMounted )
   if not self.template.Mount then return end
   self.isMounted = isMounted
   self.frames.mount:SetHidden( not self.isMounted )
-  if not GGF.SavedVars['Player_Mount_Seperated'] then
+  if self.template.Experience ~= false and not GGF.SavedVars['Player_Mount_Seperated'] then
     GGF.Window:SetOffsetY(self.frames.experienceBd, isMounted and self.template.Experience.OffsetY or self.template.Experience.UnmountedOffsetY )
   end
 end
