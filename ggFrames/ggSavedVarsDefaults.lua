@@ -4,9 +4,9 @@ GGF.SavedVarsDefaults = {
   ["PlayerContainer_OffsetY"] = 3,
   
   ['Combat_Alpha'] = 75,
-  ["Font"] = "Bebas Neue",
+  ["Font"] = "Fontin SmallCaps",
   ["Font_Style"] = "soft-shadow-thin",
-  ["Bar_Texture"] = "Round",
+  ["Bar_Texture"] = "Inner Shadow Glossy",
   ["Bar_Format"] = "Current",
   ["Bar_Format_Location"] = "Left",
   ["Bar_Format_Two"] = "Percentage%",
@@ -22,6 +22,8 @@ GGF.SavedVarsDefaults = {
   ["Player_Health_BarColor"] = {0.831372549,0.149019608,0.149019608,1},
   ["Player_Health_FontSize"] = 16, 
   ["Player_Health_FontColor"] = {1,1,1,1},
+  ["Player_Shield_Height"] = 36,
+  ["Player_Shield_BarColor"] = {1, .5, 0, 1},
   
   ["Player_Magicka_Height"] = 20,
   ["Player_Magicka_BarColor"] = {.08627451,.294117647,.776470588,1},
@@ -40,8 +42,10 @@ GGF.SavedVarsDefaults = {
   ["Player_Experience_FontSize"] = 14, 
   ["Player_Experience_FontColor"] = {1,1,1,1},
   
+  ['Player_Mount_Seperated'] = true,
   ["Player_Mount_Height"] = 8,
   ["Player_Mount_BarColor"] = {.933333333,.933333333,0,1},
+
 
   -- GROUP
   ["GroupContainer_OffsetX"] = 3,
@@ -55,6 +59,8 @@ GGF.SavedVarsDefaults = {
   ["Group_Health_BarColor"] = {0.831372549,0.149019608,0.149019608,1},
   ["Group_Health_FontSize"] = 14, 
   ["Group_Health_FontColor"] = {1,1,1,1},
+  ["Group_Shield_Height"] = 36,
+  ["Group_Shield_BarColor"] = {1, .5, 0, 1},
 
   -- RAID
   ["LargeGroupContainer_OffsetX"] = 3,
@@ -83,5 +89,7 @@ GGF.SavedVarsDefaults = {
   ["Target_Health_Height"] = 36,
   ["Target_Health_BarColor"] = {0.831372549,0.149019608,0.149019608,1},
   ["Target_Health_FontSize"] = 14, 
-  ["Target_Health_FontColor"] = {1,1,1,1}
+  ["Target_Health_FontColor"] = {1,1,1,1},
+  ["Target_Shield_Height"] = 36,
+  ["Target_Shield_BarColor"] = {1, .5, 0, 1}
 }

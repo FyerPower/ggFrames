@@ -19,7 +19,10 @@ GGF.locale["Bar_Format"]                = "Bar Label Format"
 GGF.locale["Bar_Format_Location"]       = "Bar Label Position"
 GGF.locale["Bar_Format_Two"]            = "Bar Label Two Format"
 GGF.locale["Bar_Format_Location_Two"]   = "Bar Label Two Position"
-  
+GGF.locale["Shield_Height"]             = "Shield Height"
+GGF.locale["Shield_BarColor"]           = "Shield Bar Color"
+GGF.locale["Mount_Seperated"]           = "Separate Mount Frame"
+
 -- Frame Options
 GGF.locale["Frame_PositionX"]           = 'Frame Horizontal Position'
 GGF.locale["Frame_PositionY"]           = 'Frame Vertical Position'

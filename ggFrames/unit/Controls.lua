@@ -1,9 +1,10 @@
 GGF.classTextures = {
-  ["Sorcerer"] = "/esoui/art/contacts/social_classicon_sorcerer.dds",
-  ["Templar"] = "/esoui/art/contacts/social_classicon_templar.dds",
-  ["Dragonknight"] = "/esoui/art/contacts/social_classicon_dragonknight.dds",
-  ["Nightblade"] = "/esoui/art/contacts/social_classicon_nightblade.dds"
+  [1] = "/esoui/art/contacts/social_classicon_dragonknight.dds",
+  [2] = "/esoui/art/contacts/social_classicon_sorcerer.dds",
+  [3] = "/esoui/art/contacts/social_classicon_nightblade.dds",
+  [6] = "/esoui/art/contacts/social_classicon_templar.dds"
 }
+
 
 -- Create Player Frames
 function GGF.Unit:Controls()
@@ -77,6 +78,7 @@ function GGF.Unit:Controls()
   self.frames.healthSt      = GGF.Window:CreateStatusBar("GGF_"..self.unitName.."HealthStatusBar", self.frames.healthBd, self.template.Health.Bar)
   if self.template.Health.LabelOne ~= false then self.frames.healthLbOne  = GGF.Window:CreateLabel("GGF_"..self.unitName.."HealthLabelOne",  self.frames.healthBd, self.template.Health.LabelOne) end
   if self.template.Health.LabelTwo ~= false then self.frames.healthLbTwo  = GGF.Window:CreateLabel("GGF_"..self.unitName.."HealthLabelTwo",  self.frames.healthBd, self.template.Health.LabelTwo) end
+  if self.template.Health.Shield ~= false then self.frames.shield = GGF.Window:CreateStatusBar("GGF_"..self.unitName.."Shield", self.frames.healthBd, self.template.Health.Shield) end
 
   -- Magicka
   if self.template.Magicka ~= false then
@@ -96,10 +98,17 @@ function GGF.Unit:Controls()
 
   -- Mount
   if self.template.Mount ~= false then
-    self.frames.mount      = GGF.Window:CreateBackDrop("GGF_"..self.unitName.."Mount", self.frames.main, self.template.Mount)
-    self.frames.mountBd    = GGF.Window:CreateBackDrop("GGF_"..self.unitName.."MountBd", self.frames.mount, self.template.Mount.BarArea)
-    self.frames.mountSt    = GGF.Window:CreateStatusBar("GGF_"..self.unitName.."MountSt", self.frames.mountBd, self.template.Mount.BarArea.Bar)
-    self.frames.mountTx    = GGF.Window:CreateTexture("GGF_"..self.unitName.."MountTx", self.frames.mount, self.template.Mount.Icon)
+    if GGF.SavedVars['Player_Mount_Seperated'] then
+      self.frames.mount      = GGF.Window:CreateBackDrop("GGF_"..self.unitName.."Mount", self.frames.main, self.template.Mount)
+      self.frames.mountBd    = GGF.Window:CreateBackDrop("GGF_"..self.unitName.."MountBd", self.frames.mount, self.template.Mount.BarArea)
+      self.frames.mountSt    = GGF.Window:CreateStatusBar("GGF_"..self.unitName.."MountSt", self.frames.mountBd, self.template.Mount.BarArea.Bar)
+      self.frames.mountTx    = GGF.Window:CreateTexture("GGF_"..self.unitName.."MountTx", self.frames.mount, self.template.Mount.Icon)
+      self.frames.mountTx:SetHidden(false)
+    else
+      self.frames.mount      = GGF.Window:CreateBackDrop("GGF_"..self.unitName.."MountBd", self.frames.main, self.template.Mount)
+      self.frames.mountSt    = GGF.Window:CreateStatusBar("GGF_"..self.unitName.."MountSt", self.frames.mount, self.template.Mount.Bar)
+      self.frames.mountTx:SetHidden(true)
+    end
   end
 
   -- Exp

@@ -1,3 +1,10 @@
+v0.6.0
+- Fix Experience Bug where sometimes the experience bar went to 0
+- Fix Class Icon Localization
+- Damage Shield
+- Mount frame can optionally now be attached to the player frame
+- Lowered Minimum Out of Combat Opacity to 0
+
 v0.5.1
 - Fix wording within German Localization
 - Added Localization to Raid Layout Types (EN, FR, DE)

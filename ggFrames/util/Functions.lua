@@ -1,48 +1,48 @@
 
 GGF.Utils = { bufferTable = {} }
-function GGF.Utils:BufferReached(key, time)
-  if not key then return end
+-- function GGF.Utils:BufferReached(key, time)
+--   if not key then return end
   
-  local current = GetFrameTimeMilliseconds()
-  if (current - (self.bufferTable[key] or 0)) >= (time or 250) then
-    self.bufferTable[key] = current
-    return true
-  end
-  return false
-end
+--   local current = GetFrameTimeMilliseconds()
+--   if (current - (self.bufferTable[key] or 0)) >= (time or 250) then
+--     self.bufferTable[key] = current
+--     return true
+--   end
+--   return false
+-- end
 
 -- Color Hex to RGBA
-function GGF.Utils:ConvertRGBA(hex, alpha)
-  return {tonumber("0x"..string.sub(hex, 1, 2))/255, tonumber("0x"..string.sub(hex, 3, 4))/255, tonumber("0x"..string.sub(hex, 5, 6))/255, alpha}
-end
+-- function GGF.Utils:ConvertRGBA(hex, alpha)
+--   return {tonumber("0x"..string.sub(hex, 1, 2))/255, tonumber("0x"..string.sub(hex, 3, 4))/255, tonumber("0x"..string.sub(hex, 5, 6))/255, alpha}
+-- end
 
-function GGF.Utils:ShallowCopy(orig)
+-- function GGF.Utils:ShallowCopy(orig)
+--   local orig_type = type(orig)
+--   local copy
+--   if orig_type == 'table' then
+--       copy = {}
+--       for orig_key, orig_value in pairs(orig) do
+--           copy[orig_key] = orig_value
+--       end
+--   else -- number, string, boolean, etc
+--       copy = orig
+--   end
+--   return copy
+-- end
+
+function GGF.Utils:DeepCopy(orig)
   local orig_type = type(orig)
   local copy
   if orig_type == 'table' then
-      copy = {}
-      for orig_key, orig_value in pairs(orig) do
-          copy[orig_key] = orig_value
-      end
+    copy = {}
+    for orig_key, orig_value in next, orig, nil do
+      copy[GGF.Utils:DeepCopy(orig_key)] = GGF.Utils:DeepCopy(orig_value)
+    end
+    setmetatable(copy, GGF.Utils:DeepCopy(getmetatable(orig)))
   else -- number, string, boolean, etc
-      copy = orig
+    copy = orig
   end
   return copy
-end
-
-function GGF.Utils:DeepCopy(orig)
-    local orig_type = type(orig)
-    local copy
-    if orig_type == 'table' then
-        copy = {}
-        for orig_key, orig_value in next, orig, nil do
-            copy[GGF.Utils:DeepCopy(orig_key)] = GGF.Utils:DeepCopy(orig_value)
-        end
-        setmetatable(copy, GGF.Utils:DeepCopy(getmetatable(orig)))
-    else -- number, string, boolean, etc
-        copy = orig
-    end
-    return copy
 end
 
 function GGF.Utils:TableMerge(table1, table2)

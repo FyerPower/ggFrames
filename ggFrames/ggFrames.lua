@@ -1,44 +1,30 @@
 -- Global Initalizations
 GGF           = {}
 GGF.addonName = "ggFrames"
-GGF.version   = "0.5.1"
+GGF.version   = "0.6.0"
 
 -- Config
-GGF.init      = {}
 GGF.move      = false
 
 function GGF.Initialize( eventCode, addOnName )
-  -- Only Initialize our addon
   if ( addOnName ~= GGF.addonName ) then return end
 
   -- Load Saved Vars
   GGF.SavedVars = ZO_SavedVars:NewAccountWide( "GGFSavedVariables" , 1 , nil , GGF.SavedVarsDefaults , nil )
-  GGF.Theme.Initialize()
   
-  -- Build Settings Menu
-  GGF.Settings:New()
-
-  -- Initalize UnitManager
-  GGF.UnitManager.Initialize()
-
-  -- Setup Slash Commands
-  GGF.RegisterSlashCommands()
-
-  -- Register Global Events
-  GGF.RegisterEvents()
+  GGF.Theme.Initialize()         -- Load Theme
+  GGF.Settings:New()             -- Build Settings Menu
+  GGF.UnitManager.Initialize()   -- Initalize UnitManager
+  GGF.RegisterSlashCommands()    -- Setup Slash Commands
+  GGF.RegisterEvents()           -- Register Global Events
 
   -- Once we've loaded ours, lets unregister the event listener
   EVENT_MANAGER:UnregisterForEvent("GGF", EVENT_ADD_ON_LOADED)
-
-  -- Loaded
-  -- d("|c000099"..GGF.addonName.." v"..GGF.version.." Successfully Loaded|r")
 end
 
 function GGF.ToggleVisibility( eventCode , isReticleHidden )
   if (isReticleHidden == true and (ZO_KeybindStripControl:IsHidden() == false or ZO_GameMenu_InGame:IsHidden() == false)) then
     GGF.UnitManager.ToggleVisibility(true)
-  -- elseif ZO_InteractWindow:IsHidden() == false then 
-  --   GGF.UnitManager.ToggleVisibility(true)
   else
     GGF.UnitManager.ToggleVisibility(false)
   end

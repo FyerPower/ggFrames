@@ -19,6 +19,9 @@ GGF.locale["Bar_Format"]                = "Stil der Leistenbeschriftung"
 GGF.locale["Bar_Format_Location"]       = "Position der Leistenbeschriftung"
 GGF.locale["Bar_Format_Two"]            = "Zweite Leistenbeschriftungart"
 GGF.locale["Bar_Format_Location_Two"]   = "Zweite Leistenbeschriftungsposition"
+GGF.locale["Shield_Height"]             = "Schildleisten Höhe"
+GGF.locale["Shield_BarColor"]           = "Schildleisten Farbe"
+GGF.locale["Mount_Seperated"]           = "Reittierleiste abtrennen"
 
 -- Frame Options
 GGF.locale["Frame_PositionX"]           = "Horizontale Fensterposition"

@@ -13,12 +13,7 @@ end
 
 function GGF.Settings:SetValue(field, val)
   GGF.SavedVars[field] = val
-  local section, _ = string.gsub(field, ".*_","")
-  if section == "Player" or section == "Group" or section == "LargeGroup" or section == "Target" then
-    GGF.UnitManager.RefreshControls(section)
-  else
-    GGF.UnitManager.RefreshControls()
-  end
+  self:UpdateSection(field)
 end
 
 function GGF.Settings:GetColor(field)
@@ -27,9 +22,16 @@ end
 
 function GGF.Settings:SetColor(field, r, g, b, a)
   GGF.SavedVars[field] = {r,g,b,a}
-  local s, _ = string.find(field,"_")
-  local section = string.sub(field, 0, s-1)
-  GGF.UnitManager.RefreshControls(section)
+  self:UpdateSection(field)
+end
+
+function GGF.Settings:UpdateSection(field)
+  local section, _ = string.gsub(field, ".*_","")
+  if section == "Player" or section == "Group" or section == "LargeGroup" or section == "Target" then
+    GGF.UnitManager.RefreshControls(section)
+  else
+    GGF.UnitManager.RefreshControls()
+  end
 end
 
 function GGF.Settings:IsFrameMovable()

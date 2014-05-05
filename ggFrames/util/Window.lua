@@ -77,3 +77,8 @@ function GGF.Window:SetAdditionalLeftOffset( control, cTemplate, additional )
   control:ClearAnchors()
   control:SetAnchor((cTemplate.MyAnchor or TOPLEFT), cParent, (cTemplate.ParentAnchor or TOPLEFT), ((cTemplate.OffsetX or 0) + additional), (cTemplate.OffsetY or 0))
 end
+
+function GGF.Window:SetOffsetY( control, newOffsetY )
+  local isValidAnchor, point, relativeTo, relativePoint, offsetX, offsetY = control:GetAnchor()
+  control:SetAnchor(point, relativeTo, relativePoint, offsetX, newOffsetY)
+end

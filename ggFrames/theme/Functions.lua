@@ -22,43 +22,43 @@ function GGF.Theme.Load( unitName )
 end
 
 function GGF.Theme.LoadFonts()
-  GGF.Theme.LMP:Register('font', 'Accidental President',             'ggFrames\\theme\\themes\\fonts\\AccidentalPresident.ttf')
-  GGF.Theme.LMP:Register('font', 'Alegre Sans',                      'ggFrames\\theme\\themes\\fonts\\AlegreSans.ttf')
-  GGF.Theme.LMP:Register('font', 'Alte Haas Grotesk',                'ggFrames\\theme\\themes\\fonts\\AlteHaasGroteskRegular.ttf')
-  GGF.Theme.LMP:Register('font', 'Alte Haas Grotesk Bold',           'ggFrames\\theme\\themes\\fonts\\AlteHaasGroteskBold.ttf')
-  GGF.Theme.LMP:Register('font', 'Antonio',                          'ggFrames\\theme\\themes\\fonts\\AntonioRegular.ttf')
-  GGF.Theme.LMP:Register('font', 'Arial Bold',                       'ggFrames\\theme\\themes\\fonts\\ArialBold.ttf')
-  GGF.Theme.LMP:Register('font', 'Bebas Neue',                       'ggFrames\\theme\\themes\\fonts\\BebasNeue.otf')
-  GGF.Theme.LMP:Register('font', 'Bench Nine',                       'ggFrames\\theme\\themes\\fonts\\BenchNineRegular.otf')
-  GGF.Theme.LMP:Register('font', 'Bench Nine Bold',                  'ggFrames\\theme\\themes\\fonts\\BenchNineBold.otf')
-  GGF.Theme.LMP:Register('font', 'Economica',                        'ggFrames\\theme\\themes\\fonts\\EconomicaRegular.otf')
-  GGF.Theme.LMP:Register('font', 'Economica Bold',                   'ggFrames\\theme\\themes\\fonts\\EconomicaBold.otf')
-  GGF.Theme.LMP:Register('font', 'Enigma Bold',                      'ggFrames\\theme\\themes\\fonts\\EnigmaBold.ttf')
-  GGF.Theme.LMP:Register('font', 'Enigma',                           'ggFrames\\theme\\themes\\fonts\\EnigmaReg.ttf')
-  GGF.Theme.LMP:Register('font', 'Fertigo Pro',                      'ggFrames\\theme\\themes\\fonts\\FertigoProRegular.ttf')
-  GGF.Theme.LMP:Register('font', 'Futura Extended',                  'ggFrames\\theme\\themes\\fonts\\FuturaExtended.ttf')
-  GGF.Theme.LMP:Register('font', 'Univers 55 Bold',                  'ggFrames\\theme\\themes\\fonts\\Univers55Bold.ttf')
+  GGF.Theme.LMP:Register('font', 'Accidental President',             'ggFrames\\theme\\fonts\\AccidentalPresident.ttf')
+  GGF.Theme.LMP:Register('font', 'Alegre Sans',                      'ggFrames\\theme\\fonts\\AlegreSans.ttf')
+  GGF.Theme.LMP:Register('font', 'Alte Haas Grotesk',                'ggFrames\\theme\\fonts\\AlteHaasGroteskRegular.ttf')
+  GGF.Theme.LMP:Register('font', 'Alte Haas Grotesk Bold',           'ggFrames\\theme\\fonts\\AlteHaasGroteskBold.ttf')
+  GGF.Theme.LMP:Register('font', 'Antonio',                          'ggFrames\\theme\\fonts\\AntonioRegular.ttf')
+  GGF.Theme.LMP:Register('font', 'Arial Bold',                       'ggFrames\\theme\\fonts\\ArialBold.ttf')
+  GGF.Theme.LMP:Register('font', 'Bebas Neue',                       'ggFrames\\theme\\fonts\\BebasNeue.otf')
+  GGF.Theme.LMP:Register('font', 'Bench Nine',                       'ggFrames\\theme\\fonts\\BenchNineRegular.otf')
+  GGF.Theme.LMP:Register('font', 'Bench Nine Bold',                  'ggFrames\\theme\\fonts\\BenchNineBold.otf')
+  GGF.Theme.LMP:Register('font', 'Economica',                        'ggFrames\\theme\\fonts\\EconomicaRegular.otf')
+  GGF.Theme.LMP:Register('font', 'Economica Bold',                   'ggFrames\\theme\\fonts\\EconomicaBold.otf')
+  GGF.Theme.LMP:Register('font', 'Enigma Bold',                      'ggFrames\\theme\\fonts\\EnigmaBold.ttf')
+  GGF.Theme.LMP:Register('font', 'Enigma',                           'ggFrames\\theme\\fonts\\EnigmaReg.ttf')
+  GGF.Theme.LMP:Register('font', 'Fertigo Pro',                      'ggFrames\\theme\\fonts\\FertigoProRegular.ttf')
+  GGF.Theme.LMP:Register('font', 'Futura Extended',                  'ggFrames\\theme\\fonts\\FuturaExtended.ttf')
+  GGF.Theme.LMP:Register('font', 'Univers 55 Bold',                  'ggFrames\\theme\\fonts\\Univers55Bold.ttf')
 
   GGF.Theme.fonts = GGF.Theme.LMP:List('font')
 end
 
 function GGF.Theme.LoadTextures()
-  GGF.Theme.LMP:Register('statusbar', 'Aluminium',              'ggFrames\\theme\\themes\\textures\\Aluminium.dds')
-  GGF.Theme.LMP:Register('statusbar', 'Elder Scrolls Gradiant', 'ggFrames\\theme\\themes\\textures\\ElderScrollsGrad.dds')
-  GGF.Theme.LMP:Register('statusbar', 'Glass',                  'ggFrames\\theme\\themes\\textures\\Glass.dds')
-  GGF.Theme.LMP:Register('statusbar', 'Glaze',                  'ggFrames\\theme\\themes\\textures\\Glaze.dds')
-  GGF.Theme.LMP:Register('statusbar', 'Horizontal Gradiant 1',  'ggFrames\\theme\\themes\\textures\\HorizontalGrad.dds')
-  GGF.Theme.LMP:Register('statusbar', 'Horizontal Gradiant 2',  'ggFrames\\theme\\themes\\textures\\HorizontalGradV2.dds')
-  GGF.Theme.LMP:Register('statusbar', 'Inner Glow',             'ggFrames\\theme\\themes\\textures\\InnerGlow.dds')
-  GGF.Theme.LMP:Register('statusbar', 'Inner Shadow',           'ggFrames\\theme\\themes\\textures\\InnerShadow.dds')
-  GGF.Theme.LMP:Register('statusbar', 'Inner Shadow Glossy',    'ggFrames\\theme\\themes\\textures\\InnerShadowGloss.dds')
-  GGF.Theme.LMP:Register('statusbar', 'Minimalistic',           'ggFrames\\theme\\themes\\textures\\Minimalistic.dds')
-  GGF.Theme.LMP:Register('statusbar', 'Normal',                 'ggFrames\\theme\\themes\\textures\\Normal.dds')
-  GGF.Theme.LMP:Register('statusbar', 'Round',                  'ggFrames\\theme\\themes\\textures\\Round.dds')
-  GGF.Theme.LMP:Register('statusbar', 'Sand Paper 1',           'ggFrames\\theme\\themes\\textures\\SandPaper.dds')
-  GGF.Theme.LMP:Register('statusbar', 'Sand Paper 2',           'ggFrames\\theme\\themes\\textures\\SandPaperV2.dds')
-  GGF.Theme.LMP:Register('statusbar', 'Shadow',                 'ggFrames\\theme\\themes\\textures\\Shadow.dds')
-  GGF.Theme.LMP:Register('statusbar', 'Smooth',                 'ggFrames\\theme\\themes\\textures\\Smooth.dds')
+  GGF.Theme.LMP:Register('statusbar', 'Aluminium',              'ggFrames\\theme\\textures\\Aluminium.dds')
+  GGF.Theme.LMP:Register('statusbar', 'Elder Scrolls Gradiant', 'ggFrames\\theme\\textures\\ElderScrollsGrad.dds')
+  GGF.Theme.LMP:Register('statusbar', 'Glass',                  'ggFrames\\theme\\textures\\Glass.dds')
+  GGF.Theme.LMP:Register('statusbar', 'Glaze',                  'ggFrames\\theme\\textures\\Glaze.dds')
+  GGF.Theme.LMP:Register('statusbar', 'Horizontal Gradiant 1',  'ggFrames\\theme\\textures\\HorizontalGrad.dds')
+  GGF.Theme.LMP:Register('statusbar', 'Horizontal Gradiant 2',  'ggFrames\\theme\\textures\\HorizontalGradV2.dds')
+  GGF.Theme.LMP:Register('statusbar', 'Inner Glow',             'ggFrames\\theme\\textures\\InnerGlow.dds')
+  GGF.Theme.LMP:Register('statusbar', 'Inner Shadow',           'ggFrames\\theme\\textures\\InnerShadow.dds')
+  GGF.Theme.LMP:Register('statusbar', 'Inner Shadow Glossy',    'ggFrames\\theme\\textures\\InnerShadowGloss.dds')
+  GGF.Theme.LMP:Register('statusbar', 'Minimalistic',           'ggFrames\\theme\\textures\\Minimalistic.dds')
+  GGF.Theme.LMP:Register('statusbar', 'Normal',                 'ggFrames\\theme\\textures\\Normal.dds')
+  GGF.Theme.LMP:Register('statusbar', 'Round',                  'ggFrames\\theme\\textures\\Round.dds')
+  GGF.Theme.LMP:Register('statusbar', 'Sand Paper 1',           'ggFrames\\theme\\textures\\SandPaper.dds')
+  GGF.Theme.LMP:Register('statusbar', 'Sand Paper 2',           'ggFrames\\theme\\textures\\SandPaperV2.dds')
+  GGF.Theme.LMP:Register('statusbar', 'Shadow',                 'ggFrames\\theme\\textures\\Shadow.dds')
+  GGF.Theme.LMP:Register('statusbar', 'Smooth',                 'ggFrames\\theme\\textures\\Smooth.dds')
   
   GGF.Theme.textures = GGF.Theme.LMP:List('statusbar')
 end
@@ -157,15 +157,28 @@ function GGF.Theme.LoadPlayer()
   GGF.Theme.themes['Player']['Stamina']['LabelTwo']['HorizontalAlign'] = GGF.TextPositions[GGF.SavedVars['Bar_Format_Location_Two']]
   currentHeight = currentHeight + GGF.Theme.themes['Player']['Stamina']['Height'] + GGF.SavedVars['Player_Padding']
 
+  if not GGF.SavedVars['Player_Mount_Seperated'] then
+    GGF.Theme.themes['Player']['Mount'] = GGF.Theme.themes['Player']['Mount_Joined']
+    GGF.Theme.themes['Player']['Mount']['OffsetY']             = currentHeight
+    GGF.Theme.themes['Player']['Mount']['Width']               = GGF.SavedVars['Player_Width']
+    GGF.Theme.themes['Player']['Mount']['Height']              = GGF.SavedVars['Player_Mount_Height']
+    GGF.Theme.themes['Player']['Mount']['Bar']['Width']        = GGF.SavedVars['Player_Width'] - 2
+    GGF.Theme.themes['Player']['Mount']['Bar']['Height']       = GGF.SavedVars['Player_Mount_Height'] - 2
+    GGF.Theme.themes['Player']['Mount']['Bar']['BarColor']     = GGF.SavedVars['Player_Mount_BarColor']
+    GGF.Theme.themes['Player']['Mount']['Bar']['Texture']      = GGF.Theme.LMP:Fetch('statusbar',GGF.SavedVars['Bar_Texture'])
+    currentHeight = currentHeight + GGF.Theme.themes['Player']['Mount']['Height'] + GGF.SavedVars['Player_Padding']
+  end
+
   if GGF.SavedVars['Player_Experience_Display'] then
     GGF.Theme.themes['Player']['Experience']['OffsetY']             = currentHeight
+    GGF.Theme.themes['Player']['Experience']['UnmountedOffsetY']    = currentHeight - GGF.SavedVars['Player_Mount_Height'] + 1
     GGF.Theme.themes['Player']['Experience']['Width']               = GGF.SavedVars['Player_Width']
     GGF.Theme.themes['Player']['Experience']['Height']              = GGF.SavedVars['Player_Experience_Height']
     GGF.Theme.themes['Player']['Experience']['Bar']['Width']        = GGF.SavedVars['Player_Width'] - 2
     GGF.Theme.themes['Player']['Experience']['Bar']['Height']       = GGF.SavedVars['Player_Experience_Height'] - 2
     GGF.Theme.themes['Player']['Experience']['Bar']['BarColor']     = GGF.SavedVars['Player_Experience_BarColor']
     GGF.Theme.themes['Player']['Experience']['Bar']['Texture']      = GGF.Theme.LMP:Fetch('statusbar',GGF.SavedVars['Bar_Texture'])
-    currentHeight = currentHeight + GGF.Theme.themes['Player']['Stamina']['Height'] + GGF.SavedVars['Player_Padding']
+    currentHeight = currentHeight + GGF.Theme.themes['Player']['Experience']['Height'] + GGF.SavedVars['Player_Padding']
     if GGF.SavedVars['Player_Experience_Text_Display'] then
       GGF.Theme.themes['Player']['Experience']['Label'] = {}
       GGF.Theme.themes['Player']['Experience']['Label']['Height']    = GGF.SavedVars['Player_Experience_Height'] - 2
@@ -180,12 +193,19 @@ function GGF.Theme.LoadPlayer()
     GGF.Theme.themes['Player']['Experience'] = false
   end
   
-  GGF.Theme.themes['Player']['Mount']['OffsetY']                    = currentHeight + 2
-  GGF.Theme.themes['Player']['Mount']['BarArea']['Height']          = GGF.SavedVars['Player_Mount_Height']
-  GGF.Theme.themes['Player']['Mount']['BarArea']['Bar']['Height']   = GGF.SavedVars['Player_Mount_Height'] - 2
-  GGF.Theme.themes['Player']['Mount']['BarArea']['Bar']['BarColor'] = GGF.SavedVars['Player_Mount_BarColor']
-  GGF.Theme.themes['Player']['Mount']['BarArea']['Bar']['Texture']  = GGF.Theme.LMP:Fetch('statusbar',GGF.SavedVars['Bar_Texture'])
-  currentHeight = currentHeight + 27
+  if GGF.SavedVars['Player_Mount_Seperated'] then
+    GGF.Theme.themes['Player']['Mount'] = GGF.Theme.themes['Player']['Mount_Seperated']
+    GGF.Theme.themes['Player']['Mount']['OffsetY']                    = currentHeight + 2
+    GGF.Theme.themes['Player']['Mount']['BarArea']['Height']          = GGF.SavedVars['Player_Mount_Height']
+    GGF.Theme.themes['Player']['Mount']['BarArea']['Bar']['Height']   = GGF.SavedVars['Player_Mount_Height'] - 2
+    GGF.Theme.themes['Player']['Mount']['BarArea']['Bar']['BarColor'] = GGF.SavedVars['Player_Mount_BarColor']
+    GGF.Theme.themes['Player']['Mount']['BarArea']['Bar']['Texture']  = GGF.Theme.LMP:Fetch('statusbar',GGF.SavedVars['Bar_Texture'])
+    currentHeight = currentHeight + 27
+  end
+  
+  GGF.Theme.themes['Player']['Health']['Shield']['Height']   = GGF.SavedVars['Player_Shield_Height'] - 2
+  GGF.Theme.themes['Player']['Health']['Shield']['BarColor'] = GGF.SavedVars['Player_Shield_BarColor']
+  GGF.Theme.themes['Player']['Health']['Shield']['Texture']  = GGF.Theme.LMP:Fetch('statusbar',GGF.SavedVars['Bar_Texture'])
   
   GGF.Theme.themes['Player']['Caption'] = false
   GGF.Theme.themes['Player']['RankLb'] = false
@@ -205,7 +225,7 @@ function GGF.Theme.LoadPlayer()
       ["EdgeWeight"] = 1,
       ['Width']     = GGF.SavedVars['Player_Width'],
       ['Height']    = currentHeight,
-      ['Font']      = 'ggFrames\\theme\\themes\\fonts\\BebasNeue.otf|20',
+      ['Font']      = 'ggFrames\\theme\\fonts\\BebasNeue.otf|20',
       ['FontColor'] = {1,1,1,1},
       ["VerticalAlign"] = TEXT_ALIGN_CENTER,
       ["HorizontalAlign"] = TEXT_ALIGN_CENTER
@@ -253,6 +273,10 @@ function GGF.Theme.LoadGroup()
   GGF.Theme.themes['Group']['Health']['LabelOne']['HorizontalAlign'] = GGF.TextPositions[GGF.SavedVars['Bar_Format_Location']]
   GGF.Theme.themes['Group']['Health']['LabelTwo']['HorizontalAlign'] = GGF.TextPositions[GGF.SavedVars['Bar_Format_Location_Two']]
 
+  GGF.Theme.themes['Group']['Health']['Shield']['Height']   = GGF.SavedVars['Group_Shield_Height'] - 2
+  GGF.Theme.themes['Group']['Health']['Shield']['BarColor'] = GGF.SavedVars['Group_Shield_BarColor']
+  GGF.Theme.themes['Group']['Health']['Shield']['Texture']  = GGF.Theme.LMP:Fetch('statusbar',GGF.SavedVars['Bar_Texture'])
+  
   GGF.Theme.themes['Group']['Magicka'] = false
   GGF.Theme.themes['Group']['Stamina'] = false
   GGF.Theme.themes['Group']['Experience'] = false
@@ -281,7 +305,7 @@ function GGF.Theme.LoadGroup()
       ["EdgeWeight"] = 1,
       ['Width']     = GGF.SavedVars['Group_Width'],
       ['Height']    = height,
-      ['Font']      = 'ggFrames\\theme\\themes\\fonts\\BebasNeue.otf|20',
+      ['Font']      = 'ggFrames\\theme\\fonts\\BebasNeue.otf|20',
       ['FontColor'] = {1,1,1,1},
       ["VerticalAlign"] = TEXT_ALIGN_CENTER,
       ["HorizontalAlign"] = TEXT_ALIGN_CENTER
@@ -348,7 +372,7 @@ function GGF.Theme.LoadLargeGroup()
       ["EdgeWeight"] = 1,
       ['Width']     = width,
       ['Height']    = height,
-      ['Font']      = 'ggFrames\\theme\\themes\\fonts\\BebasNeue.otf|20',
+      ['Font']      = 'ggFrames\\theme\\fonts\\BebasNeue.otf|20',
       ['FontColor'] = {1,1,1,1},
       ["VerticalAlign"] = TEXT_ALIGN_CENTER,
       ["HorizontalAlign"] = TEXT_ALIGN_CENTER
@@ -404,6 +428,10 @@ function GGF.Theme.LoadTarget()
   GGF.Theme.themes['Target']['RankLb']['Font']                     = GGF.Theme.LMP:Fetch('font',GGF.SavedVars['Font']).."|"..tostring(GGF.SavedVars['Target_FontSize']).."|"..GGF.SavedVars['Font_Style']
   GGF.Theme.themes['Target']['RankLb']['FontColor']                = GGF.SavedVars['Target_FontColor']
   
+  GGF.Theme.themes['Target']['Health']['Shield']['Height']   = GGF.SavedVars['Target_Shield_Height'] - 2
+  GGF.Theme.themes['Target']['Health']['Shield']['BarColor'] = GGF.SavedVars['Target_Shield_BarColor']
+  GGF.Theme.themes['Target']['Health']['Shield']['Texture']  = GGF.Theme.LMP:Fetch('statusbar',GGF.SavedVars['Bar_Texture'])
+  
   GGF.Theme.themes['Target']['Magicka'] = false
   GGF.Theme.themes['Target']['Stamina'] = false
   GGF.Theme.themes['Target']['Experience'] = false
@@ -427,7 +455,7 @@ function GGF.Theme.LoadTarget()
       ["EdgeWeight"] = 1,
       ['Width']     = GGF.SavedVars['Target_Width'],
       ['Height']    = height,
-      ['Font']      = 'ggFrames\\theme\\themes\\fonts\\BebasNeue.otf|20',
+      ['Font']      = 'ggFrames\\theme\\fonts\\BebasNeue.otf|20',
       ['FontColor'] = {1,1,1,1},
       ["VerticalAlign"] = TEXT_ALIGN_CENTER,
       ["HorizontalAlign"] = TEXT_ALIGN_CENTER

@@ -99,6 +99,13 @@ GGF.Template = {
         ["MyAnchor"] = LEFT,
         ["ParentAnchor"] = LEFT,
         ["OffsetX"] = 5,
+      },
+      ["Shield"] = {
+        ["OffsetX"] = 1,
+        ["OffsetY"] = -1,
+        ['Width'] = 0,
+        ["MyAnchor"] = BOTTOMLEFT,
+        ["ParentAnchor"] = BOTTOMLEFT
       }
     },
     ["Magicka"] = {
@@ -148,7 +155,16 @@ GGF.Template = {
         ["OffsetY"] = 1,
       }
     },
-    ["Mount"] = {
+    ["Mount_Joined"] = {
+      ["BackColor"] = {0,0,0,.6},
+      ["EdgeColor"] = {0,0,0,1},
+      ["EdgeWeight"] = 1,
+      ["Bar"] = {
+        ["OffsetX"] = 1,
+        ["OffsetY"] = 1,
+      }
+    },
+    ["Mount_Seperated"] = {
       ["MyAnchor"] = TOPRIGHT,
       ["ParentAnchor"] = TOPRIGHT,
       ["Width"] = 200,
@@ -252,7 +268,8 @@ GGF.Template = {
         ["OffsetY"] = 1,
       },
       ["LabelOne"] = false,
-      ["LabelTwo"] = false
+      ["LabelTwo"] = false,
+      ["Shield"] = false
     },
     ["Magicka"] = false,
     ["Stamina"] = false,

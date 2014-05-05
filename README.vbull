@@ -1,3 +1,5 @@
+[COLOR="Yellow"][U][B]Localization Support:[/B][/U] English, French, German!  [I]If you notice any wrong translations, please send me a private message with what the text should say.  Thanks[/I][/COLOR]
+
 ggFrames is a lightweight fully customizable add-on that replaces the default unit frames provided by Elder Scrolls Online.  ggFrames currently supports: [B]Player, Group, Raid, and Target Frames[/B].
 
 [SIZE="3"][B]Features[/B][/SIZE]
@@ -6,11 +8,13 @@ ggFrames is a lightweight fully customizable add-on that replaces the default un
 [*][B]Player Unit Frame[/B]
   [LIST]
   [*]Info: Name, Level, Class, Group Leader Icon
-  [*]Bars: Health, Magicka, Stamina, Experience, Detached Mount
+  [*]Bars: Health, Magicka, Stamina, Experience, Mount
   [*]Features:
     [LIST]
+    [*]Shield Indicator
     [*]Optionally Hide Experience Bar
     [*]Optionally Hide Player Information
+    [*]Optionally Attach / Detache Mount Stamina Bar
     [/LIST]
   [/LIST]
 [*][B]Group Unit Frames[/B]
@@ -19,6 +23,7 @@ ggFrames is a lightweight fully customizable add-on that replaces the default un
   [*]Bars: Health
   [*]Features:
     [LIST]
+    [*]Shield Indicator
     [*]Members fade out when no within support range
     [/LIST]
   [/LIST]
@@ -37,6 +42,7 @@ ggFrames is a lightweight fully customizable add-on that replaces the default un
   [*]Bars: Health
   [*]Features: 
     [LIST]
+    [*]Shield Indicator
     [*]Unit Name Reaction Colors (Friendly, Hostile, Interactable, Default)
     [*]Monster Difficulty (Display Stars to show difficulty: Easy = 0, Normal = 1, Hard = 2, Deadly = 3)
     [/LIST]
@@ -67,23 +73,26 @@ ggFrames is a lightweight fully customizable add-on that replaces the default un
 [LIST]
 [*][COLOR="Red"][Bug][/COLOR] Hide Bars when talking to NPCs
 [*][COLOR="Red"][Bug][/COLOR] Sometime the horse stamina displays toggle state is backwards (Cannot reproduce issue, if you find this bug please report)
-[*][COLOR="Green"][Enhancement][/COLOR] Optionally Hide Player Frame
+[*][COLOR="Green"][Enhancement][/COLOR] Optionally Hide Addon Frames: Player / Group / Raid / Target
+[*][COLOR="Green"][Enhancement][/COLOR] Optionally Hide Default Frames: Player / Group / Raid / Target
 [*][COLOR="Green"][Enhancement][/COLOR] Level Textures (Use Veteran Texture and Create "Lvl" Texture)
-[*][COLOR="Green"][Enhancement][/COLOR] Target Casting Bar with textual feedback telling you when to block, interupt, etc
-[*][COLOR="Green"][Enhancement][/COLOR] Shield Indicators
-[*][COLOR="Green"][Enhancement][/COLOR] Player Castbar
 [*][COLOR="Green"][Enhancement][/COLOR] Low Health Alert (flash when under xx%)
 [*][COLOR="Green"][Enhancement][/COLOR] Buff / Debuffs
+[/LIST]
+
+[I]Not Sure If Possible (Needs Researched):[/I]
+
+[LIST]
 [*][COLOR="Green"][Enhancement][/COLOR] Target of Target Unit Frame(?)
+[*][COLOR="Green"][Enhancement][/COLOR] Player Castbar
+[*][COLOR="Green"][Enhancement][/COLOR] Target Casting Bar with textual feedback telling you when to block, interupt, etc
 [/LIST]
 
 [SIZE="3"][B]Community Suggestions[/B][/SIZE]
 
 [LIST]
-[*]Option to "Attach" Horse Stamina Bar to Unit Frame under Player Experience Bar. [Suggested By: Tonyleila]
+[*]Option to place labels on any status bar[Suggested By: Tonyleila]
 [*]Option to Remove class icon and use class colors instead. [Suggested By: Tonyleila]
-[*]Option to Hide Player [Suggested By: Fing3rz]
-[*]Option to Change Master Transparency per frame [Suggested By: Fing3rz]
 [*]Change opacity/color of the background of the bars. [Suggest By: curvne]
 [*]Indicate Stats have increased regen rate, Like it made in default ui [Suggested By: SilverWF]
 [*]Right Click your Frame: "Leave Group" [Willan]

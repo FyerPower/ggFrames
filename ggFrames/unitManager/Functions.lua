@@ -155,6 +155,11 @@ function GGF.UnitManager.RegisterEvents()
   EVENT_MANAGER:RegisterForEvent("GGF", EVENT_TARGET_CHANGED,                GGF.UnitManager.OnTargetChange)
   EVENT_MANAGER:RegisterForEvent("GGF", EVENT_RETICLE_TARGET_CHANGED,        GGF.UnitManager.OnReticleTargetChange)
 
+  -- Sheilds
+  EVENT_MANAGER:RegisterForEvent("GGF", EVENT_UNIT_ATTRIBUTE_VISUAL_ADDED,   GGF.UnitManager.OnVisualizationAdded)
+  EVENT_MANAGER:RegisterForEvent("GGF", EVENT_UNIT_ATTRIBUTE_VISUAL_REMOVED, GGF.UnitManager.OnVisualizationRemoved)
+  EVENT_MANAGER:RegisterForEvent("GGF", EVENT_UNIT_ATTRIBUTE_VISUAL_UPDATED, GGF.UnitManager.OnVisualizationUpdated)
+
   -- Misc
   EVENT_MANAGER:RegisterForEvent("GGF", EVENT_PLAYER_COMBAT_STATE,           GGF.UnitManager.OnCombatStateChange)
   
@@ -249,6 +254,32 @@ function GGF.UnitManager.OnReticleTargetChange( eventCode )
   ZO_TargetUnitFramereticleover:SetHidden(true)
 end
 
+----------------------------------------
+-- Events: Shields
+----------------------------------------
+
+-- ( eventCode, unitTag, unitAttributeVisual, statType, attributeType, powerType, value, maxValue )
+-- Others: Decreased / Increased Max Power, Regen Power, or Stat | Unwavering Power | Automatic | None
+function GGF.UnitManager.OnVisualizationAdded( eventCode, unitTag, unitAttributeVisual, statType, attributeType, powerType, value, maxValue )
+  GGF.Debug:New("Visualization Added: ", {eventCode, unitTag, unitAttributeVisual, statType, attributeType, powerType, value, maxValue})
+  
+  if unitAttributeVisual ~= ATTRIBUTE_VISUAL_POWER_SHIELDING then return end
+  GGF.UnitManager.UnitFunction(unitTag, 'UpdateShield', value, maxValue)
+end
+
+function GGF.UnitManager.OnVisualizationRemoved( eventCode, unitTag, unitAttributeVisual, statType, attributeType, powerType, value, maxValue )
+  GGF.Debug:New("Visualization Removed: ", {eventCode, unitTag, unitAttributeVisual, statType, attributeType, powerType, value, maxValue})
+  
+  if unitAttributeVisual ~= ATTRIBUTE_VISUAL_POWER_SHIELDING then return end
+  GGF.UnitManager.UnitFunction(unitTag, 'UpdateShield', 0, maxValue)
+end
+
+function GGF.UnitManager.OnVisualizationUpdated( eventCode, unitTag, unitAttributeVisual, statType, attributeType, powerType, oldValue, newValue, oldMax, newMax )
+  GGF.Debug:New("Visualization Updated: ", {eventCode, unitTag, unitAttributeVisual, statType, attributeType, powerType, oldValue, newValue, oldMax, newMax})
+  
+  if unitAttributeVisual ~= ATTRIBUTE_VISUAL_POWER_SHIELDING then return end
+  GGF.UnitManager.UnitFunction(unitTag, 'UpdateShield', newValue, newMax)
+end
 
 ----------------------------------------
 -- Events: Misc
