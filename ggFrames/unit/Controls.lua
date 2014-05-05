@@ -107,7 +107,7 @@ function GGF.Unit:Controls()
     else
       self.frames.mount      = GGF.Window:CreateBackDrop("GGF_"..self.unitName.."MountBd", self.frames.main, self.template.Mount)
       self.frames.mountSt    = GGF.Window:CreateStatusBar("GGF_"..self.unitName.."MountSt", self.frames.mount, self.template.Mount.Bar)
-      self.frames.mountTx:SetHidden(true)
+      if self.frames.mountTx ~= nil then self.frames.mountTx:SetHidden(true) end
     end
   end
 

@@ -1,3 +1,6 @@
+v0.6.1
+- Fix error on reloading ui for certain mount configurations
+
 v0.6.0
 - Fix Experience Bug where sometimes the experience bar went to 0
 - Fix Class Icon Localization
