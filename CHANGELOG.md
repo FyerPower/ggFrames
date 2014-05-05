@@ -1,3 +1,6 @@
+v0.6.2
+- Fix error for mount / experience position when one or both is off
+
 v0.6.1
 - Fix error on reloading ui for certain mount configurations
 
