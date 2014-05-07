@@ -26,6 +26,7 @@ GGF.locale["Mount_Seperated"]           = "Separate Mount Frame"
 -- Frame Options
 GGF.locale["Frame_PositionX"]           = 'Frame Horizontal Position'
 GGF.locale["Frame_PositionY"]           = 'Frame Vertical Position'
+GGF.locale["Frame_Alpha"]               = 'Frame Transparency'
 GGF.locale['Frame_Width']               = 'Frame Width'
 GGF.locale['Frame_Height']              = 'Frame Height'
 GGF.locale['Info_FontSize']             = 'Information Font Size'

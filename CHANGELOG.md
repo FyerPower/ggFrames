@@ -1,3 +1,9 @@
+v0.6.3
+- Player frame shows dead after revival
+- Hide Bars when talking to NPCs
+- Player & Target Frames now show "In Combat Opacity" whenever stats aren't 100%
+- Group Frames are no longer affected by Out of Combat Transparency, however now have a Master Transparency Setting
+
 v0.6.2
 - Fix error for mount / experience position when one or both is off
 

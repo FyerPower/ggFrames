@@ -46,6 +46,7 @@ function GGF.Unit:Load(unitTag)
       self:SetExp( GetUnitXP(self.unitTag), GetUnitXPMax(self.unitTag), false )
     end
     self:SetMounted( IsMounted() )
+    self:SetMountPower( nil, POWERTYPE_MOUNT_STAMINA, GetUnitPower(self.unitTag, POWERTYPE_MOUNT_STAMINA) )      -- Set Mount Stamina
   end
   self.frames.main:SetHidden(false)
 end

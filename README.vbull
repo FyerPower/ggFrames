@@ -1,8 +1,8 @@
-[COLOR="Yellow"][U][B]Localization Support:[/B][/U] English, French, German!  [I]If you notice any wrong translations, please send me a private message with what the text should say.  Thanks[/I][/COLOR]
+ggFrames is a lightweight fully customizable add-on that replaces the default unit frames provided by Elder Scrolls Online.  ggFrames currently supports: [B]Player, Group, Raid, and Target Frames[/B].  
 
-ggFrames is a lightweight fully customizable add-on that replaces the default unit frames provided by Elder Scrolls Online.  ggFrames currently supports: [B]Player, Group, Raid, and Target Frames[/B].
+[U]Language support[/U]: [B]English[/B], [B]French[/B], & [B]German[/B]
 
-[SIZE="3"][B]Features[/B][/SIZE]
+[COLOR="Yellow"][SIZE="3"][U][B]Features[/B][/U][/SIZE][/COLOR]
 
 [LIST]
 [*][B]Player Unit Frame[/B]
@@ -68,19 +68,25 @@ ggFrames is a lightweight fully customizable add-on that replaces the default un
   [/LIST]
 [/LIST]
 
-[SIZE="3"][B]Coming Soon / Planned Updates[/B][/SIZE]
+[COLOR="Yellow"][SIZE="3"][U][B]Coming Soon / Planned Updates[/B][/U][/SIZE][/COLOR]
 
 [LIST]
-[*][COLOR="Red"][Bug][/COLOR] Hide Bars when talking to NPCs
-[*][COLOR="Red"][Bug][/COLOR] Sometime the horse stamina displays toggle state is backwards (Cannot reproduce issue, if you find this bug please report)
-[*][COLOR="Green"][Enhancement][/COLOR] Optionally Hide Addon Frames: Player / Group / Raid / Target
-[*][COLOR="Green"][Enhancement][/COLOR] Optionally Hide Default Frames: Player / Group / Raid / Target
-[*][COLOR="Green"][Enhancement][/COLOR] Level Textures (Use Veteran Texture and Create "Lvl" Texture)
-[*][COLOR="Green"][Enhancement][/COLOR] Low Health Alert (flash when under xx%)
-[*][COLOR="Green"][Enhancement][/COLOR] Buff / Debuffs
+  [*][COLOR="Green"][Enhancement][/COLOR] Optionally Hide Addon Frames: Player / Group / Raid / Target     [COLOR="Gray"][I](Planned for: v0.7)[/I][/COLOR]
+  [*][COLOR="Green"][Enhancement][/COLOR] Optionally Hide Default Frames: Player / Group / Raid / Target   [COLOR="Gray"][I](Planned for: v0.7)[/I][/COLOR]
+  [*][COLOR="Green"][Enhancement][/COLOR] Level Textures (Use Veteran Texture and Create "Lvl" Texture)    [COLOR="Gray"][I](Planned for: v0.8)[/I][/COLOR]
+  [*][COLOR="Green"][Enhancement][/COLOR] Health / Magicka / Stamina HoT Animated Textures                 [COLOR="Gray"][I](Planned for: v0.8)[/I][/COLOR]
+  [*][COLOR="Green"][Enhancement][/COLOR] Buff / Debuffs (List and Icon Views)                             [COLOR="Gray"][I](Planned for: v0.9)[/I][/COLOR]
+  [*][COLOR="Gray"][I]Plans for: v1.0[/I][/COLOR]
+  [LIST]
+    [*] Massive overhaul on settings, preview frames while editing (provide fake data and allow frame to always be visible)
+    [*] Optionally Set RGBA of Bar Backdrops
+    [*] Low Health Alert (Player / Target)
+    [*] Right Click on Player / Group Frame to "Leave Party", "Add / Remove Friend", etc
+    [*] Rethink and find a better way to display the targets difficulty
+  [/LIST]
 [/LIST]
 
-[I]Not Sure If Possible (Needs Researched):[/I]
+[I]Not Sure If Possible (Needs Researched | Will Revisit later):[/I]
 
 [LIST]
 [*][COLOR="Green"][Enhancement][/COLOR] Target of Target Unit Frame(?)
@@ -88,32 +94,40 @@ ggFrames is a lightweight fully customizable add-on that replaces the default un
 [*][COLOR="Green"][Enhancement][/COLOR] Target Casting Bar with textual feedback telling you when to block, interupt, etc
 [/LIST]
 
-[SIZE="3"][B]Community Suggestions[/B][/SIZE]
+[COLOR="Yellow"][SIZE="3"][U][B]Community Suggestions[/B][/U][/SIZE][/COLOR]
 
 [LIST]
+[*]Build Raid from Left to Right / Right to Left ..and.. Top to Bottom / Bottom to Top[Suggested By: FourOne]
 [*]Option to place labels on any status bar[Suggested By: Tonyleila]
 [*]Option to Remove class icon and use class colors instead. [Suggested By: Tonyleila]
-[*]Change opacity/color of the background of the bars. [Suggest By: curvne]
-[*]Indicate Stats have increased regen rate, Like it made in default ui [Suggested By: SilverWF]
-[*]Right Click your Frame: "Leave Group" [Willan]
-[*]Right Click Party Members: "Kick Member" (if you're laeder), "Add / Remove Friend", "Invite To Guild(s)"? [Willan]
 [*]Option to Unstack Players Health / Magicka / Stamina and instead display side by side [Suggest By: pinstripesc]
 [*]Reorder the Bars within Player Frame
+[*]Placement of Absorb Shield
 [/LIST]
 
-[SIZE="3"][B]Comment![/B][/SIZE]
+[COLOR="Yellow"][SIZE="3"][U][B]Comment![/B][/U][/SIZE][/COLOR]
 
 I love feedback! [URL="http://www.esoui.com/downloads/fileinfo.php?id=268#comments"]Tell Me via Addon Comments![/URL]
 
-[SIZE="3"][B]Feature Request?[/B][/SIZE]
+[COLOR="Yellow"][SIZE="3"][U][B]Feature Request?[/B][/U][/SIZE][/COLOR]
 
 Have a feature you want but dont see it listed above?  [URL="http://www.esoui.com/portal.php?id=72&a=listfeatures"]Add a Feature Request[/URL]
 
-[SIZE="3"][B]Found a Bug?[/B][/SIZE]
+[COLOR="Yellow"][SIZE="3"][U][B]Known Bugs:[/B][/U][/SIZE][/COLOR]
 
-[URL="http://www.esoui.com/portal.php?id=72&a=listbugs"]Report It![/URL]
+[LIST]
+[*] No Known Bugs
+[/LIST]
 
-[SIZE="3"][B]Donate![/B][/SIZE]
+The Error [B]Too Many Anchors Process[/B] is not due to ggFrames however its a bug within the ESO Game whenever too many addons that draw on the screen are active at one time.  Until ZeniMax gets around to fixing it, you can use [URL="http://www.esoui.com/downloads/info434-ZolansAnchorsAway.html"]Zolan's Anchors Away[/URL] add-on to suppress this error.
+
+[COLOR="Yellow"][SIZE="3"][U][B]Found a Bug?[/B][/U][/SIZE][/COLOR]
+
+[I]If you notice any wrong translations, please send me a private message with what the text should say.  Thanks[/I]
+
+[URL="http://www.esoui.com/portal.php?id=72&a=listbugs"]Report Bugs Here[/URL]
+
+[COLOR="Yellow"][SIZE="3"][U][B]Donate![/B][/U][/SIZE][/COLOR]
 
 Donations are [B]NOT[/B] required, just appreciated.  They help pay for all the RedBulls and other caffeine beverages that I drink while staying up till 3-4am developing.  
 

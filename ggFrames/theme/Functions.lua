@@ -218,7 +218,7 @@ function GGF.Theme.LoadPlayer()
     ['OffsetY'] = GGF.SavedVars['PlayerContainer_OffsetY'],
     ['Width']   = GGF.SavedVars['Player_Width'],
     ['Height']  = currentHeight,
-    ['Alpha']   = GGF.SavedVars['Combat_Alpha']/100,
+    ['Alpha']   = GGF.SavedVars['Player_Combat_Alpha']/100,
     ['Label']   = {
       ["BackColor"] = {0,0,0,.6},
       ["EdgeColor"] = {0,0,0,1},
@@ -298,7 +298,7 @@ function GGF.Theme.LoadGroup()
     ['OffsetY'] = GGF.SavedVars['GroupContainer_OffsetY'],                                                                                                                                    
     ['Width']   = GGF.SavedVars['Group_Width'],                                                                                                                                                                     
     ['Height']  = height,
-    ['Alpha']   = GGF.SavedVars['Combat_Alpha']/100,
+    ['Alpha']   = GGF.SavedVars['GroupContainer_Alpha']/100,
     ['Label']   = {
       ["BackColor"] = {0,0,0,.6},
       ["EdgeColor"] = {0,0,0,1},
@@ -365,7 +365,7 @@ function GGF.Theme.LoadLargeGroup()
     ['OffsetY'] = GGF.SavedVars['LargeGroupContainer_OffsetY'],
     ['Width']   = width,
     ['Height']  = height,
-    ['Alpha']   = GGF.SavedVars['Combat_Alpha']/100,
+    ['Alpha']   = GGF.SavedVars['LargeGroupContainer_Alpha']/100,
     ['Label']   = {
       ["BackColor"] = {0,0,0,.6},
       ["EdgeColor"] = {0,0,0,1},
@@ -448,7 +448,7 @@ function GGF.Theme.LoadTarget()
     ['OffsetY'] = GGF.SavedVars['TargetContainer_OffsetY'],
     ['Width']   = GGF.SavedVars['Target_Width'],
     ['Height']  = height,
-    -- ['Alpha']   = GGF.SavedVars['Combat_Alpha']/100,
+    ['Alpha']   = GGF.SavedVars['Target_Combat_Alpha']/100,
     ['Label']   = {
       ["BackColor"] = {0,0,0,.6},
       ["EdgeColor"] = {0,0,0,1},

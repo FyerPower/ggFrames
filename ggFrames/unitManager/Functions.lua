@@ -1,6 +1,7 @@
 GGF.UnitManager = {} 
 GGF.UnitManager.unit = {}
 GGF.UnitManager.unitRouter = {}
+GGF.UnitManager.isInCombat = false
 
 function GGF.UnitManager.Initialize()
   GGF.UnitManager.frames = {}
@@ -132,6 +133,7 @@ function GGF.UnitManager.RegisterEvents()
   
   -- Death
   EVENT_MANAGER:RegisterForEvent("GGF", EVENT_UNIT_DEATH_STATE_CHANGED, GGF.UnitManager.OnUnitDeath)
+  EVENT_MANAGER:RegisterForEvent("GGF", EVENT_PLAYER_ALIVE,                  GGF.UnitManager.OnPlayerAlive)
   
   -- Experience / Level
   EVENT_MANAGER:RegisterForEvent("GGF", EVENT_LEVEL_UPDATE, GGF.UnitManager.OnUnitLevel)
@@ -162,9 +164,6 @@ function GGF.UnitManager.RegisterEvents()
 
   -- Misc
   EVENT_MANAGER:RegisterForEvent("GGF", EVENT_PLAYER_COMBAT_STATE,           GGF.UnitManager.OnCombatStateChange)
-  
-  -- Testing
-  EVENT_MANAGER:RegisterForEvent("GGF", EVENT_PLAYER_ALIVE,                  GGF.UnitManager.OnPlayerAlive)
 end
 
 ----------------------------------------
@@ -178,6 +177,7 @@ function GGF.UnitManager.OnPowerUpdate( eventCode , unitTag, powerIndex, powerTy
   elseif ( powerType == POWERTYPE_MOUNT_STAMINA and unitTag == 'player' ) then
     GGF.UnitManager.UnitFunction(unitTag, 'SetMountPower', powerIndex, powerType , powerValue , powerMax , powerEffectiveMax )
   end 
+  if unitTag == 'player' then GGF.UnitManager.UpdateFrameOpacity() end
 end
 
 ----------------------------------------
@@ -186,6 +186,10 @@ end
 
 function GGF.UnitManager.OnUnitDeath( eventCode, unitTag, isDead )
   GGF.UnitManager.UnitFunction(unitTag, 'SetDeath', isDead)
+end
+
+function GGF.UnitManager.OnPlayerAlive( eventCode )
+  GGF.UnitManager.UnitFunction('player', 'SetDeath', false)
 end
 
 ----------------------------------------
@@ -286,21 +290,16 @@ end
 ----------------------------------------
 
 function GGF.UnitManager.OnCombatStateChange( eventCode, isInCombat )
-  GGF.UnitManager.frames.player:SetAlpha( isInCombat and 1 or GGF.SavedVars['Combat_Alpha']/100 )
-  GGF.UnitManager.frames.group:SetAlpha( isInCombat and 1 or GGF.SavedVars['Combat_Alpha']/100 )
-  GGF.UnitManager.frames.largeGroup:SetAlpha( isInCombat and 1 or GGF.SavedVars['Combat_Alpha']/100 )
-  -- GGF.UnitManager.frames.target:SetAlpha( isInCombat and 1 or GGF.SavedVars['Combat_Alpha']/100 )
+  GGF.UnitManager.isInCombat = isInCombat
+  GGF.UnitManager.UpdateFrameOpacity()
 end
 
-----------------------------------------
--- Events: Testing
-----------------------------------------
-
-function GGF.UnitManager.OnPlayerAlive( ... )
-  GGF.Debug:New("On Player Alive", {...})
+function GGF.UnitManager.UpdateFrameOpacity()
+  local player = GGF.UnitManager.unit.Player
+  showFully = GGF.UnitManager.isInCombat or player.health.percent ~= 100 or player.magicka.percent ~= 100 or player.stamina.percent ~= 100 or player.mount.percent ~= 100
+  GGF.UnitManager.frames.player:SetAlpha( showFully and 1 or GGF.SavedVars['Player_Combat_Alpha']/100 )
+  GGF.UnitManager.frames.target:SetAlpha( showFully and 1 or GGF.SavedVars['Target_Combat_Alpha']/100 )
 end
-
-
 
 
 

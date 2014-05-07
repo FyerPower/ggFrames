@@ -26,6 +26,7 @@ GGF.locale["Mount_Seperated"]           = "Séparée Cadre Mont"                
 -- Frame Options
 GGF.locale["Frame_PositionX"]           = "La position du cadre horizontal"
 GGF.locale["Frame_PositionY"]           = "La position du cadre vertical"
+GGF.locale["Frame_Alpha"]               = 'La alpha du cadre'                                                           -- Needs Updated
 GGF.locale['Frame_Width']               = "La largeur du cadre"
 GGF.locale['Frame_Height']              = "La hauteur du cadre"
 GGF.locale['Info_FontSize']             = "La grandeur du font pour les informations"

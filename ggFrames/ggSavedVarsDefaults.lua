@@ -3,7 +3,6 @@ GGF.SavedVarsDefaults = {
   ["PlayerContainer_OffsetX"] = 3,
   ["PlayerContainer_OffsetY"] = 3,
   
-  ['Combat_Alpha'] = 75,
   ["Font"] = "Fontin SmallCaps",
   ["Font_Style"] = "soft-shadow-thin",
   ["Bar_Texture"] = "Inner Shadow Glossy",
@@ -13,6 +12,7 @@ GGF.SavedVarsDefaults = {
   ["Bar_Format_Location_Two"] = "Right",
 
   ["Player_Info_Display"] = true,
+  ['Player_Combat_Alpha'] = 75,
   ["Player_Width"] = 300,
   ["Player_FontSize"] = 18,
   ["Player_FontColor"] = {1,1,1,1},
@@ -46,10 +46,10 @@ GGF.SavedVarsDefaults = {
   ["Player_Mount_Height"] = 8,
   ["Player_Mount_BarColor"] = {.933333333,.933333333,0,1},
 
-
   -- GROUP
   ["GroupContainer_OffsetX"] = 3,
   ["GroupContainer_OffsetY"] = 140,
+  ['GroupContainer_Alpha'] = 75, -- also used for raid alpha
  
   ["Group_Width"] = 300,
   ["Group_FontSize"] = 16,
@@ -65,6 +65,7 @@ GGF.SavedVarsDefaults = {
   -- RAID
   ["LargeGroupContainer_OffsetX"] = 3,
   ["LargeGroupContainer_OffsetY"] = 140,
+  ['LargeGroupContainer_Alpha'] = 75, -- also used for raid alpha
  
   ["LargeGroup_Width"] = 100,
   ["LargeGroup_Height"] = 36,
@@ -80,6 +81,7 @@ GGF.SavedVarsDefaults = {
   ["TargetContainer_OffsetY"] = 80,
  
   ["Target_Width"] = 300,
+  ['Target_Combat_Alpha'] = 75,
   ["Target_FontSize"] = 16,
   ["Target_FontColor"] = {1,1,1,1},
   ["Target_FontColor_Friendly"] = {0,1,0,1},

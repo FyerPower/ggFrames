@@ -1,7 +1,7 @@
 -- Global Initalizations
 GGF           = {}
 GGF.addonName = "ggFrames"
-GGF.version   = "0.6.2"
+GGF.version   = "0.6.3"
 
 -- Config
 GGF.move      = false
@@ -23,11 +23,7 @@ function GGF.Initialize( eventCode, addOnName )
 end
 
 function GGF.ToggleVisibility( eventCode , isReticleHidden )
-  if (isReticleHidden == true and (ZO_KeybindStripControl:IsHidden() == false or ZO_GameMenu_InGame:IsHidden() == false)) then
-    GGF.UnitManager.ToggleVisibility(true)
-  else
-    GGF.UnitManager.ToggleVisibility(false)
-  end
+  GGF.UnitManager.ToggleVisibility( isReticleHidden and not ZO_ChatWindowTextEntryEditBox:HasFocus() )
 end 
 
 function GGF.RegisterEvents()

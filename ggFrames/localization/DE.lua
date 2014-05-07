@@ -26,6 +26,7 @@ GGF.locale["Mount_Seperated"]           = "Reittierleiste abtrennen"
 -- Frame Options
 GGF.locale["Frame_PositionX"]           = "Horizontale Fensterposition"
 GGF.locale["Frame_PositionY"]           = "Vertikale Fensterposition"
+GGF.locale["Frame_Alpha"]               = 'Frame Transparency'                                                          -- Needs Updated
 GGF.locale['Frame_Width']               = "Fensterbreite"
 GGF.locale['Frame_Height']              = "Fensterhöhe"
 GGF.locale['Info_FontSize']             = "Charakterinfo Schriftgröße"
