@@ -33,6 +33,7 @@ ggFrames is a lightweight fully customizable add-on that replaces the default un
   [*]Bars: Health
   [*]Features: 
     [LIST]
+    [*]Shield Indicator
     [*]Two Different Layouts (1x6 and 2x3)
     [/LIST]
   [/LIST]
@@ -57,6 +58,7 @@ ggFrames is a lightweight fully customizable add-on that replaces the default un
     [*]Two Customizable Numerical Representation of Values on Bars
       [LIST]
       [*]Values: "nothing", "current", "max", "percent", "current / max", and "current / max (percentage)"
+      [*]Healthbar Labels can also contain shield value (aka: "Current + Shield")
       [*]Locations: Left, Right, and Center
       [/LIST]
     [/LIST]
@@ -64,15 +66,14 @@ ggFrames is a lightweight fully customizable add-on that replaces the default un
   [*]Movable Frames (Type '/ggf' or unlock/lock from menu)
   [*]All Frames have a standard opacity value (setting) by default and transition to full 
   [*]All Frames Hide whenever in Menus (Backpack, Friends, Guild, etc)
-  [*]All Default Frames are Hidden
+  [*]Optionally Hide All Addon Frames: Player / Group / Raid / Target
+  [*]Optionally Hide All Default Frames: Player / Group / Raid / Target
   [/LIST]
 [/LIST]
 
 [COLOR="Yellow"][SIZE="3"][U][B]Coming Soon / Planned Updates[/B][/U][/SIZE][/COLOR]
 
 [LIST]
-  [*][COLOR="Green"][Enhancement][/COLOR] Optionally Hide Addon Frames: Player / Group / Raid / Target     [COLOR="Gray"][I](Planned for: v0.7)[/I][/COLOR]
-  [*][COLOR="Green"][Enhancement][/COLOR] Optionally Hide Default Frames: Player / Group / Raid / Target   [COLOR="Gray"][I](Planned for: v0.7)[/I][/COLOR]
   [*][COLOR="Green"][Enhancement][/COLOR] Level Textures (Use Veteran Texture and Create "Lvl" Texture)    [COLOR="Gray"][I](Planned for: v0.8)[/I][/COLOR]
   [*][COLOR="Green"][Enhancement][/COLOR] Health / Magicka / Stamina HoT Animated Textures                 [COLOR="Gray"][I](Planned for: v0.8)[/I][/COLOR]
   [*][COLOR="Green"][Enhancement][/COLOR] Buff / Debuffs (List and Icon Views)                             [COLOR="Gray"][I](Planned for: v0.9)[/I][/COLOR]
@@ -80,9 +81,11 @@ ggFrames is a lightweight fully customizable add-on that replaces the default un
   [LIST]
     [*] Massive overhaul on settings, preview frames while editing (provide fake data and allow frame to always be visible)
     [*] Optionally Set RGBA of Bar Backdrops
+    [*] Health Bar Color Options: Reaction Color / Health Color (80/60/40/20)
     [*] Low Health Alert (Player / Target)
     [*] Right Click on Player / Group Frame to "Leave Party", "Add / Remove Friend", etc
     [*] Rethink and find a better way to display the targets difficulty
+    [*] Display Friend / Guildmate Status
   [/LIST]
 [/LIST]
 
@@ -129,7 +132,12 @@ The Error [B]Too Many Anchors Process[/B] is not due to ggFrames however its a b
 
 [COLOR="Yellow"][SIZE="3"][U][B]Donate![/B][/U][/SIZE][/COLOR]
 
-Donations are [B]NOT[/B] required, just appreciated.  They help pay for all the RedBulls and other caffeine beverages that I drink while staying up till 3-4am developing.  
+Donations are [B]NOT[/B] required, just greatly appreciated.  If you are generous enough to do so, I will list the amount and your name below.
+
+[LIST]
+[*][COLOR="Yellow"]$10.00[/COLOR] Travin A.
+[*][COLOR="Yellow"]$5.00[/COLOR] Allan K. (Rashaverik)
+[/LIST]
 
 [URL="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=2DK5XAPXSVAQS"]
 [IMG]https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif[/IMG]

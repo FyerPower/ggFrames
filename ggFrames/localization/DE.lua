@@ -10,6 +10,14 @@ GGF.locale['Frame_Lock']                = "Alle Elemente sperren (/ggf)"
 GGF.locale["Display_Player_Info"]       = "Zeige Charakterinformationen"
 GGF.locale["Display_Player_Experience"] = "Zeige Leiste für Erfahrungspunkte"
 
+GGF.locale['Display_Default_Player']     = "Zeige Originales Spielerfenster"
+GGF.locale['Display_Player']             = "Zeige AddOn Spielerfenster"
+GGF.locale['Display_Default_Target']     = "Zeige Originales Zielfenster"
+GGF.locale['Display_Target']             = "Zeige AddOn Zielfenster"
+GGF.locale['Display_Default_Group']      = "Zeige Originales Gruppen / Schlachtzugsfenster"
+GGF.locale['Display_Group']              = "Zeige AddOn Gruppen / Schlachtzugsfenster"
+GGF.locale['Group_Condensed']            = "Zeige Gruppe als Schlachtzug"
+
 -- Global
 GGF.locale['Combat_Alpha']              = "Transparenz außerhalb des Kampfes"
 GGF.locale['Font']                      = "Schrift"

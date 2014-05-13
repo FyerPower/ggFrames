@@ -1,11 +1,19 @@
 GGF.SavedVarsDefaults = {
+  -- Enabled Visuals
+  ['Display_Player'] = true,
+  ['Display_Group'] = true,
+  ['Display_Target'] = true,
+  ['Display_Default_Player'] = false,
+  ['Display_Default_Target'] = false,
+  ['Display_Default_Group'] = false,
+  
   -- Player
-  ["PlayerContainer_OffsetX"] = 3,
-  ["PlayerContainer_OffsetY"] = 3,
+  ["PlayerContainer_OffsetX"] = 655,
+  ["PlayerContainer_OffsetY"] = 800,
   
   ["Font"] = "Fontin SmallCaps",
   ["Font_Style"] = "soft-shadow-thin",
-  ["Bar_Texture"] = "Inner Shadow Glossy",
+  ["Bar_Texture"] = "Sand Paper 1",
   ["Bar_Format"] = "Current",
   ["Bar_Format_Location"] = "Left",
   ["Bar_Format_Two"] = "Percentage%",
@@ -14,7 +22,7 @@ GGF.SavedVarsDefaults = {
   ["Player_Info_Display"] = true,
   ['Player_Combat_Alpha'] = 75,
   ["Player_Width"] = 300,
-  ["Player_FontSize"] = 18,
+  ["Player_FontSize"] = 16,
   ["Player_FontColor"] = {1,1,1,1},
   ["Player_Padding"] = -1,
   
@@ -48,9 +56,10 @@ GGF.SavedVarsDefaults = {
 
   -- GROUP
   ["GroupContainer_OffsetX"] = 3,
-  ["GroupContainer_OffsetY"] = 140,
+  ["GroupContainer_OffsetY"] = 400,
   ['GroupContainer_Alpha'] = 75, -- also used for raid alpha
  
+  ['Group_Condensed'] = false,
   ["Group_Width"] = 300,
   ["Group_FontSize"] = 16,
   ["Group_FontColor"] = {1,1,1,1},
@@ -64,21 +73,23 @@ GGF.SavedVarsDefaults = {
 
   -- RAID
   ["LargeGroupContainer_OffsetX"] = 3,
-  ["LargeGroupContainer_OffsetY"] = 140,
+  ["LargeGroupContainer_OffsetY"] = 400,
   ['LargeGroupContainer_Alpha'] = 75, -- also used for raid alpha
  
   ["LargeGroup_Width"] = 100,
   ["LargeGroup_Height"] = 36,
   ["LargeGroup_FontSize"] = 16,
   ["LargeGroup_FontColor"] = {1,1,1,1},
+  ["LargeGroup_Shield_Height"] = 36,
+  ["LargeGroup_Shield_BarColor"] = {1, .5, 0, 1},
  
   ["LargeGroup_Health_BarColor"] = {0.831372549,0.149019608,0.149019608,1},
 
   ['Raid_Format'] = "One Row of Six Groups",
 
   -- Target
-  ["TargetContainer_OffsetX"] = 810,
-  ["TargetContainer_OffsetY"] = 80,
+  ["TargetContainer_OffsetX"] = 965,
+  ["TargetContainer_OffsetY"] = 800,
  
   ["Target_Width"] = 300,
   ['Target_Combat_Alpha'] = 75,

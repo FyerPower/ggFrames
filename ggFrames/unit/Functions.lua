@@ -27,7 +27,7 @@ function GGF.Unit:Load(unitTag)
   end
   
   if IsUnitPlayer(self.unitTag) then
-    self:SetClass( GetUnitClassId(self.unitTag) )                                             -- Class Texture
+    self:SetClass( GetUnitClassId(self.unitTag) )                                           -- Class Texture
     self:SetLeader( IsUnitGroupLeader(self.unitTag) )                                       -- Is Group Leader (Non-Players are never Group Leaders)
   else 
     self:SetClass( nil )
@@ -70,13 +70,12 @@ function GGF.Unit:SetPower( powerIndex, powerType,  powerValue, powerMax, powerE
   elseif ( powerType == POWERTYPE_STAMINA ) then field = {friendly = "stamina", label = "Stamina"}
   else return end
 
-  if powerType == POWERTYPE_HEALTH and powerValue > 0 then self:SetDeath( false ) end -- should fix when the event_unit_dead doesn't fire after a player revives
   if not self.template[field.label] then return end
 
   self[field.friendly] = {current = powerValue, max = powerEffectiveMax, percent = ( ( powerValue / powerEffectiveMax ) * 100 )}
   self.frames[field.friendly.."St"]:SetWidth( ( self[field.friendly].percent / 100 ) * self.template[field.label].Bar.Width )
-  if self.frames[field.friendly.."LbOne"] then self.frames[field.friendly.."LbOne"]:SetText( FormatStatusBarLabel(GGF.SavedVars['Bar_Format'], self[field.friendly].current, self[field.friendly].max, self[field.friendly].percent) ) end
-  if self.frames[field.friendly.."LbTwo"] then self.frames[field.friendly.."LbTwo"]:SetText( FormatStatusBarLabel(GGF.SavedVars['Bar_Format_Two'], self[field.friendly].current, self[field.friendly].max, self[field.friendly].percent) ) end
+  if self.frames[field.friendly.."LbOne"] then self.frames[field.friendly.."LbOne"]:SetText( self:FormatStatusBarLabel(GGF.SavedVars['Bar_Format'], field.friendly) ) end
+  if self.frames[field.friendly.."LbTwo"] then self.frames[field.friendly.."LbTwo"]:SetText( self:FormatStatusBarLabel(GGF.SavedVars['Bar_Format_Two'], field.friendly) ) end
 end
 
 function GGF.Unit:SetMountPower( powerIndex, powerType, powerValue, powerMax, powerEffectiveMax )
@@ -101,6 +100,8 @@ function GGF.Unit:UpdateShield( value, maxValue )
   if maxValue == nil then maxValue = 0 end
   self.shield = {["current"] = value, ["max"] = maxValue, ["percent"] = math.floor( ( value / maxValue ) * 100 )}
   self.frames.shield:SetWidth( math.min( (value/self.health.max ) , 1 ) * self.template.Health.Bar.Width )
+  if self.frames['healthLbOne'] then self.frames['healthLbOne']:SetText( self:FormatStatusBarLabel(GGF.SavedVars['Bar_Format'], 'health') ) end
+  if self.frames['healthLbTwo'] then self.frames['healthLbTwo']:SetText( self:FormatStatusBarLabel(GGF.SavedVars['Bar_Format_Two'], 'health') ) end
 end
 
 function GGF.Unit:SetName( name )
@@ -125,7 +126,7 @@ function GGF.Unit:SetLevel( level, rank )
   if not self.isOnline or not self.template.Level then return end
   self.level = level
   self.vlevel = rank
-  self.frames.levelLb:SetText( "("..(self.vlevel > 0 and "Vet "..self.vlevel or self.level)..")" )
+  self.frames.levelLb:SetText( "("..(self.vlevel > 0 and "V"..self.vlevel or self.level)..")" )
   self.frames.levelLb:SetHidden( self.reactionType == UNIT_REACTION_FRIENDLY or self.reactionType == UNIT_REACTION_NPC_ALLY )
 end
 
@@ -222,11 +223,23 @@ function GGF.Unit:SetRange( isWithinRange )
   self.frames.main:SetAlpha( isWithinRange and 1 or 0.5 )
 end
 
-
-
-
 -- helper
-function FormatStatusBarLabel( format, curr, max, perc )
-  return string.gsub(string.gsub(string.gsub(string.gsub(format, "Percentage", tostring(math.floor(perc)) ), "Max", tostring(max)), "Current", tostring(curr)), "Nothing", "")
-  -- tostring(perc)
+function GGF.Unit:FormatStatusBarLabel( format, field )
+  -- self.shield
+  -- return string.gsub(string.gsub(string.gsub(string.gsub(format, "Percentage", tostring(math.floor(perc)) ), "Max", tostring(max)), "Current", tostring(curr)), "Nothing", "")
+  local str = tostring(format):gsub("Percentage", tostring(math.floor(self[field].percent)) )
+                             :gsub("Max", tostring(self[field].max))
+                             :gsub("Current", tostring(self[field].current))
+                             :gsub("Nothing", "")
+
+  if field == "health" and self.shield ~= nil and self.shield.current > 0 then
+    str = str:gsub("+ Shield", tostring("+ "..self.shield.current))
+  else
+    str = str:gsub("+ Shield", "")
+  end
+
+  return str
 end
+
+
+

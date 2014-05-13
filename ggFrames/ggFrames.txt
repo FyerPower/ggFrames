@@ -1,5 +1,5 @@
 ## Title: ggFrames
-## Version: 0.6.3
+## Version: 0.7.2
 ## Author: Michael Lynch (@gamegenius86)
 ## Description: Fully Customizable Unit Frames
 ## APIVersion: 100003

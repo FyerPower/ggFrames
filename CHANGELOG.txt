@@ -1,5 +1,24 @@
+v.0.7.3
+- Fix Group Member Issue (When leaving or joining)
+- Fix Player stats from no updating when reticle is hidden.
+- Fix Shields persisting through death.
+
+v.0.7.2
+- Added Shield Indicator to Large Group Frames
+- Added New Bar Labels for "+ Shield".  (Example: "Current + Shield" allows you to see your life and the value left on your shield, "2345 + 734")
+
+v.0.7.1
+- Added a few new German Translations
+
+v.0.7.0
+- Added optional ability to show or hide all default frames and frames added by this addon
+- Added additional length to the Player, Group, and Target names.  Longer names now appear.
+- Added condensed group setting (display raid view while in smaller group)
+- Update default settings to what appears to be the most popular configurations
+- Note: Lacking Translations for New Settings.  If you can translate and comment i will quickly patch it.
+
 v0.6.3
-- Player frame shows dead after revival
+- Fixed Player frame shows dead after revival
 - Hide Bars when talking to NPCs
 - Player & Target Frames now show "In Combat Opacity" whenever stats aren't 100%
 - Group Frames are no longer affected by Out of Combat Transparency, however now have a Master Transparency Setting

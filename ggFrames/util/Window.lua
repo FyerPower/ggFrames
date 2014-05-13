@@ -65,7 +65,7 @@ end
 
 function GGF.Window:SetLabelText( label, text, resize )
   if resize then 
-    label:SetWidth(150)
+    label:SetWidth( label:GetParent():GetWidth() - 60 )
     label:SetText(text)
     label:SetWidth( label:GetTextWidth() ) 
   else

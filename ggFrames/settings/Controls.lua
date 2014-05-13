@@ -2,7 +2,7 @@ function GGF.Settings:Controls()
   local fontOptions = GGF.Theme.fonts
   local textureOptions = GGF.Theme.textures
   local styleOptions = {"normal", "outline", "shadow", "soft-shadow-thick", "soft-shadow-thin", "thick-outline"}
-  local formatOptions = {"Nothing", "Current", "Max", "Percentage%", "Current / Max", "Current / Max (Percentage%)", "Current (Percentage%)"}
+  local formatOptions = {"Nothing", "Current", "Current + Shield", "Max", "Percentage%", "Current / Max", "Current + Shield / Max", "Current / Max (Percentage%)", "Current + Shield / Max (Percentage%)", "Current (Percentage%)", "Current + Shield (Percentage%)"}
   local formatLocations = {"Left", "Center", "Right"}
   local raidFormatTypes = GGF.locale['Setting_Raid_Layout_Opt']
 
@@ -23,6 +23,12 @@ function GGF.Settings:Controls()
 
   LAM:AddCheckbox(   panelID, "ggFramesSettingFrameLock",                   GGF.locale['Frame_Lock'], nil,                               function() return not self:IsFrameMovable() end,                        function() self:ToggleFrameMovable() end )
   LAM:AddHeader(     panelID, 'ggFramesSettingGlobal',                      GGF.locale['Setting_Global'] )
+  LAM:AddCheckbox(   panelID, "ggFramesSettingDefPlayerToggle",             GGF.locale['Display_Default_Player'], nil,                   function() return self:GetValue('Display_Default_Player') end,          function() self:SetValue('Display_Default_Player', not self:GetValue('Display_Default_Player')) end )
+  LAM:AddCheckbox(   panelID, "ggFramesSettingGGPlayerToggle",              GGF.locale['Display_Player'], nil,                           function() return self:GetValue('Display_Player') end,                  function() self:SetValue('Display_Player', not self:GetValue('Display_Player')) end )
+  LAM:AddCheckbox(   panelID, "ggFramesSettingDefTargetToggle",             GGF.locale['Display_Default_Target'], nil,                   function() return self:GetValue('Display_Default_Target') end,          function() self:SetValue('Display_Default_Target', not self:GetValue('Display_Default_Target')) end )
+  LAM:AddCheckbox(   panelID, "ggFramesSettingGGTargetToggle",              GGF.locale['Display_Target'], nil,                           function() return self:GetValue('Display_Target') end,                  function() self:SetValue('Display_Target', not self:GetValue('Display_Target')) end )
+  LAM:AddCheckbox(   panelID, "ggFramesSettingDefGroupToggle",              GGF.locale['Display_Default_Group'], nil,                    function() return self:GetValue('Display_Default_Group') end,           function() self:SetValue('Display_Default_Group', not self:GetValue('Display_Default_Group')) end )
+  LAM:AddCheckbox(   panelID, "ggFramesSettingGGGroupToggle",               GGF.locale['Display_Group'], nil,                            function() return self:GetValue('Display_Group') end,                   function() self:SetValue('Display_Group', not self:GetValue('Display_Group')) end )
   LAM:AddDropdown(   panelID, "ggFramesSettingBarFont",                     GGF.locale['Font'], nil, fontOptions,                        function() return self:GetValue('Font') end,                            function( val ) self:SetValue('Font',val) end )
   LAM:AddDropdown(   panelID, "ggFramesSettingBarFontStyle",                GGF.locale['Font_Style'], nil, styleOptions,                 function() return self:GetValue('Font_Style') end,                      function( val ) self:SetValue('Font_Style',val) end )
   LAM:AddDropdown(   panelID, "ggFramesSettingBarTexture",                  GGF.locale['Bar_Texture'], nil, textureOptions,              function() return self:GetValue('Bar_Texture') end,                     function( val ) self:SetValue('Bar_Texture',val) end )
@@ -68,6 +74,7 @@ function GGF.Settings:Controls()
   LAM:AddSlider(     panelID, 'ggFramesSettingPlayerMountHeight',           GGF.locale['Mount_Height'], nil, 6, 30, 2,                   function() return self:GetValue('Player_Mount_Height') end,             function( val ) self:SetValue('Player_Mount_Height',val) end )
   LAM:AddColorPicker(panelID, "ggFramesSettingPlayerMountColor",            GGF.locale['Mount_BarColor'], nil,                           function() return self:GetColor('Player_Mount_BarColor') end,           function( r,g,b,a ) self:SetColor('Player_Mount_BarColor',r,g,b,a) end )
   LAM:AddHeader(     panelID, 'ggFramesSettingGroup',                       GGF.locale['Setting_Group'] )
+  LAM:AddCheckbox(   panelID, "ggFramesSettingGroupCondensed",              GGF.locale['Group_Condensed'], nil,                          function() return self:GetValue('Group_Condensed') end,                 function() self:SetValue('Group_Condensed', not self:GetValue('Group_Condensed')) end )
   LAM:AddEditBox(    panelID, "ggFramesSettingGroupPositionX",              GGF.locale['Frame_PositionX'], nil, false,                   function() return self:GetValue('GroupContainer_OffsetX') end,          function( val ) self:SetValue('GroupContainer_OffsetX',val) end )
   LAM:AddEditBox(    panelID, "ggFramesSettingGroupPositionY",              GGF.locale['Frame_PositionY'], nil, false,                   function() return self:GetValue('GroupContainer_OffsetY') end,          function( val ) self:SetValue('GroupContainer_OffsetY',val) end )
   LAM:AddSlider(     panelID, 'ggFramesSettingGroupAlpha',                  GGF.locale['Frame_Alpha'], nil, 0, 100, 5,                   function() return self:GetValue('GroupContainer_Alpha') end,            function( val ) self:SetValue('GroupContainer_Alpha',val) end )
@@ -90,6 +97,8 @@ function GGF.Settings:Controls()
   LAM:AddSlider(     panelID, 'ggFramesSettingLargeGroupFontSize',          GGF.locale['Info_FontSize'], nil, 10, 30, 1,                 function() return self:GetValue('LargeGroup_FontSize') end,             function( val ) self:SetValue('LargeGroup_FontSize',val) end )
   LAM:AddColorPicker(panelID, "ggFramesSettingLargeGroupFontColor",         GGF.locale['Info_FontColor'], nil,                           function() return self:GetColor('LargeGroup_FontColor') end,            function( r,g,b,a ) self:SetColor('LargeGroup_FontColor',r,g,b,a) end )
   LAM:AddColorPicker(panelID, "ggFramesSettingLargeGroupHealthColor",       GGF.locale['Health_BarColor'], nil,                          function() return self:GetColor('LargeGroup_Health_BarColor') end,      function( r,g,b,a ) self:SetColor('LargeGroup_Health_BarColor',r,g,b,a) end )
+  LAM:AddSlider(     panelID, 'ggFramesSettingLargeGroupShieldHeight',      GGF.locale['Shield_Height'], nil, 4, 60, 2,                  function() return self:GetValue('LargeGroup_Shield_Height') end,        function( val ) self:SetValue('LargeGroup_Shield_Height',val) end )
+  LAM:AddColorPicker(panelID, "ggFramesSettingLargeGroupShieldColor",       GGF.locale['Shield_BarColor'], nil,                          function() return self:GetColor('LargeGroup_Shield_BarColor') end,      function( r,g,b,a ) self:SetColor('LargeGroup_Shield_BarColor',r,g,b,a) end ) 
   LAM:AddHeader(     panelID, 'ggFramesSettingTarget',                      GGF.locale['Setting_Target'] )
   LAM:AddEditBox(    panelID, "ggFramesSettingTargetPositionX",             GGF.locale['Frame_PositionX'], nil, false,                   function() return self:GetValue('TargetContainer_OffsetX') end,         function( val ) self:SetValue('TargetContainer_OffsetX',val) end )
   LAM:AddEditBox(    panelID, "ggFramesSettingTargetPositionY",             GGF.locale['Frame_PositionY'], nil, false,                   function() return self:GetValue('TargetContainer_OffsetY') end,         function( val ) self:SetValue('TargetContainer_OffsetY',val) end )

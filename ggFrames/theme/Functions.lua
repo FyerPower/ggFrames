@@ -344,6 +344,10 @@ function GGF.Theme.LoadLargeGroup()
   GGF.Theme.themes['LargeGroup']['Health']['Bar']['Height']       = GGF.SavedVars['LargeGroup_Height'] - 2
   GGF.Theme.themes['LargeGroup']['Health']['Bar']['BarColor']     = GGF.SavedVars['LargeGroup_Health_BarColor']
   GGF.Theme.themes['LargeGroup']['Health']['Bar']['Texture']      = GGF.Theme.LMP:Fetch('statusbar',GGF.SavedVars['Bar_Texture'])
+
+  GGF.Theme.themes['LargeGroup']['Health']['Shield']['Height']   = GGF.SavedVars['LargeGroup_Shield_Height'] - 2
+  GGF.Theme.themes['LargeGroup']['Health']['Shield']['BarColor'] = GGF.SavedVars['LargeGroup_Shield_BarColor']
+  GGF.Theme.themes['LargeGroup']['Health']['Shield']['Texture']  = GGF.Theme.LMP:Fetch('statusbar',GGF.SavedVars['Bar_Texture'])
   
   GGF.Theme.themes['LargeGroup']['Magicka']                       = false
   GGF.Theme.themes['LargeGroup']['Stamina']                       = false
@@ -357,8 +361,8 @@ function GGF.Theme.LoadLargeGroup()
     GGF.Theme.themes['LargeGroup'..i]['OffsetY'] = GGF.Theme.themes['LargeGroup']['Height'] * ((i-1)%groupSize)
   end
 
-  local width = GGF.Theme.themes['LargeGroup']['Width'] * 6
-  local height = GGF.Theme.themes['LargeGroup']['Height'] * 4
+  local width = GGF.Theme.themes['LargeGroup']['Width'] * 24 / groupSize
+  local height = GGF.Theme.themes['LargeGroup']['Height'] * groupSize
 
   GGF.Theme.themes['LargeGroupContainer']= {
     ['OffsetX'] = GGF.SavedVars['LargeGroupContainer_OffsetX'],

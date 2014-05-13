@@ -269,7 +269,13 @@ GGF.Template = {
       },
       ["LabelOne"] = false,
       ["LabelTwo"] = false,
-      ["Shield"] = false
+      ["Shield"] = {
+        ["OffsetX"] = 1,
+        ["OffsetY"] = -1,
+        ['Width'] = 0,
+        ["MyAnchor"] = BOTTOMLEFT,
+        ["ParentAnchor"] = BOTTOMLEFT
+      }
     },
     ["Magicka"] = false,
     ["Stamina"] = false,

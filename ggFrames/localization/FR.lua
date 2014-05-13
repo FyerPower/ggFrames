@@ -10,6 +10,14 @@ GGF.locale['Frame_Lock']                = "Barrer les contours"
 GGF.locale["Display_Player_Info"]       = "Afficher les informations du joueur"
 GGF.locale["Display_Player_Experience"] = "Afficher la barre d'expérience"
 
+GGF.locale['Display_Default_Player']     = "Display Default Player Frame"
+GGF.locale['Display_Player']             = "Display Addon Player Frame"
+GGF.locale['Display_Default_Target']     = "Display Default Target Frame"
+GGF.locale['Display_Target']             = "Display Addon Target Frame"
+GGF.locale['Display_Default_Group']      = "Display Default Group / Raid Frame"
+GGF.locale['Display_Group']              = "Display Addon Group / Raid Frame"
+GGF.locale['Group_Condensed']            = "Use Raid Styling for Group"
+
 -- Global
 GGF.locale['Combat_Alpha']              = "Hors de combat Alpha"
 GGF.locale['Font']                      = "Font"
