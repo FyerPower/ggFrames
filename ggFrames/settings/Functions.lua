@@ -1,31 +1,29 @@
-GGF.Settings = ZO_Object:Subclass()
+GGF.Settings = {}
 
 -- Create and Initialize a NEW Settings Object (OOP FTW)
-function GGF.Settings:New()
-  local self = ZO_Object.New( self )
-  self:Controls()
-  return self
+function GGF.Settings.New()
+  GGF.Settings.Controls()
 end
 
-function GGF.Settings:GetValue(field)
+function GGF.Settings.GetValue(field)
   return GGF.SavedVars[field]
 end
 
-function GGF.Settings:SetValue(field, val)
+function GGF.Settings.SetValue(field, val)
   GGF.SavedVars[field] = val
-  self:UpdateSection(field)
+  GGF.Settings.UpdateSection(field)
 end
 
-function GGF.Settings:GetColor(field)
+function GGF.Settings.GetColor(field)
   return unpack(GGF.SavedVars[field])
 end
 
-function GGF.Settings:SetColor(field, r, g, b, a)
+function GGF.Settings.SetColor(field, r, g, b, a)
   GGF.SavedVars[field] = {r,g,b,a}
-  self:UpdateSection(field)
+  GGF.Settings.UpdateSection(field)
 end
 
-function GGF.Settings:UpdateSection(field)
+function GGF.Settings.UpdateSection(field)
   local section, _ = string.gsub(field, ".*_","")
   if section == "Player" or section == "Group" or section == "LargeGroup" or section == "Target" then
     GGF.UnitManager.RefreshControls(section)
@@ -34,10 +32,10 @@ function GGF.Settings:UpdateSection(field)
   end
 end
 
-function GGF.Settings:IsFrameMovable()
+function GGF.Settings.IsFrameMovable()
   return GGF.move
 end
-function GGF.Settings:ToggleFrameMovable(alert)
+function GGF.Settings.ToggleFrameMovable(alert)
   GGF.move = not GGF.move
 
   if not GGF.move then
@@ -55,7 +53,7 @@ function GGF.Settings:ToggleFrameMovable(alert)
   GGF.UnitManager.SetMovable()
 end
 
-function GGF.Settings:ResetDefaults()
+function GGF.Settings.ResetDefaults()
   for key, value in pairs(GGF.SavedVarsDefaults) do
     GGF.SavedVars[key] = value
   end

@@ -1,3 +1,9 @@
+local powerTypes = {
+  [POWERTYPE_HEALTH]  = {friendly = "health",  label = "Health"},
+  [POWERTYPE_MAGICKA] = {friendly = "magicka", label = "Magicka"},
+  [POWERTYPE_STAMINA] = {friendly = "stamina", label = "Stamina"}
+}
+
 GGF.Unit = ZO_Object:Subclass()
 
 -- Create and Initialize a NEW Unit Object (OOP FTW)
@@ -11,7 +17,9 @@ function GGF.Unit:New(unitName, baseTemplate, parent)
 end
 
 -- Load Unit Data
-function GGF.Unit:Load(unitTag)
+function GGF.Unit:Load(unitTag, graceful)
+  if graceful == true and self.name == GetUnitName(unitTag) then return end
+  -- d("Loading: "..unitTag)
   self.unitTag = unitTag
   
   self:SetName( GetUnitName(self.unitTag) )
@@ -19,6 +27,7 @@ function GGF.Unit:Load(unitTag)
   self:SetDeath( IsUnitDead(self.unitTag) )
   self:SetLevel( GetUnitLevel(self.unitTag), GetUnitVeteranRank(self.unitTag) )             -- Level / Experience
   self:SetRange( IsUnitInGroupSupportRange(self.unitTag) )                                  -- Is Within Support Range
+  self:SetStealth( GetUnitStealthState(self.unitTag) ~= STEALTH_STATE_NONE )
 
   if self.unitName == "Target" then
     self:SetCaption( GetUnitCaption(self.unitTag) or GetUnitTitle(self.unitTag) )
@@ -36,6 +45,9 @@ function GGF.Unit:Load(unitTag)
 
   self:SetPower( nil, POWERTYPE_HEALTH, GetUnitPower(self.unitTag, POWERTYPE_HEALTH) )      -- Set Health
   self:UpdateShield( GetUnitAttributeVisualizerEffectInfo(self.unitTag, ATTRIBUTE_VISUAL_POWER_SHIELDING, STAT_MITIGATION, ATTRIBUTE_HEALTH, POWERTYPE_HEALTH) )
+  self:UpdateRegen( STAT_HEALTH_REGEN_COMBAT,  ATTRIBUTE_HEALTH,  POWERTYPE_HEALTH )
+  self:UpdateRegen( STAT_MAGICKA_REGEN_COMBAT, ATTRIBUTE_MAGICKA, POWERTYPE_MAGICKA )
+  self:UpdateRegen( STAT_STAMINA_REGEN_COMBAT, ATTRIBUTE_STAMINA, POWERTYPE_STAMINA )
   if self.unitName == "Player" then
     self:SetPower( nil, POWERTYPE_MAGICKA, GetUnitPower(self.unitTag, POWERTYPE_MAGICKA) )  -- Set Magicka
     self:SetPower( nil, POWERTYPE_STAMINA, GetUnitPower(self.unitTag, POWERTYPE_STAMINA) )  -- Set Stamina
@@ -64,18 +76,17 @@ end
 --------------------
 
 function GGF.Unit:SetPower( powerIndex, powerType,  powerValue, powerMax, powerEffectiveMax )
-  local field = ""
-  if     ( powerType == POWERTYPE_HEALTH  ) then field = {friendly = "health",  label = "Health"}
-  elseif ( powerType == POWERTYPE_MAGICKA ) then field = {friendly = "magicka", label = "Magicka"}
-  elseif ( powerType == POWERTYPE_STAMINA ) then field = {friendly = "stamina", label = "Stamina"}
-  else return end
-
-  if not self.template[field.label] then return end
-
-  self[field.friendly] = {current = powerValue, max = powerEffectiveMax, percent = ( ( powerValue / powerEffectiveMax ) * 100 )}
-  self.frames[field.friendly.."St"]:SetWidth( ( self[field.friendly].percent / 100 ) * self.template[field.label].Bar.Width )
-  if self.frames[field.friendly.."LbOne"] then self.frames[field.friendly.."LbOne"]:SetText( self:FormatStatusBarLabel(GGF.SavedVars['Bar_Format'], field.friendly) ) end
-  if self.frames[field.friendly.."LbTwo"] then self.frames[field.friendly.."LbTwo"]:SetText( self:FormatStatusBarLabel(GGF.SavedVars['Bar_Format_Two'], field.friendly) ) end
+  if not self.template[powerTypes[powerType].label] then return end
+  self[powerTypes[powerType].friendly] = {current = powerValue, max = powerEffectiveMax, percent = ( ( powerValue / powerEffectiveMax ) * 100 )}
+  
+  self.frames[powerTypes[powerType].friendly.."St"]:SetWidth( ( self[powerTypes[powerType].friendly].percent / 100 ) * self.template[powerTypes[powerType].label].Bar.Width )
+  
+  if self.frames[powerTypes[powerType].friendly.."LbOne"] then 
+    self.frames[powerTypes[powerType].friendly.."LbOne"]:SetText( self:FormatStatusBarLabel(GGF.SavedVars['Bar_Format'], powerTypes[powerType].friendly) ) 
+  end
+  if self.frames[powerTypes[powerType].friendly.."LbTwo"] then 
+    self.frames[powerTypes[powerType].friendly.."LbTwo"]:SetText( self:FormatStatusBarLabel(GGF.SavedVars['Bar_Format_Two'], powerTypes[powerType].friendly) )
+  end
 end
 
 function GGF.Unit:SetMountPower( powerIndex, powerType, powerValue, powerMax, powerEffectiveMax )
@@ -104,6 +115,31 @@ function GGF.Unit:UpdateShield( value, maxValue )
   if self.frames['healthLbTwo'] then self.frames['healthLbTwo']:SetText( self:FormatStatusBarLabel(GGF.SavedVars['Bar_Format_Two'], 'health') ) end
 end
 
+function GGF.Unit:UpdateRegen( statType, attributeType, powerType )
+  if GGF.SavedVars['Display_Power_Regens'] == false then return end
+  if not self.template[powerTypes[powerType].label] or not self.template[powerTypes[powerType].label]["Regen"] or not self.template[powerTypes[powerType].label]["Degen"] then return end
+  
+  value = (GetUnitAttributeVisualizerEffectInfo(self.unitTag, ATTRIBUTE_VISUAL_INCREASED_REGEN_POWER, statType, attributeType, powerType) or 0)
+        + (GetUnitAttributeVisualizerEffectInfo(self.unitTag, ATTRIBUTE_VISUAL_DECREASED_REGEN_POWER, statType, attributeType, powerType) or 0)
+  
+  if value > 0 then
+    self.frames[powerTypes[powerType].friendly.."RegenTexture"]:SetHidden(false)
+    self.frames[powerTypes[powerType].friendly.."RegenTime"]:PlayFromStart()
+    self.frames[powerTypes[powerType].friendly.."DegenTexture"]:SetHidden(true)
+    self.frames[powerTypes[powerType].friendly.."DegenTime"]:Stop()
+  elseif value < 0 then
+    self.frames[powerTypes[powerType].friendly.."RegenTexture"]:SetHidden(true)
+    self.frames[powerTypes[powerType].friendly.."RegenTime"]:Stop()
+    self.frames[powerTypes[powerType].friendly.."DegenTexture"]:SetHidden(false)
+    self.frames[powerTypes[powerType].friendly.."DegenTime"]:PlayFromStart()
+  else
+    self.frames[powerTypes[powerType].friendly.."RegenTexture"]:SetHidden(true)
+    self.frames[powerTypes[powerType].friendly.."RegenTime"]:Stop()
+    self.frames[powerTypes[powerType].friendly.."DegenTexture"]:SetHidden(true)
+    self.frames[powerTypes[powerType].friendly.."DegenTime"]:Stop()
+  end
+end
+
 function GGF.Unit:SetName( name )
   if not self.template.Name then return end
 
@@ -126,7 +162,13 @@ function GGF.Unit:SetLevel( level, rank )
   if not self.isOnline or not self.template.Level then return end
   self.level = level
   self.vlevel = rank
-  self.frames.levelLb:SetText( "("..(self.vlevel > 0 and "V"..self.vlevel or self.level)..")" )
+  if self.vlevel > 0 then
+    local size = self.template.Level.FontSize + 6
+    self.frames.levelLb:SetText( string.format("|t%d:%d:%s|t%s", size, size, 'ggFrames\\theme\\textures\\LevelVeteran.dds', self.vlevel) )
+  else
+    local size = self.template.Level.FontSize + 2
+    self.frames.levelLb:SetText( string.format("|t%d:%d:%s|t%s", size, size, 'ggFrames\\theme\\textures\\LevelNormal.dds', self.level) )
+  end
   self.frames.levelLb:SetHidden( self.reactionType == UNIT_REACTION_FRIENDLY or self.reactionType == UNIT_REACTION_NPC_ALLY )
 end
 
@@ -196,6 +238,12 @@ function GGF.Unit:SetLeader( isLeader )
   end
 end
 
+function GGF.Unit:SetStealth( isStealthed )
+  if not self.template.Stealth then return end
+  self.isStealthed = isStealthed
+  self.frames.stealthTx:SetAlpha( isStealthed and 1 or 0.2 )
+end
+
 function GGF.Unit:SetDeath( isDead )
   self.isDead = isDead
   self:UpdateStatus()
@@ -217,6 +265,8 @@ function GGF.Unit:UpdateStatus()
   if self.frames.magickaBd then self.frames.magickaBd:SetHidden( isDeadOrOffline ) end
   if self.frames.staminaBd then self.frames.staminaBd:SetHidden( isDeadOrOffline ) end
   if self.frames.experienceBd and self.template.Experience ~= false then self.frames.experienceBd:SetHidden( isDeadOrOffline ) end
+  if self.frames.stealthTx then self.frames.stealthTx:SetHidden( isDeadOrOffline ) end
+  if self.frames.leaderTx then self.frames.leaderTx:SetHidden( isDeadOrOffline or not self.isLeader ) end
 end
 
 function GGF.Unit:SetRange( isWithinRange )
@@ -240,6 +290,3 @@ function GGF.Unit:FormatStatusBarLabel( format, field )
 
   return str
 end
-
-
-

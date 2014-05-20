@@ -1,3 +1,31 @@
+v.0.8.3
+- Improved functionality for displaying Addon Loaded Message
+- Improved functionality for deciding when to Show and Hide Frames
+- Updated French Localization
+- Added ability to adjust the out of combat transparency of player and target frames
+- Fix enabling / disabling of add-on frames
+- Fix bug where target frame doesn't work without player
+
+v.0.8.2
+- Fix German Translation (Still Need Help with French)
+- Fix Add-on Loaded Message from displaying after every loading screen.  Now only displays upon first game load. 
+
+v.0.8.1
+- Display Stealth State Icon on Raid Frame
+- Add Optional Padding to Raid Frame [Feature Req #316]
+- Add More Layout Customizations to Raid Frame.  You can now pick exactly how many members you want per group (column)
+- Add Heal-Over-Time and Damage-Over-Time Animations to Raid Frame
+- Optionally Include / Exclude full Resources in Out of Combat State [Bug #680]
+- Optionally Add Player to Group Frame
+- Added chat message saying addon was successfully loaded
+- Added new /ggf help command
+- Optionally display Heal over Time and Damage over Time Animations
+
+v.0.8.0
+- Add New Veteran / Normal Level Textures to display next to level
+- Add Health, Magicka, and Stamina Heal over Time Animated Texture ( >>> )
+- Add Health, Magicka, and Stamina Damage over Time Animated Texture ( <<< )
+
 v.0.7.3
 - Fix Group Member Issue (When leaving or joining)
 - Fix Player stats from no updating when reticle is hidden.

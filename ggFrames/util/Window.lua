@@ -9,9 +9,8 @@ function GGF.Window:Create(cName, cParent, cType, cTemplate)
     else 
       control = WINDOW_MANAGER:CreateControl(cName, cParent, cType)
     end
-    if cTemplate.Hidden then
-      control:SetHidden(cTemplate.Hidden)
-    end
+    if cTemplate.Hidden == true then control:SetHidden(cTemplate.Hidden) end
+    if cTemplate.DrawLayer then control:SetDrawLayer(cTemplate.DrawLayer) end
   end
   control:SetAlpha(cTemplate.Alpha or 1)    
   control:SetDimensions(cTemplate.Width, cTemplate.Height)
@@ -42,6 +41,7 @@ function GGF.Window:CreateLabel(cName, cParent, cTemplate)
   label:SetHorizontalAlignment(cTemplate.HorizontalAlign or TEXT_ALIGN_LEFT)
   label:SetVerticalAlignment(TEXT_ALIGN_CENTER)
   label:SetColor(cTemplate.FontColor[1], cTemplate.FontColor[2], cTemplate.FontColor[3], cTemplate.FontColor[4])
+  label:SetWrapMode(TEXT_WRAP_MODE_ELLIPSIS)
 
   if cTemplate.Hidden then label:SetHidden(cTemplate.Hidden) end
   return label
@@ -59,14 +59,37 @@ end
 function GGF.Window:CreateTexture(cName, cParent, cTemplate)
   local texture = GGF.Window:Create(cName, cParent, CT_TEXTURE, cTemplate)
   texture:SetTexture(cTemplate.Texture)
+  if cTemplate.Rotate then texture:SetTextureRotation(cTemplate.Rotate) end
   return texture
 end
+
+-- Create Texture
+function GGF.Window:CreateAnimatedTexture(cName, cParent, cTemplate)
+  local texture = GGF.Window:CreateTexture(cName, cParent, cTemplate)
+  local animation, timeline = CreateSimpleAnimation(ANIMATION_TEXTURE, texture)
+  animation:SetImageData(cTemplate['ImageData'][1], cTemplate['ImageData'][2])
+  animation:SetFramerate(cTemplate['Framerate'])
+  animation:SetDuration(cTemplate['Duration'])
+  timeline:SetPlaybackType(ANIMATION_PLAYBACK_LOOP, LOOP_INDEFINITELY)
+  
+  -- timeline:IsPlaying()
+  -- timeline:PlayFromStart()
+  -- timeline:Stop()
+
+  return texture, timeline
+end
+
+
+
+
 
 
 function GGF.Window:SetLabelText( label, text, resize )
   if resize then 
-    label:SetWidth( label:GetParent():GetWidth() - 60 )
+    local maxWidth = label:GetParent():GetWidth() - 60
+    label:SetWidth( maxWidth )
     label:SetText(text)
+    label:SetWrapMode( label:GetTextWidth() > maxWidth and TEXT_WRAP_MODE_ELLIPSIS or NONE )
     label:SetWidth( label:GetTextWidth() ) 
   else
     label:SetText(text)

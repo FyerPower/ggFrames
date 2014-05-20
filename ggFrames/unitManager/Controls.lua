@@ -1,24 +1,25 @@
 function GGF.UnitManager.Controls()
   local playerTemplate = GGF.Theme.Load("PlayerContainer")
   GGF.UnitManager.frames.player = GGF.Window:Create("GGF_Player", nil, CT_TOPLEVELCONTROL, playerTemplate)
-  GGF.UnitManager.frames.player:SetMouseEnabled( true )
   GGF.UnitManager.frames.player:SetHidden( not GGF.SavedVars['Display_Player'] )
+  
+  if GGF.SavedVars['Display_Player'] then
+    d("show player")
+  else
+    d("hide player")
+  end
 
   local groupTemplate = GGF.Theme.Load("GroupContainer")
   GGF.UnitManager.frames.group = GGF.Window:Create("GGF_Group",  nil, CT_TOPLEVELCONTROL, groupTemplate)
-  GGF.UnitManager.frames.group:SetMouseEnabled( true )
   GGF.UnitManager.frames.group:SetHidden( not GGF.SavedVars['Display_Group'] )
 
   local largeGroupTemplate = GGF.Theme.Load("LargeGroupContainer")
   GGF.UnitManager.frames.largeGroup = GGF.Window:Create("GGF_LargeGroup", nil, CT_TOPLEVELCONTROL, largeGroupTemplate)
-  GGF.UnitManager.frames.largeGroup:SetMouseEnabled( true )
   GGF.UnitManager.frames.largeGroup:SetHidden( not GGF.SavedVars['Display_Group'] )
 
   local targetTemplate = GGF.Theme.Load("TargetContainer")
   GGF.UnitManager.frames.target = GGF.Window:Create("GGF_Target", nil, CT_TOPLEVELCONTROL, targetTemplate)
-  GGF.UnitManager.frames.target:SetMouseEnabled( true )
   GGF.UnitManager.frames.target:SetHidden( not GGF.SavedVars['Display_Target'] )
-
 
   GGF.UnitManager.frames.playerBd   = GGF.Window:CreateBackDrop("GGF_PlayerBd", GGF.UnitManager.frames.player, playerTemplate['Label'])
   GGF.UnitManager.frames.playerBd:SetHidden(true)
@@ -39,33 +40,31 @@ function GGF.UnitManager.Controls()
 end
 
 function GGF.UnitManager.SetMovable()
-  if GGF.SavedVars['Display_Player'] then
-    GGF.UnitManager.frames.player:SetHidden( false )
-    GGF.UnitManager.frames.player:SetMovable( GGF.move )
-    GGF.UnitManager.frames.playerBd:SetHidden( not GGF.move )
-    GGF.UnitManager.unit["Player"].frames.main:SetAlpha( GGF.move and 0 or 1 )
+  GGF.UnitManager.frames.player:SetHidden( false )
+  GGF.UnitManager.frames.player:SetMovable( GGF.move )
+  GGF.UnitManager.frames.player:SetMouseEnabled( GGF.move )
+  GGF.UnitManager.frames.playerBd:SetHidden( not GGF.move )
+  GGF.UnitManager.unit["Player"].frames.main:SetAlpha( GGF.move and 0 or 1 )
+
+  GGF.UnitManager.frames.group:SetHidden( false )
+  GGF.UnitManager.frames.group:SetMovable( GGF.move )
+  GGF.UnitManager.frames.group:SetMouseEnabled( GGF.move )
+  GGF.UnitManager.frames.groupBd:SetHidden( not GGF.move )
+  for i=1, 3 do
+    GGF.UnitManager.unit["Group"..i].frames.main:SetAlpha( GGF.move and 0 or 1 )
   end
 
-  if GGF.SavedVars['Display_Group'] then
-    GGF.UnitManager.frames.group:SetHidden( false )
-    GGF.UnitManager.frames.group:SetMovable( GGF.move )
-    GGF.UnitManager.frames.groupBd:SetHidden( not GGF.move )
-    for i=1, 3 do
-      GGF.UnitManager.unit["Group"..i].frames.main:SetAlpha( GGF.move and 0 or 1 )
-    end
-
-    GGF.UnitManager.frames.largeGroup:SetHidden( false )
-    GGF.UnitManager.frames.largeGroup:SetMovable( GGF.move )
-    GGF.UnitManager.frames.largeGroupBd:SetHidden( not GGF.move )
-    for i=1, 24 do
-      GGF.UnitManager.unit["LargeGroup"..i].frames.main:SetAlpha( GGF.move and 0 or 1 )
-    end
+  GGF.UnitManager.frames.largeGroup:SetHidden( false )
+  GGF.UnitManager.frames.largeGroup:SetMovable( GGF.move )
+  GGF.UnitManager.frames.largeGroup:SetMouseEnabled( GGF.move )
+  GGF.UnitManager.frames.largeGroupBd:SetHidden( not GGF.move )
+  for i=1, 24 do
+    GGF.UnitManager.unit["LargeGroup"..i].frames.main:SetAlpha( GGF.move and 0 or 1 )
   end
 
-  if GGF.SavedVars['Display_Target'] then
-    GGF.UnitManager.frames.target:SetHidden( false )
-    GGF.UnitManager.frames.target:SetMovable( GGF.move )
-    GGF.UnitManager.frames.targetBd:SetHidden( not GGF.move )
-    GGF.UnitManager.unit["Target"].frames.main:SetAlpha( GGF.move and 0 or 1 )
-  end
+  GGF.UnitManager.frames.target:SetHidden( false )
+  GGF.UnitManager.frames.target:SetMovable( GGF.move )
+  GGF.UnitManager.frames.target:SetMouseEnabled( GGF.move )
+  GGF.UnitManager.frames.targetBd:SetHidden( not GGF.move )
+  GGF.UnitManager.unit["Target"].frames.main:SetAlpha( GGF.move and 0 or 1 )
 end

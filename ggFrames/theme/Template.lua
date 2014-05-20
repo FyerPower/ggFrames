@@ -12,7 +12,7 @@ GGF.Template = {
     ["Level"] = {
       ["Width"] = 100,
       ["ParentAnchor"] = TOPRIGHT,
-      ["OffsetX"] = 5
+      ["OffsetX"] = 0
     },
     ["Class"] = {
       ["MyAnchor"] = TOPRIGHT,
@@ -89,23 +89,54 @@ GGF.Template = {
       ["Bar"] = {
         ["OffsetX"] = 1,
         ["OffsetY"] = 1,
+        ["DrawLayer"] = 5
       },
       ["LabelOne"] = {
         ["MyAnchor"] = LEFT,
         ["ParentAnchor"] = LEFT,
         ["OffsetX"] = 5,
+        ["DrawLayer"] = 1
       },
       ["LabelTwo"] = {
         ["MyAnchor"] = LEFT,
         ["ParentAnchor"] = LEFT,
         ["OffsetX"] = 5,
+        ["DrawLayer"] = 1
       },
       ["Shield"] = {
         ["OffsetX"] = 1,
         ["OffsetY"] = -1,
         ['Width'] = 0,
         ["MyAnchor"] = BOTTOMLEFT,
-        ["ParentAnchor"] = BOTTOMLEFT
+        ["ParentAnchor"] = BOTTOMLEFT,
+        ["DrawLayer"] = 8
+      },
+      ["Regen"] = {
+        ["Alpha"] = .45,
+        ["OffsetX"] = 1,
+        ["OffsetY"] = 0,
+        ["MyAnchor"] = LEFT,
+        ["ParentAnchor"] = LEFT,
+        ["Texture"] = "ggFrames\\theme\\textures\\Regen.dds",
+        ['ImageData'] = {1,16},
+        ['FrameRate'] = 16,
+        ['Duration'] = 1000,
+        ['Hidden'] = true,
+        ["DrawLayer"] = 2
+      },
+      ["Degen"] = {
+        ["Alpha"] = .45,
+        ["OffsetX"] = 1,
+        ["OffsetY"] = 0,
+        ["MyAnchor"] = LEFT,
+        ["ParentAnchor"] = LEFT,
+        ["Texture"] = "ggFrames\\theme\\textures\\Regen.dds",
+        ['Rotate'] = 3.14159,
+        ['ImageData'] = {1,16},
+        ['FrameRate'] = 16,
+        ['Duration'] = 1000,
+        ['Hidden'] = true,
+        ["DrawLayer"] = 2
       }
     },
     ["Magicka"] = {
@@ -115,16 +146,46 @@ GGF.Template = {
       ["Bar"] = {
         ["OffsetX"] = 1,
         ["OffsetY"] = 1,
+        ["DrawLayer"] = 5
       },
       ["LabelOne"] = {
         ["MyAnchor"] = LEFT,
         ["ParentAnchor"] = LEFT,
         ["OffsetX"] = 5,
+        ["DrawLayer"] = 1
       },
       ["LabelTwo"] = {
         ["MyAnchor"] = LEFT,
         ["ParentAnchor"] = LEFT,
         ["OffsetX"] = 5,
+        ["DrawLayer"] = 1
+      },
+      ["Regen"] = {
+        ["Alpha"] = .45,
+        ["OffsetX"] = 1,
+        ["OffsetY"] = 0,
+        ["MyAnchor"] = LEFT,
+        ["ParentAnchor"] = LEFT,
+        ["Texture"] = "ggFrames\\theme\\textures\\Regen.dds",
+        ['ImageData'] = {1,16},
+        ['FrameRate'] = 16,
+        ['Duration'] = 1000,
+        ['Hidden'] = true,
+        ["DrawLayer"] = 2
+      },
+      ["Degen"] = {
+        ["Alpha"] = .45,
+        ["OffsetX"] = 1,
+        ["OffsetY"] = 0,
+        ["MyAnchor"] = LEFT,
+        ["ParentAnchor"] = LEFT,
+        ["Texture"] = "ggFrames\\theme\\textures\\Regen.dds",
+        ['Rotate'] = 3.14159,
+        ['ImageData'] = {1,16},
+        ['FrameRate'] = 16,
+        ['Duration'] = 1000,
+        ['Hidden'] = true,
+        ["DrawLayer"] = 2
       }
     },
     ["Stamina"] = {
@@ -134,16 +195,46 @@ GGF.Template = {
       ["Bar"] = {
         ["OffsetX"] = 1,
         ["OffsetY"] = 1,
+        ["DrawLayer"] = 5
       },
       ["LabelOne"] = {
         ["MyAnchor"] = LEFT,
         ["ParentAnchor"] = LEFT,
         ["OffsetX"] = 5,
+        ["DrawLayer"] = 1
       },
       ["LabelTwo"] = {
         ["MyAnchor"] = LEFT,
         ["ParentAnchor"] = LEFT,
         ["OffsetX"] = 5,
+        ["DrawLayer"] = 1
+      },
+      ["Regen"] = {
+        ["Alpha"] = .45,
+        ["OffsetX"] = 1,
+        ["OffsetY"] = 0,
+        ["MyAnchor"] = LEFT,
+        ["ParentAnchor"] = LEFT,
+        ["Texture"] = "ggFrames\\theme\\textures\\Regen.dds",
+        ['ImageData'] = {1,16},
+        ['FrameRate'] = 16,
+        ['Duration'] = 1000,
+        ['Hidden'] = true,
+        ["DrawLayer"] = 1
+      },
+      ["Degen"] = {
+        ["Alpha"] = .45,
+        ["OffsetX"] = 1,
+        ["OffsetY"] = 0,
+        ["MyAnchor"] = LEFT,
+        ["ParentAnchor"] = LEFT,
+        ["Texture"] = "ggFrames\\theme\\textures\\Regen.dds",
+        ['Rotate'] = 3.14159,
+        ['ImageData'] = {1,16},
+        ['FrameRate'] = 16,
+        ['Duration'] = 1000,
+        ['Hidden'] = true,
+        ["DrawLayer"] = 1
       }
     },
     ["Experience"] = {
@@ -191,7 +282,9 @@ GGF.Template = {
           ["OffsetY"] = 1,
         }
       }
-    }
+    },
+    ["Stealth"] = false,
+    ["Combat"] = false
   },
 
   -- ------------------------------------------------------------ --
@@ -206,10 +299,14 @@ GGF.Template = {
     ["EdgeWeight"] = 1,
     ["Hidden"] = true,
     ["Name"] = {
-      ["Width"] = 98,
-      ["Height"] = 16,
-      ["OffsetX"] = 2,
-      ["OffsetY"] = 2,
+      ["Width"] = 100,
+      ["Height"] = 36,
+      ["OffsetY"] = -1,
+      ["OffsetX"] = 3,
+      ["MyAnchor"] = LEFT,
+      ["ParentAnchor"] = LEFT,
+      ["VerticalAlign"] = TEXT_ALIGN_CENTER,  
+      ["DrawLayer"] = 1
     },
     ["Level"] = false,
     ["Class"] = false,
@@ -220,14 +317,17 @@ GGF.Template = {
       ["EdgeColor"] = {0,0,0,1},
       ["EdgeWeight"] = 1,
       ["Hidden"] = true,
+      ["DrawLayer"] = 10,
       ["Label"] = {
-        ["Width"] = 94,
-        ["Height"] = 16,
-        ["OffsetX"] = 2,
-        ["OffsetY"] = -2,
-        ["MyAnchor"] = BOTTOMLEFT,
-        ["ParentAnchor"] = BOTTOMLEFT,  
-        ["VerticalAlign"] = TEXT_ALIGN_CENTER
+        ["Width"] = 100,
+        ["Height"] = 36,
+        ["OffsetY"] = -1,
+        ["OffsetX"] = -3,
+        ["MyAnchor"] = RIGHT,
+        ["ParentAnchor"] = RIGHT,
+        ["HorizontalAlign"] = TEXT_ALIGN_RIGHT,
+        ["VerticalAlign"] = TEXT_ALIGN_CENTER,  
+        ["DrawLayer"] = 1
       }
     },
     ["Offline"] = {
@@ -237,35 +337,89 @@ GGF.Template = {
       ["EdgeColor"] = {0,0,0,1},
       ["EdgeWeight"] = 1,
       ["Hidden"] = true,
+      ["DrawLayer"] = 10,
       ["Label"] = {
-        ["Width"] = 94,
-        ["Height"] = 16,
-        ["OffsetX"] = 2,
-        ["OffsetY"] = -2,
-        ["MyAnchor"] = BOTTOMLEFT,
-        ["ParentAnchor"] = BOTTOMLEFT,  
-        ["VerticalAlign"] = TEXT_ALIGN_CENTER
+        ["Width"] = 100,
+        ["Height"] = 36,
+        ["OffsetY"] = -1,
+        ["OffsetX"] = -3, 
+        ["MyAnchor"] = RIGHT,
+        ["ParentAnchor"] = RIGHT,
+        ["HorizontalAlign"] = TEXT_ALIGN_RIGHT,
+        ["VerticalAlign"] = TEXT_ALIGN_CENTER,  
+        ["DrawLayer"] = 1
       }
     },
     ["Leader"] = {
       ["Width"] = 20,
       ["Height"] = 20,
-      ["MyAnchor"] = BOTTOMRIGHT,
-      ["ParentAnchor"] = BOTTOMRIGHT,      
+      ["OffsetX"] = -20,
+      ["MyAnchor"] = RIGHT,
+      ["ParentAnchor"] = RIGHT,      
       ["Hidden"] = true,
-      ["Texture"] = "/esoui/art/lfg/lfg_leader_icon.dds"
+      ["Texture"] = "/esoui/art/lfg/lfg_leader_icon.dds",
+      ["DrawLayer"] = 2
     },
+    ["Stealth"] = {
+      ["Width"] = 20,
+      ["Height"] = 20,
+      ["OffsetX"] = 0,
+      ["MyAnchor"] = RIGHT,
+      ["ParentAnchor"] = RIGHT,      
+      ['Alpha'] = .2,
+      ["Texture"] = "ggFrames\\theme\\textures\\Stealth.dds",
+      ["DrawLayer"] = 2
+    },
+    ["Combat"] = false,
+    -- ["Combat"] = {
+    --   ["Width"] = 20,
+    --   ["Height"] = 20,
+    --   ["MyAnchor"] = RIGHT,
+    --   ["ParentAnchor"] = RIGHT,      
+    --   ['Alpha'] = .2,
+    --   ["Texture"] = "/esoui/art/campaign/campaignbrowser_indexicon_normal_down.dds",
+    --   ["DrawLayer"] = 2
+    -- },
     ["Health"] = {
       ["Width"] = 100,
       ["Height"] = 36,      
       ["BackColor"] = {0,0,0,.6},
       ["EdgeColor"] = {0,0,0,1},
       ["EdgeWeight"] = 1,
+      ["DrawLayer"] = 10,
       ["Bar"] = {
         ["Width"] = 98,
         ["Height"] = 34,
         ["OffsetX"] = 1,
         ["OffsetY"] = 1,
+        ["DrawLayer"] = 5,
+      },
+      ["Regen"] = {
+        ["Alpha"] = .45,
+        ["OffsetX"] = 1,
+        ["OffsetY"] = 0,
+        ["MyAnchor"] = LEFT,
+        ["ParentAnchor"] = LEFT,
+        ["Texture"] = "ggFrames\\theme\\textures\\Regen.dds",
+        ['ImageData'] = {1,16},
+        ['FrameRate'] = 16,
+        ['Duration'] = 1000,
+        ['Hidden'] = true,
+        ["DrawLayer"] = 2
+      },
+      ["Degen"] = {
+        ["Alpha"] = .45,
+        ["OffsetX"] = 1,
+        ["OffsetY"] = 0,
+        ["MyAnchor"] = LEFT,
+        ["ParentAnchor"] = LEFT,
+        ["Texture"] = "ggFrames\\theme\\textures\\Regen.dds",
+        ['Rotate'] = 3.14159,
+        ['ImageData'] = {1,16},
+        ['FrameRate'] = 16,
+        ['Duration'] = 1000,
+        ['Hidden'] = true,
+        ["DrawLayer"] = 2
       },
       ["LabelOne"] = false,
       ["LabelTwo"] = false,
@@ -274,7 +428,8 @@ GGF.Template = {
         ["OffsetY"] = -1,
         ['Width'] = 0,
         ["MyAnchor"] = BOTTOMLEFT,
-        ["ParentAnchor"] = BOTTOMLEFT
+        ["ParentAnchor"] = BOTTOMLEFT,
+        ["DrawLayer"] = 8 -- No idea why this has to be greater than the health bar, but thats the Bar.  
       }
     },
     ["Magicka"] = false,

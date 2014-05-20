@@ -1,5 +1,5 @@
 ## Title: ggFrames
-## Version: 0.7.2
+## Version: 0.8.3
 ## Author: Michael Lynch (@gamegenius86)
 ## Description: Fully Customizable Unit Frames
 ## APIVersion: 100003
@@ -12,6 +12,7 @@ lib/LibMediaProvider-1.0.lua
 ggFrames.lua
 ggSavedVarsDefaults.lua
 
+localization/Locale.lua
 localization/$(language).lua
 
 settings/Functions.lua

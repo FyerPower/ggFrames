@@ -40,6 +40,12 @@ function GGF.Unit:Controls()
   elseif self.frames.leaderTx ~= nil then 
     self.frames.leaderTx:SetHidden(true) 
   end
+  
+  if self.template.Stealth ~= false then 
+    self.frames.stealthTx = GGF.Window:CreateTexture("GGF_"..self.unitName.."StealthTx", self.frames.main, self.template.Stealth);
+  elseif self.frames.stealthTx ~= nil then 
+    self.frames.stealthTx:SetHidden(true) 
+  end
 
   if self.template.Caption ~= false then 
     self.frames.captionLb = GGF.Window:CreateLabel("GGF_"..self.unitName.."CaptionLb", self.frames.main, self.template.Caption); 
@@ -68,10 +74,10 @@ function GGF.Unit:Controls()
   -- Misc Labels
   self.frames.death     = GGF.Window:CreateBackDrop("GGF_"..self.unitName.."Death", self.frames.main, self.template.Death)
   self.frames.deathLb   = GGF.Window:CreateLabel("GGF_"..self.unitName.."DeathText", self.frames.death, self.template.Death.Label)
-  self.frames.deathLb:SetText( GGF.locale['Dead'] )
+  self.frames.deathLb:SetText( GGF.Locale:Get('Dead') )
   self.frames.offline   = GGF.Window:CreateBackDrop("GGF_"..self.unitName.."Offline", self.frames.main, self.template.Offline)
   self.frames.offlineLb = GGF.Window:CreateLabel("GGF_"..self.unitName.."OfflineText", self.frames.offline, self.template.Offline.Label)
-  self.frames.offlineLb:SetText( GGF.locale['Offline'] )
+  self.frames.offlineLb:SetText( GGF.Locale:Get('Offline') )
 
   -- Health
   self.frames.healthBd      = GGF.Window:CreateBackDrop("GGF_"..self.unitName.."Health", self.frames.main, self.template.Health)
@@ -79,6 +85,8 @@ function GGF.Unit:Controls()
   if self.template.Health.LabelOne ~= false then self.frames.healthLbOne  = GGF.Window:CreateLabel("GGF_"..self.unitName.."HealthLabelOne",  self.frames.healthBd, self.template.Health.LabelOne) end
   if self.template.Health.LabelTwo ~= false then self.frames.healthLbTwo  = GGF.Window:CreateLabel("GGF_"..self.unitName.."HealthLabelTwo",  self.frames.healthBd, self.template.Health.LabelTwo) end
   if self.template.Health.Shield ~= false then self.frames.shield = GGF.Window:CreateStatusBar("GGF_"..self.unitName.."Shield", self.frames.healthBd, self.template.Health.Shield) end
+  if self.template.Health.Regen ~= false then self.frames.healthRegenTexture, self.frames.healthRegenTime = GGF.Window:CreateAnimatedTexture("GGF_"..self.unitName.."HealthRegen", self.frames.healthBd, self.template.Health.Regen) end
+  if self.template.Health.Degen ~= false then self.frames.healthDegenTexture, self.frames.healthDegenTime = GGF.Window:CreateAnimatedTexture("GGF_"..self.unitName.."HealthDegen", self.frames.healthBd, self.template.Health.Degen) end
 
   -- Magicka
   if self.template.Magicka ~= false then
@@ -86,6 +94,8 @@ function GGF.Unit:Controls()
     self.frames.magickaSt  = GGF.Window:CreateStatusBar("GGF_"..self.unitName.."MagickaStatusBar", self.frames.magickaBd, self.template.Magicka.Bar)
     if self.template.Magicka.LabelOne ~= false then self.frames.magickaLbOne  = GGF.Window:CreateLabel("GGF_"..self.unitName.."MagickaLabelOne",  self.frames.magickaBd, self.template.Magicka.LabelOne) end
     if self.template.Magicka.LabelTwo ~= false then self.frames.magickaLbTwo  = GGF.Window:CreateLabel("GGF_"..self.unitName.."MagickaLabelTwo",  self.frames.magickaBd, self.template.Magicka.LabelTwo) end
+    if self.template.Magicka.Regen ~= false then self.frames.magickaRegenTexture, self.frames.magickaRegenTime = GGF.Window:CreateAnimatedTexture("GGF_"..self.unitName.."MagickaRegen", self.frames.magickaBd, self.template.Magicka.Regen) end
+    if self.template.Magicka.Degen ~= false then self.frames.magickaDegenTexture, self.frames.magickaDegenTime = GGF.Window:CreateAnimatedTexture("GGF_"..self.unitName.."MagickaDegen", self.frames.magickaBd, self.template.Magicka.Degen) end
   end
 
   -- Stamina
@@ -94,6 +104,8 @@ function GGF.Unit:Controls()
     self.frames.staminaSt  = GGF.Window:CreateStatusBar("GGF_"..self.unitName.."StaminaStatusBar", self.frames.staminaBd, self.template.Stamina.Bar)
     if self.template.Stamina.LabelOne ~= false then self.frames.staminaLbOne  = GGF.Window:CreateLabel("GGF_"..self.unitName.."StaminaLabelOne",  self.frames.staminaBd, self.template.Stamina.LabelOne) end
     if self.template.Stamina.LabelTwo ~= false then self.frames.staminaLbTwo  = GGF.Window:CreateLabel("GGF_"..self.unitName.."StaminaLabelTwo",  self.frames.staminaBd, self.template.Stamina.LabelTwo) end
+    if self.template.Stamina.Regen ~= false then self.frames.staminaRegenTexture, self.frames.staminaRegenTime = GGF.Window:CreateAnimatedTexture("GGF_"..self.unitName.."StaminaRegen", self.frames.staminaBd, self.template.Stamina.Regen) end
+    if self.template.Stamina.Degen ~= false then self.frames.staminaDegenTexture, self.frames.staminaDegenTime = GGF.Window:CreateAnimatedTexture("GGF_"..self.unitName.."StaminaDegen", self.frames.staminaBd, self.template.Stamina.Degen) end
   end
 
   -- Mount

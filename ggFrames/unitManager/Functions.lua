@@ -10,12 +10,11 @@ GGF.UnitManager.isInCombat = false
 function GGF.UnitManager.Initialize()
   GGF.UnitManager.frames = {}
   GGF.UnitManager.Controls()
-  GGF.UnitManager.frames.player:SetHidden(false)
 
   -- Create Unit Frames
   GGF.UnitManager.unit['Player'] = GGF.Unit:New('Player', nil, GGF.UnitManager.frames.player)
   GGF.UnitManager.unit['Target'] = GGF.Unit:New('Target', nil, GGF.UnitManager.frames.target)
-  for i = 1, 3 do 
+  for i = 1, 4 do 
     GGF.UnitManager.unit['Group'..i] = GGF.Unit:New('Group'..i, nil, GGF.UnitManager.frames.group) 
   end
   for i = 1, 24 do 
@@ -24,15 +23,11 @@ function GGF.UnitManager.Initialize()
 
   -- Route & Load Player
   GGF.UnitManager.playerName = GetUnitName('player')
-  if GGF.SavedVars['Display_Player'] then
-    GGF.UnitManager.SetUnit('Player', 'player')
-  end
+  GGF.UnitManager.SetUnit('Player', 'player')
   
   -- Route & Load Target
-  if GGF.SavedVars['Display_Player'] then
-    GGF.UnitManager.SetUnit('Target', 'reticleover')
-    GGF.UnitManager.unit["Target"]:Unload()
-  end
+  GGF.UnitManager.SetUnit('Target', 'reticleover')
+  GGF.UnitManager.unit["Target"]:Unload()
 
   -- Initialize Group
   GGF.UnitManager.UpdateGroup()
@@ -78,10 +73,9 @@ function GGF.UnitManager.UpdateGroup()
   for i = 1, 24 do
     unitRouter["group"..i] = {}
     if DoesUnitExist("group"..i) and GGF.SavedVars['Display_Group'] then
-      -- TODO: If the Player Frame is OFF, Include Player in group
-      if groupSlot < 4 and GetUnitName("group"..i) ~= GGF.UnitManager.playerName then
+      if groupSlot <= 4 and (GGF.SavedVars['Group_Include_Player'] or GetUnitName("group"..i) ~= GGF.UnitManager.playerName) then
         table.insert(unitRouter["group"..i], "Group"..groupSlot)
-        GGF.UnitManager.unit["Group"..groupSlot]:Load("group"..i)
+        GGF.UnitManager.unit["Group"..groupSlot]:Load("group"..i, true)
         groupSlot = groupSlot + 1
       end
       table.insert(unitRouter["group"..i], "LargeGroup"..largeGroupSlot)
@@ -97,7 +91,7 @@ function GGF.UnitManager.UpdateGroup()
   end
 
   -- Unload all unit slots after our last slot (this should NOT be necessary)
-  for j = groupSlot, 3 do GGF.UnitManager.unit["Group"..j]:Unload() end
+  for j = groupSlot, 4 do GGF.UnitManager.unit["Group"..j]:Unload() end
   for k = largeGroupSlot, 24 do GGF.UnitManager.unit["LargeGroup"..k]:Unload() end
 
   GGF.UnitManager.unitRouter = unitRouter
@@ -113,12 +107,12 @@ end
 
 function GGF.UnitManager.ToggleVisibility(isHidden)
   if GGF.move then return end
-  GGF.UnitManager.frames.player:SetHidden(isHidden)
-  GGF.UnitManager.frames.target:SetHidden(isHidden)
+  GGF.UnitManager.frames.player:SetHidden(isHidden or not GGF.SavedVars['Display_Player'] )
+  GGF.UnitManager.frames.target:SetHidden(isHidden or not GGF.SavedVars['Display_Target'] )
   
   local displayRaid = GGF.UnitManager.isLargeGroup or GGF.SavedVars['Group_Condensed']
-  GGF.UnitManager.frames.group:SetHidden(isHidden or displayRaid)
-  GGF.UnitManager.frames.largeGroup:SetHidden(isHidden or not displayRaid)
+  GGF.UnitManager.frames.group:SetHidden((isHidden or displayRaid) or not GGF.SavedVars['Display_Group'])
+  GGF.UnitManager.frames.largeGroup:SetHidden((isHidden or not displayRaid) or not GGF.SavedVars['Display_Group'])
 end
 
 function GGF.UnitManager.RefreshControls(section)
@@ -126,7 +120,6 @@ function GGF.UnitManager.RefreshControls(section)
     GGF.Theme.LoadPlayer()
     GGF.UnitManager.UnitFunction('player', 'Controls')
     GGF.UnitManager.UnitFunction('player', 'Reload')
-    GGF.UnitManager.frames.player:SetHidden(false)
   end
   if( section == nil or section == "Group" ) then
     GGF.Theme.LoadGroup()
@@ -176,6 +169,7 @@ function GGF.UnitManager.RegisterEvents()
   EVENT_MANAGER:RegisterForEvent("GGF", EVENT_UNIT_ATTRIBUTE_VISUAL_ADDED,   GGF.UnitManager.OnVisualizationAdded)      -- Sheilds
   EVENT_MANAGER:RegisterForEvent("GGF", EVENT_UNIT_ATTRIBUTE_VISUAL_REMOVED, GGF.UnitManager.OnVisualizationRemoved)    -- Sheilds
   EVENT_MANAGER:RegisterForEvent("GGF", EVENT_UNIT_ATTRIBUTE_VISUAL_UPDATED, GGF.UnitManager.OnVisualizationUpdated)    -- Sheilds
+  EVENT_MANAGER:RegisterForEvent("GGF", EVENT_STEALTH_STATE_CHANGED,         GGF.UnitManager.OnStealthStateChange)      -- Misc
   EVENT_MANAGER:RegisterForEvent("GGF", EVENT_PLAYER_COMBAT_STATE,           GGF.UnitManager.OnCombatStateChange)       -- Misc
 end
 
@@ -245,9 +239,12 @@ function GGF.UnitManager.OnGroupRangeUpdate( event, unitTag, isWithinRange )
   GGF.UnitManager.UnitFunction(unitTag, 'SetRange', isWithinRange)
 end
 
--- zo_strfind(unitTag, "group") == 1
+-- FIX: The events for Unit Created / Destroyed get called very often causing slight performance issues with the UpdateGroup() function
 function GGF.UnitManager.OnUnitUpdate( eventCode, unitTag )
   if unitTag ~= nil and string.sub(unitTag,0,5) == "group" then
+    -- if eventCode == EVENT_UNIT_CREATED    then d("Unit Created: "..unitTag) end
+    -- if eventCode == EVENT_UNIT_DESTROYED  then d("Unit Destroyed: "..unitTag) end
+    -- if eventCode == EVENT_GROUP_DISBANDED then d("Group Disband: "..unitTag) end
     GGF.UnitManager.UpdateGroup()
   end
 end
@@ -274,15 +271,20 @@ end
 -- Events: Shields
 ----------------------------------------
 
--- Others: Decreased / Increased Max Power, Regen Power, or Stat | Unwavering Power | Automatic | None
 function GGF.UnitManager.OnVisualizationAdded( eventCode, unitTag, unitAttributeVisual, statType, attributeType, powerType, value, maxValue )
-  if unitAttributeVisual ~= ATTRIBUTE_VISUAL_POWER_SHIELDING then return end
-  GGF.UnitManager.UnitFunction(unitTag, 'UpdateShield', value, maxValue)
+  if unitAttributeVisual == ATTRIBUTE_VISUAL_POWER_SHIELDING then
+    GGF.UnitManager.UnitFunction(unitTag, 'UpdateShield', value, maxValue)
+  elseif unitAttributeVisual == ATTRIBUTE_VISUAL_INCREASED_REGEN_POWER or unitAttributeVisual == ATTRIBUTE_VISUAL_DECREASED_REGEN_POWER then
+    GGF.UnitManager.UnitFunction(unitTag, 'UpdateRegen', statType, attributeType, powerType )
+  end
 end
 
 function GGF.UnitManager.OnVisualizationRemoved( eventCode, unitTag, unitAttributeVisual, statType, attributeType, powerType, value, maxValue )
-  if unitAttributeVisual ~= ATTRIBUTE_VISUAL_POWER_SHIELDING then return end
-  GGF.UnitManager.UnitFunction(unitTag, 'UpdateShield', 0, maxValue)
+  if unitAttributeVisual == ATTRIBUTE_VISUAL_POWER_SHIELDING then
+    GGF.UnitManager.UnitFunction(unitTag, 'UpdateShield', 0, maxValue)
+  elseif unitAttributeVisual == ATTRIBUTE_VISUAL_INCREASED_REGEN_POWER or unitAttributeVisual == ATTRIBUTE_VISUAL_DECREASED_REGEN_POWER then
+    GGF.UnitManager.UnitFunction(unitTag, 'UpdateRegen', statType, attributeType, powerType )
+  end
 end
 
 function GGF.UnitManager.OnVisualizationUpdated( eventCode, unitTag, unitAttributeVisual, statType, attributeType, powerType, oldValue, newValue, oldMax, newMax )
@@ -294,6 +296,10 @@ end
 -- Events: Misc
 ----------------------------------------
 
+function GGF.UnitManager.OnStealthStateChange( eventCode, unitTag, stealthState )
+  GGF.UnitManager.UnitFunction(unitTag, 'SetStealth', stealthState ~= STEALTH_STATE_NONE)
+end
+
 function GGF.UnitManager.OnCombatStateChange( eventCode, isInCombat )
   GGF.UnitManager.isInCombat = isInCombat
   GGF.UnitManager.UpdateFrameOpacity()
@@ -302,9 +308,9 @@ end
 function GGF.UnitManager.UpdateFrameOpacity()
   if GGF.SavedVars['Display_Player'] then
     local player = GGF.UnitManager.unit.Player
-    showFully = GGF.UnitManager.isInCombat or player.health.percent ~= 100 or player.magicka.percent ~= 100 or player.stamina.percent ~= 100 or player.mount.percent ~= 100
-    GGF.UnitManager.frames.player:SetAlpha( showFully and 1 or GGF.SavedVars['Player_Combat_Alpha']/100 )
-    GGF.UnitManager.frames.target:SetAlpha( showFully and 1 or GGF.SavedVars['Target_Combat_Alpha']/100 )
+    showFully = GGF.UnitManager.isInCombat or (GGF.SavedVars['Player_Combat_Alpha_Power'] == true and (player.health.percent ~= 100 or player.magicka.percent ~= 100 or player.stamina.percent ~= 100 or player.mount.percent ~= 100))
+    GGF.UnitManager.frames.player:SetAlpha( showFully and GGF.SavedVars['Player_Alpha']/100 or GGF.SavedVars['Player_Combat_Alpha']/100 )
+    GGF.UnitManager.frames.target:SetAlpha( showFully and GGF.SavedVars['Target_Alpha']/100 or GGF.SavedVars['Target_Combat_Alpha']/100 )
   end
 end
 
@@ -314,25 +320,12 @@ end
 
 
 
--- Events:
+-- Misc Events:
   -- ZO: EVENT_BOSSES_CHANGED
   -- ZO: EVENT_DISPOSITION_UPDATE
   -- ZO: EVENT_RANK_POINT_UPDATE
-  -- Visual: EVENT_UNIT_ATTRIBUTE_VISUAL_ADDED 
-  -- Visual: EVENT_UNIT_ATTRIBUTE_VISUAL_REMOVED 
-  -- Visual: EVENT_UNIT_ATTRIBUTE_VISUAL_UPDATED 
   -- Siege: EVENT_BEGIN_SIEGE_CONTROL
   -- Siege: EVENT_END_SIEGE_CONTROL
   -- Combat: EVENT_PLAYER_COMBAT_STATE 
   -- Zone: EVENT_ZONE_UPDATE 
--- Zone: EVENT_ZONE_CHANGED 
-
--- IsUnitPlayer(unitTag)
--- IsUnitAttackable(unitTag) -> boolean
-
--- CombatUnitType
-  -- COMBAT_UNIT_TYPE_GROUP
-  -- COMBAT_UNIT_TYPE_NONE
-  -- COMBAT_UNIT_TYPE_OTHER
-  -- COMBAT_UNIT_TYPE_PLAYER
-  -- COMBAT_UNIT_TYPE_PLAYER_PET
+  -- Zone: EVENT_ZONE_CHANGED 
