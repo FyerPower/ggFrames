@@ -128,14 +128,3 @@ The Error [B]Too Many Anchors Process[/B] is not due to ggFrames however its a b
 [COLOR="Yellow"][SIZE="3"][U][B]Found a Bug?[/B][/U][/SIZE][/COLOR]
 [I]If you notice any wrong translations, please send me a private message with what the text should say.  Thanks[/I]
 [URL="http://www.esoui.com/portal.php?id=72&a=listbugs"]Report Bugs Here[/URL]
-
-[COLOR="Yellow"][SIZE="3"][U][B]Donate![/B][/U][/SIZE][/COLOR]
-Donations are [B]NOT[/B] required, just greatly appreciated.  If you are generous enough to do so, I will list the amount and your name below.
-[LIST]
-[*][COLOR="Yellow"]$10.00[/COLOR] Travin A.
-[*][COLOR="Yellow"]$5.00[/COLOR] Allan K. (Rashaverik)
-[*][COLOR="Yellow"]$1.00[/COLOR] Michal R.
-[/LIST]
-[URL="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=2DK5XAPXSVAQS"]
-[IMG]https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif[/IMG]
-[/URL]
